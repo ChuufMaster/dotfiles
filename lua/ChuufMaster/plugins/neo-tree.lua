@@ -14,11 +14,23 @@ return {
     { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
   },
   opts = {
+    window = {
+      position = 'right',
+    },
     filesystem = {
       window = {
         mappings = {
           ['\\'] = 'close_window',
         },
+      },
+      hijack_netrw_behavior = 'open_current',
+    },
+    event_handlers = {
+      {
+        event = 'file_opened',
+        handler = function()
+          vim.cmd.Neotree 'close'
+        end,
       },
     },
   },
