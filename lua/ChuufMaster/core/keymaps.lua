@@ -1,5 +1,3 @@
-local M = {}
-local merge_tb = vim.tbl_deep_extend
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
@@ -31,38 +29,28 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-M.load_mappings = function(section, mapping_opt)
-  vim.schedule(function()
-    local function set_section_map(section_values)
-      if section_values.plugin then
-        return
-      end
+-- Vim remap overides
 
-      section_values.plugin = nil
+vim.keymap.set('i', '<C-b>', '<ESC>^i', { desc = 'Beginning of line' })
+vim.keymap.set('i', '<C-e>', '<End>', { desc = 'End of line' })
 
-      for mode, mode_values in pairs(section_values) do
-        local default_opts = merge_tb('force', { mode = mode }, mapping_opt or {})
-        for keybind, mapping_info in pairs(mode_values) do
-          -- merge default + user opts
-          local opts = merge_tb('force', default_opts, mapping_info.opts or {})
+-- navigate within insert mode
+vim.keymap.set('i', '<C-h>', '<Left>', { desc = 'Move left' })
+vim.keymap.set('i', '<C-l>', '<Right>', { desc = 'Move right' })
+vim.keymap.set('i', '<C-j>', '<Down>', { desc = 'Move down' })
+vim.keymap.set('i', '<C-k>', '<Up>', { desc = 'Move up' })
 
-          mapping_info.opts, opts.mode = nil, nil
-          opts.desc = mapping_info[2]
+vim.keymap.set('n', '<C-u', '<C-u>zz', { desc = 'Move cursor to middle' })
+vim.keymap.set('n', '<C-d', '<C-d>zz', { desc = 'Move cursor to middle' })
+vim.keymap.set('n', '<Esc>', '<cmd> noh <CR>', { desc = 'Clear highlights' })
 
-          vim.keymap.set(mode, keybind, mapping_info[1], opts)
-        end
-      end
-    end
+vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { desc = 'Save file' })
 
-    local mappings = require('core.utils').load_config().mappings
+-- Copy all
+vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { desc = 'Copy whole file' })
 
-    if type(section) == 'string' then
-      mappings[section]['plugin'] = nil
-      mappings = { mappings[section] }
-    end
+vim.keymap.set('n', 'j', 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = 'Move down', expr = true })
 
-    for _, sect in pairs(mappings) do
-      set_section_map(sect)
-    end
-  end)
-end
+vim.keymap.set('n', '<leader><tab>d', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
+
+vim.keymap.set('i', '<C-O>', '<Esc>o', { desc = 'Insert new line below' })
