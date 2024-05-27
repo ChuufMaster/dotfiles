@@ -167,7 +167,9 @@ return { -- LSP Configuration & Plugins
       -- But for many setups, the LSP (`tsserver`) will work just fine
       -- tsserver = {},
       --
-      markdown_oxide = {},
+      markdown_oxide = {
+        settings = { filetypes = { 'markdown' } },
+      },
       markdownlint = {},
       pylsp = {},
       solargraph = {},

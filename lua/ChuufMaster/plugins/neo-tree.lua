@@ -15,7 +15,7 @@ return {
   },
   opts = {
     window = {
-      position = 'right',
+      position = 'float',
     },
     filesystem = {
       window = {
@@ -29,7 +29,7 @@ return {
       {
         event = 'file_opened',
         handler = function()
-          vim.cmd.Neotree 'close'
+          vim.cmd.Neotree('close')
         end,
       },
     },
