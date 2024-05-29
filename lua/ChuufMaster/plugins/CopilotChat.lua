@@ -9,6 +9,7 @@ return {
     opts = {
       debug = true, -- Enable debugging
       -- See Configuration section for rest
+      context = 'buffer',
     },
     keys = {
       {
