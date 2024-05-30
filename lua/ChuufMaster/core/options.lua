@@ -78,6 +78,8 @@ vim.opt.hlsearch = true
 
 -- This file is automatically loaded by lazyvim.config.init.
 
+-- vim.g.python3_host_prog = '/home/linuxbrew/.linuxbrew/bin/python3'
+
 local function augroup(name)
   return vim.api.nvim_create_augroup('lazyvim_' .. name, { clear = true })
 end
