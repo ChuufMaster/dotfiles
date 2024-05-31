@@ -8,6 +8,7 @@ return {
       default_file_explorer = true,
       ['<C-h>'] = false,
       ['<C-s>'] = false,
+      ['\\'] = false,
       view_options = {
         show_hidden = true,
       },
@@ -17,7 +18,9 @@ return {
   keys = {
     {
       '-',
-      '<CMD>Oil<CR>',
+      function()
+        require('oil').toggle_float()
+      end,
       desc = 'Open Oil in parent directory',
     },
     -- {

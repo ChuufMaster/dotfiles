@@ -171,8 +171,10 @@ return { -- LSP Configuration & Plugins
         settings = { filetypes = { 'markdown' } },
       },
       markdownlint = {},
+      omnisharp = {},
       pylsp = {},
-      solargraph = {},
+      -- solargraph = {},
+      yamlls = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
