@@ -2,7 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter-textobjects',
   lazy = true,
   config = function()
-    require('nvim-treesitter.configs').setup {
+    require('nvim-treesitter.configs').setup({
       textobjects = {
         select = {
           enable = true,
@@ -16,8 +16,8 @@ return {
             ['l='] = { query = '@assignment.lhs', desc = 'Select left hand side of an assignment' },
             ['r='] = { query = '@assignment.rhs', desc = 'Select right hand side of an assignment' },
 
-            ['aa'] = { query = '@parameter.outer', desc = 'Select outer part of a parameter/argument' },
-            ['ia'] = { query = '@parameter.inner', desc = 'Select inner part of a parameter/argument' },
+            -- ['aa'] = { query = '@parameter.outer', desc = 'Select outer part of a parameter/argument' },
+            -- ['ia'] = { query = '@parameter.inner', desc = 'Select inner part of a parameter/argument' },
 
             ['ai'] = { query = '@conditional.outer', desc = 'Select outer part of a conditional' },
             ['ii'] = { query = '@conditional.inner', desc = 'Select inner part of a conditional' },
@@ -25,8 +25,8 @@ return {
             ['al'] = { query = '@loop.outer', desc = 'Select outer part of a loop' },
             ['il'] = { query = '@loop.inner', desc = 'Select inner part of a loop' },
 
-            ['af'] = { query = '@call.outer', desc = 'Select outer part of a function call' },
-            ['if'] = { query = '@call.inner', desc = 'Select inner part of a function call' },
+            -- ['af'] = { query = '@call.outer', desc = 'Select outer part of a function call' },
+            -- ['if'] = { query = '@call.inner', desc = 'Select inner part of a function call' },
 
             ['am'] = { query = '@function.outer', desc = 'Select outer part of a method/function definition' },
             ['im'] = { query = '@function.inner', desc = 'Select inner part of a method/function definition' },
@@ -84,8 +84,8 @@ return {
           },
         },
       },
-    }
-    local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
+    })
+    local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
 
     -- vim way: ; goes to the direction you were moving.
     vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move)

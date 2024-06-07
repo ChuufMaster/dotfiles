@@ -42,7 +42,7 @@ vim.keymap.set('i', '<C-k>', '<Up>', { desc = 'Move up' })
 
 vim.keymap.set('n', '<C-u', '<C-u>zz', { desc = 'Move cursor to middle' })
 vim.keymap.set('n', '<C-d', '<C-d>zz', { desc = 'Move cursor to middle' })
-vim.keymap.set('n', '<Esc>', '<cmd> noh <CR>', { desc = 'Clear highlights' })
+vim.keymap.set('n', '<Esc>', '<cmd> noh <CR><cmd>Noice dismiss<CR>', { desc = 'Clear highlights' })
 
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { desc = 'Save file' })
 
