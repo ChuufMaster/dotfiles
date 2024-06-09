@@ -76,6 +76,8 @@ vim.opt.scrolloff = 10
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 
+vim.opt.conceallevel = 1
+
 -- This file is automatically loaded by lazyvim.config.init.
 
 -- vim.g.python3_host_prog = '/home/linuxbrew/.linuxbrew/bin/python3'
