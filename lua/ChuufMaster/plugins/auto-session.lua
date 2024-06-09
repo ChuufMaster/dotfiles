@@ -1,7 +1,7 @@
 return {
   'rmagatti/auto-session',
   config = function()
-    require('auto-session').setup {
+    require('auto-session').setup({
       log_level = 'error',
 
       cwd_change_handling = {
@@ -11,6 +11,6 @@ return {
           require('lualine').refresh() -- refresh lualine so the new session name is displayed in the status bar
         end,
       },
-    }
+    })
   end,
 }

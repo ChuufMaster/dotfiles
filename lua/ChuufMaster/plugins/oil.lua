@@ -12,6 +12,10 @@ return {
       view_options = {
         show_hidden = true,
       },
+
+      keymaps = {
+        ['<Esc>'] = { callback = 'actions.close', mode = 'n' },
+      },
     })
     vim.keymap.set('n', '<leader>-', require('oil').toggle_float, { desc = 'Open Oil in a float' })
   end,
