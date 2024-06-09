@@ -79,6 +79,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
     vim.keymap.set('n', '<leader>fF', '<cmd>Telescope flutter commands<CR>', { desc = '[F]ind [F]lutter commands' })
+    vim.keymap.set('n', '<leader>fo', '<cmd>ObsidianSearch<CR>', { desc = '[F]ind [O]sidian' })
+    vim.keymap.set('n', '<leader>fO', '<cmd>ObsidianQuickSwitch<CR>', { desc = '[F]ind [O]sidian switch' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()

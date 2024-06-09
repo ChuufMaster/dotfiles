@@ -192,3 +192,178 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ':p:h'), 'p')
   end,
 })
+
+local pinned_buffers = {}
+
+local function pin_buffer(bufnr)
+  pinned_buffers[bufnr] = true
+end
+
+local function unpin_buffer(bufnr)
+  pinned_buffers[bufnr] = nil
+end
+
+local function is_pinned(bufnr)
+  return pinned_buffers[bufnr] ~= nil
+end
+
+vim.api.nvim_create_user_command('PinBuffer', function()
+  local bufnr = vim.fn.bufnr()
+  if is_pinned(bufnr) then
+    unpin_buffer(bufnr)
+    return
+  end
+  pin_buffer(bufnr)
+end, {})
+
+local function get_last_access_time(bufnr)
+  local ok, last_used = pcall(vim.api.nvim_buf_get_var, bufnr, 'last_used')
+  return ok and last_used or 0
+end
+-- Define a Lua function to handle the autocommand
+local function delete_oldest_buffer()
+  -- Get all buffers
+  local all_buffers = vim.api.nvim_list_bufs()
+  -- Initialize an empty table to store buffers associated with files
+  local file_buffers = {}
+  -- Iterate through each buffer
+  for _, bufnr in ipairs(all_buffers) do
+    -- Check if the buffer is associated with a file and does not have unsaved changes
+    if vim.api.nvim_buf_is_loaded(bufnr) and not is_pinned(bufnr) and vim.bo[bufnr].buftype == '' and not vim.api.nvim_buf_get_option(bufnr, 'modified') then
+      table.insert(file_buffers, bufnr)
+    end
+  end
+  -- Sort file buffers by last accessed time
+  table.sort(file_buffers, function(a, b)
+    return get_last_access_time(a) > get_last_access_time(b)
+  end)
+  -- Delete the oldest buffer
+  if #file_buffers > 6 then
+    local oldest_bufnr = file_buffers[#file_buffers]
+    print('Deleting the oldest buffer:', vim.api.nvim_buf_get_name(oldest_bufnr))
+    vim.cmd('bd ' .. oldest_bufnr)
+  else
+    -- print('No file buffers to delete.')
+  end
+end
+
+-- Define the autocommand
+
+vim.api.nvim_create_augroup('DeleteOldestBufferGroup', { clear = true })
+
+-- Autocommand to update the last accessed time
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*',
+  group = 'DeleteOldestBufferGroup',
+  callback = function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.api.nvim_buf_set_var(bufnr, 'last_used', vim.loop.now())
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*',
+  group = 'DeleteOldestBufferGroup',
+  callback = function()
+    if vim.bo.filetype ~= '' and vim.bo.buftype == '' and not vim.bo.readonly then
+      delete_oldest_buffer()
+    end
+  end,
+})
+
+-- local max_buffers = 3
+--
+-- local supported_filetypes = {
+--   'lua',
+--   'javascript',
+--   'typescript',
+--   'python',
+--   'c',
+--   'cpp',
+--   'cs',
+--   'java',
+--   'ruby',
+--   'go',
+--   'rust',
+--   'sh',
+--   'bash',
+--   'html',
+--   'css',
+--   'json',
+--   'yaml',
+--   'toml',
+--   'markdown',
+-- }
+--
+-- local pinned_buffers = {}
+--
+-- local function is_supported_filetype(bufnr)
+--   local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+--   return vim.tbl_contains(supported_filetypes, filetype)
+-- end
+--
+-- local function pin_buffer(bufnr)
+--   pinned_buffers[bufnr] = true
+-- end
+--
+-- local function unpin_buffer(bufnr)
+--   pinned_buffers[bufnr] = nil
+-- end
+--
+-- local function is_pinned(bufnr)
+--   return pinned_buffers[bufnr] ~= nil
+-- end
+--
+-- local function close_olded_unsaved_buffer(current_bufnr)
+--   local buffers = vim.fn.getbufinfo({ bufloaded = 1 })
+--   local saved_buffers = {}
+--   for _, buf in ipairs(buffers) do
+--     if buf.changed == 0 and is_supported_filetype(buf.bufnr) and not is_pinned(buf.bufnr) and buf.bufnr ~= current_bufnr then
+--       table.insert(saved_buffers, buf)
+--     end
+--   end
+--
+--   if #saved_buffers == 0 then
+--     return
+--   end
+--
+--   table.sort(saved_buffers, function(a, b)
+--     return a.lastused < b.lastused
+--   end)
+--
+--   vim.cmd('bd ' .. saved_buffers[1].bufnr)
+--   -- vim.api.nvim_buf_delete(saved_buffers[1].bufnr, { force = true })
+--   -- print('bwipeout ' .. saved_buffers[1].bufnr)
+-- end
+--
+-- vim.api.nvim_create_autocmd('BufEnter', {
+--   callback = function(args)
+--     local current_bufnr = args.buf
+--     local buffers = vim.fn.getbufinfo({ bufloaded = 1 })
+--     local count = 0
+--     for _, buf in ipairs(buffers) do
+--       if --[[ is_supported_filetype(buf.bufnr) and ]]
+--         not is_pinned(buf.bufnr) and buf.bufnr ~= current_bufnr
+--       then
+--         count = count + 1
+--       end
+--     end
+--     if count > max_buffers then
+--       close_olded_unsaved_buffer(current_bufnr)
+--     end
+--   end,
+-- })
+--
+-- vim.api.nvim_create_user_command('PinBuffer', function()
+--   local bufnr = vim.fn.bufnr()
+--   if is_pinned(bufnr) then
+--     unpin_buffer(bufnr)
+--     return
+--   end
+--   pin_buffer(bufnr)
+-- end, {})
+--
+-- vim.api.nvim_create_user_command('UnpinBuffer', function()
+--   local bufnr = vim.fn.bufnr()
+--   unpin_buffer(bufnr)
+-- end, {})
