@@ -28,6 +28,7 @@ return {
       name = 'telescope.nvim',
     },
     -- see below for full list of options 👇
+    preffered_link_style = 'markdown',
   },
 
   -- config = function(opts)
