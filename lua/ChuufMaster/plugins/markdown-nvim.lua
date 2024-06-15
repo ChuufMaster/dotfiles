@@ -11,6 +11,8 @@ return {
             rendered = 2,
           },
         },
+
+        vim.keymap.set('n', '<leader>tm', '<cmd>RenderMarkdownToggle<CR>', { desc = '[T]oggle [M]arkdown-render' }),
       })
     end,
     -- keys = {
