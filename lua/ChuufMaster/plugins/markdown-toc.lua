@@ -1,4 +1,7 @@
 return {
   'ChuufMaster/markdown-toc',
-  dev = true,
+  opts = {
+    ask_for_heading_level = true,
+  },
+  dev = false,
 }

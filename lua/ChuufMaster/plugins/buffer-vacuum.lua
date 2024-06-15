@@ -3,7 +3,7 @@ return {
     'ChuufMaster/buffer-vacuum',
     dev = false,
     opts = {
-      max_buffers = 4,
+      max_buffers = 6,
       enable_messages = false,
     },
   },
