@@ -149,6 +149,9 @@ return { -- LSP Configuration & Plugins
       pylsp = {},
       -- solargraph = {},
       yamlls = {},
+      actionlint = {},
+      dockerls = {},
+      docker_compose_language_service = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
