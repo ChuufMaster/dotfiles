@@ -177,6 +177,11 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  pattern = { '*.pl' },
+  command = 'set filetype=prolog',
+})
+
 -- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd('FileType', {
   group = augroup('wrap_spell'),
