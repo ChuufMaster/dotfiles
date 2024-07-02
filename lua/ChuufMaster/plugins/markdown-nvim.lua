@@ -3,6 +3,7 @@ return {
     'MeanderingProgrammer/markdown.nvim',
     name = 'render-markdown',
     dependencies = { 'nvim-treesitter' },
+    ft = 'markdown',
     config = function()
       require('render-markdown').setup({
         win_options = {
