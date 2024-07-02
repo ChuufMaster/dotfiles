@@ -183,8 +183,25 @@ return { -- LSP Configuration & Plugins
       'stylua',
       'markdownlint', -- Used to format Lua code
     })
+    require('lspconfig').racket_langserver.setup({})
+    require('lspconfig').prolog_ls.setup({
+      cmd = {
+        'swipl',
+        '-g',
+        'use_module(library(lsp_server)).',
+        '-g',
+        'lsp_server:main',
+        '-t',
+        'halt',
+        '--',
+        'stdio',
+      },
+      -- the filetypes to attach the server to
+      filetypes = { 'prolog' },
+      -- root directory detection for detecting the project root
+      root_dir = require('lspconfig.util').root_pattern('pack.pl'),
+    })
     require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
-
     require('mason-lspconfig').setup({
       handlers = {
         function(server_name)
