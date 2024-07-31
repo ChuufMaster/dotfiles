@@ -55,7 +55,7 @@
 
 (deflayer alt-layer
   @f12
-  @caps a  ctrl  d  f  left down up rght ;
+  @caps a  lctl  d  f  left down up rght ;
                  v
 )
 
