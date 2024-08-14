@@ -179,8 +179,17 @@ return {
       vim.cmd.colorscheme('tokyonight-storm')
 
       -- You can configure highlights by doing something like:
-      vim.cmd.hi('Comment gui=none')
+      -- vim.cmd.hi('Comment gui=none')
     end,
+    opts = {
+      transparent = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        sidebars = 'normal',
+        floats = 'normal',
+      },
+    },
   },
 
   -- Highlight todo, notes, etc in comments
