@@ -49,7 +49,7 @@
 
 (deflayer super-layer
   @f12
-  @caps a   s   d   @f  left down up rght ;
+  @caps a   s   @d   @f  left down up rght ;
                        v
 )
 
