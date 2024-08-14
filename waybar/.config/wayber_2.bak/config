@@ -115,75 +115,24 @@
     "on-click": "mpc -q pause && mpc -q next && mpc -q start"
   },
   "custom/swap": {
-    "on-click": "~/.config/hypr/waybar/scripts/swap.sh",
+    "on-click": "~/.config/waybar/scripts/swap.sh",
     "tooltip": true,
     "tooltip-format": "Swap between waybar configs",
-    "format": "Bg  "
+    "format": "Bg  "
   },
   "custom/mpd": {
     "format": " {title} - {artist}",
     "interval": 5,
     "exec": "mpc current --format='\"title\":\"%title%\",\"artist\":\"%artist%\"'"
   },
-  "cava#left": {
-    "autosens": 1,
-    "bar_delimiter": 0,
-    "bars": 18,
-    "format-icons": [
-      "<span foreground='#cba6f7'>▁</span>",
-      "<span foreground='#cba6f7'>▂</span>",
-      "<span foreground='#cba6f7'>▃</span>",
-      "<span foreground='#cba6f7'>▄</span>",
-      "<span foreground='#89b4fa'>▅</span>",
-      "<span foreground='#89b4fa'>▆</span>",
-      "<span foreground='#89b4fa'>▇</span>",
-      "<span foreground='#89b4fa'>█</span>"
-    ],
-    "framerate": 60,
-    "higher_cutoff_freq": 10000,
-    "input_delay": 2,
-    "lower_cutoff_freq": 50,
-    "method": "pipewire",
-    "monstercat": false,
-    "reverse": false,
-    "source": "auto",
-    "stereo": true,
-    "waves": false
-  },
   "custom/cava-internal": {
-    "exec": "sh ~/.config/hypr/waybar/scripts/Cava.sh",
+    "exec": "sh ~/.config/waybar/scripts/Cava.sh",
     "format": "{}",
     "on-click": "ags -t bluetoothmenu",
-    //"on-click": "sh ~/.config/hypr/scripts/statusbar &",
+    //"on-click": "sh ~/.config/waybar/statusbar &",
     "tooltip": false,
     "layer": "below",
     "output": "all"
-  },
-  "cava": {
-    //"cava_config": "/home/sentience/.config/cava/config",
-    "autosens": 1,
-    "bar_delimiter": 0,
-    "bars": 18,
-    "format-icons": [
-      "<span foreground='#cba6f7'>▁</span>",
-      "<span foreground='#cba6f7'>▂</span>",
-      "<span foreground='#cba6f7'>▃</span>",
-      "<span foreground='#cba6f7'>▄</span>",
-      "<span foreground='#89b4fa'>▅</span>",
-      "<span foreground='#89b4fa'>▆</span>",
-      "<span foreground='#89b4fa'>▇</span>",
-      "<span foreground='#89b4fa'>█</span>"
-    ],
-    "framerate": 60,
-    "higher_cutoff_freq": 10000,
-    "input_delay": 2,
-    "lower_cutoff_freq": 50,
-    "method": "pipewire",
-    "monstercat": false,
-    "reverse": false,
-    "source": "auto",
-    "stereo": true,
-    "waves": false
   },
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
@@ -280,9 +229,9 @@
     "format": "{icon} {percent: >3}%",
     "format-icons": ["", ""],
     // "on-scroll-down": "brightnessctl -c backlight set 5%-",
-    "on-scroll-down": "~/.config/hypr/scripts/brightness --dec",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
     // "on-scroll-up": "brightnessctl -c backlight set +5%"
-    "on-scroll-up": "~/.config/hypr/scripts/brightness --inc",
+    "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
     "on-click": "ags -t energymenu"
   },
   "battery": {
@@ -324,8 +273,8 @@
     },
     //"on-click": "pavucontrol",
     "on-click": "ags -t audiomenu",
-    "on-scroll-up": "~/.config/hypr/scripts/volume --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/volume --dec"
+    "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/volume --dec"
   },
   "custom/pacman": {
     "format": " {}",
@@ -337,11 +286,11 @@
   },
   "custom/power": {
     "format": "󰐥",
-    "on-click": "~/.config/hypr/scripts/rofi_powermenu",
+    "on-click": "~/.config/waybar/scripts/rofi_powermenu",
     "tooltip": false
   },
   "custom/keyboard-layout": {
-    "exec": "~/.config/hypr/waybar/scripts/getInputLayout.sh",
+    "exec": "~/.config/waybar/scripts/getInputLayout.sh",
     // Interval set only as a fallback, as the value is updated by signal
     "interval": 1,
     "format": "󰌌  {}", // Icon: keyboard
@@ -356,7 +305,7 @@
   "custom/launcher": {
     "format": " ",
     //"format": "  ",
-    //"on-click": "~/.config/hypr/scripts/rofi_launcher",
+    //"on-click": "~/.config/waybar/scripts/rofi_launcher",
     "on-click": "ags -t dashboardmenu",
     "tooltip": false
   }
