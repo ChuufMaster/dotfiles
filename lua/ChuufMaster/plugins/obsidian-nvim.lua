@@ -31,6 +31,7 @@ return {
     },
     -- see below for full list of options 👇
     preffered_link_style = 'markdown',
+    ui = { enable = false },
   },
 
   -- config = function(opts)
