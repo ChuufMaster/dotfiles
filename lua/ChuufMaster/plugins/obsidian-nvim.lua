@@ -10,6 +10,7 @@ return {
   --   "BufReadPre path/to/my-vault/**.md",
   --   "BufNewFile path/to/my-vault/**.md",
   -- },
+  --
   dependencies = {
     -- Required.
     'nvim-lua/plenary.nvim',
@@ -17,6 +18,7 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   opts = {
+    ui = { enable = false },
     workspaces = {
       {
         name = 'personal',

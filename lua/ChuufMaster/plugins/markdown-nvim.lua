@@ -1,16 +1,16 @@
 return {
   {
-    'MeanderingProgrammer/markdown.nvim',
+    'MeanderingProgrammer/render-markdown.nvim',
     name = 'render-markdown',
     dependencies = { 'nvim-treesitter' },
     ft = 'markdown',
     config = function()
       require('render-markdown').setup({
         win_options = {
-          conceallevel = {
-            defualt = vim.api.nvim_get_option_value('conceallevel', {}),
-            rendered = 2,
-          },
+          -- conceallevel = {
+          --   defualt = vim.api.nvim_get_option_value('conceallevel', {}),
+          --   rendered = 2,
+          -- },
         },
 
         vim.keymap.set('n', '<leader>tm', '<cmd>RenderMarkdownToggle<CR>', { desc = '[T]oggle [M]arkdown-render' }),

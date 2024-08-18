@@ -180,6 +180,9 @@ return {
 
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi('Comment gui=none')
+      require('tokyonight').setup({
+        plugins = { markdown = true },
+      })
     end,
     opts = {
       transparent = true,
