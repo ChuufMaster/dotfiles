@@ -89,7 +89,8 @@ run_cmd() {
 	elif [[ "$1" == '--opt3' ]]; then
 		mpc -q pause && mpc -q prev && mpc -q start && ${notify_song} "`mpc -f "%artist%" current`"
 	elif [[ "$1" == '--opt4' ]]; then
-		mpc -q pause && mpc -q next && mpc -q start && ${notify_song} "`mpc -f "%artist%" current`"
+		# mpc -q pause && mpc -q next && mpc -q start && ${notify_song} "`mpc -f "%artist%" current`"
+		spotify_player playback pause
 	elif [[ "$1" == '--opt5' ]]; then
 		mpc -q repeat
 	elif [[ "$1" == '--opt6' ]]; then
