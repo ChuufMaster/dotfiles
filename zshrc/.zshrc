@@ -142,6 +142,7 @@ alias get_tuks='rclone copy --drive-shared-with-me --exclude "node_modules/**" -
 alias lg='lazygit'
 alias sz='source ~/.zshrc'
 alias vz='nvim ~/.zshrc'
+alias tm='tmux attach || tmux'
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
