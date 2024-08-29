@@ -1,5 +1,7 @@
+# vim: filetype=sh
 # Variables
 CONFIG=$HOME/.config
+DOTFILES=$HOME/dotfiles
 
 # General aliases
 alias sync_tuks='rclone copy --drive-shared-with-me --stats-one-line -v ~/TUKS TUKS:TUKS'
@@ -16,15 +18,23 @@ alias vim=nvim
 # Directory aliases
 alias dot='cd ~/dotfiles'
 alias config='cd ~/.config'
-alias zhypr='cd $CONFIG/hypr'
+alias zhypr='cd $DOTFILES/hypr/.config/hypr'
 alias zkitty='cd $CONFIG/kitty'
 alias zvim='cd $CONFIG/nvim'
 alias zwaybar='cd $CONFIG/waybar'
 alias zrofi='cd $CONFIG/rofi'
 alias zzsh='cd ~/.config/zshrc'
+alias zswaync='cd $DOTFILES/swaync/.config/swaync'
+alias peek='cd ~/BeakPeek'
 
 # Edit config files
-alias ez='zzsh && $EDITOR -p ~/.zshrc ./*'
-alias ev='zvim && $EDITOR -p $CONFIG/nvim/lua/ChuufMaster/plugins/init.lua'
-alias eh='zhypr && $EDITOR -p $CONFIG/hypr/hyprland.conf'
-alias ew='zwaybar && $EDITOR -p $CONFIG/waybar/config $CONFIG/waybar/modules.json $CONFIG/waybar/style.css'
+alias ez='zzsh && $EDITOR'
+alias ev='zvim && $EDITOR'
+alias eh='zhypr && $EDITOR'
+alias ew='zwaybar && $EDITOR'
+alias ep='peek && $EDITOR'
+alias ek='zkitty && $EDITOR'
+alias es='zswaync && $EDITOR'
+alias epd='cd ~/BeakPeek/dotnet && $EDITOR'
+alias epb='cd ~/BeakPeek/beakpeek && $EDITOR'
+alias epr='cd ~/BeakPeek && $EDITOR README.md'
