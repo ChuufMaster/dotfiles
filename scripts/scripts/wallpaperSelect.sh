@@ -70,6 +70,31 @@ if command -v swww &>/dev/null; then
   swww query || swww init
 fi
 
+check_file() {
+     
+    if [ ! -f "$1" ]; then
+      echo "File $1 not found!"
+      notify-send "wallpaper not found"
+      exit 1
+    fi
+}
+
+pywal(){
+
+  wallpaper_path=$(readlink "$HOME/.current_wallpaper")
+
+  check_file "$wallpaper_path"
+
+  wal -i "$wallpaper_path" -s -t
+
+  # Update sway config files and css
+  swaync-client --reload-css
+  swaync-client --reload-config
+
+  # Update thunderbird using pywalfox
+  pywalfox update
+}
+
 # Execution
 main() {
   choice=$(menu | ${rofiCommand})
@@ -112,4 +137,4 @@ if pidof rofi > /dev/null; then
 fi
 
 main
-
+pywal

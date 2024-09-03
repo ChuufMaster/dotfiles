@@ -2,6 +2,8 @@
 
 wallpaper_path=$(readlink "$HOME/.current_wallpaper")
 
+notify-send "Changing wallpaper and theme"
+
 check_file() {
    
   if [ ! -f "$1" ]; then
