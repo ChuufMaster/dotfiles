@@ -9,7 +9,7 @@ configuration {
 }
 /* Config and colors ----------------------------------------------- */
 
-@import "~/.config/rofi/themes/defualt.rasi"
+@import "~/.config/rofi/themes/default.rasi"
 
 /* Main Window ------------------------------------------------ */
 window {
