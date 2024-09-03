@@ -1,6 +1,8 @@
+bindkey -v
+set -o vi
+
 export EDITOR=nvim
 export CONFIG=~/.config
-
 
 eval $(thefuck --alias)
 
