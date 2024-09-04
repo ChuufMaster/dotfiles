@@ -1,7 +1,10 @@
+local filetype = require('vim.filetype')
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   event = { 'BufReadPost', 'BufNewFile' },
-  dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
   cmd = { 'TSInstall', 'TSBufEnable', 'TSBufDisable', 'TSModuleInfo' },
   build = ':TSUpdate',
   opts = {
@@ -27,6 +30,20 @@ return { -- Highlight, edit, and navigate code
         node_decremental = '<Bs>',
       },
     },
+    --[[ function()
+      -- register the kitty.conf parser
+      ---@diagnostic disable-next-line: inject-field
+      require('nvim-treesitter.parsers').get_parser_configs().kittyconf = {
+        install_info = {
+          url = 'https://github.com/clo4/tree-sitter-kitty-conf',
+          files = { 'src/parser.c' },
+          branch = 'main',
+          generate_requires_npm = false,
+          requires_generate_from_grammar = false,
+        },
+        filetype = 'kittyconf',
+      }
+    end ]]
   },
   config = function(_, opts)
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
