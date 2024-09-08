@@ -9,6 +9,7 @@ alias get_tuks="rclone copy --drive-shared-with-me --exclude 'node_modules/**' -
 alias lg="lazygit"
 alias sz="source ~/.zshrc"
 alias clr="clear"
+alias kanata_reload="systemctl --user restart kanata.service && systemctl --user status kanata.service"
 
 # TMUX aliases
 alias tm="tmux attach || tmux"
@@ -32,6 +33,8 @@ alias zkanata="cd $CONFIG/kanata"
 alias znotes="cd $HOME/TUKS/notes"
 alias ztukes="cd $HOME/TUKS"
 alias peek="cd ~/BeakPeek"
+alias zpeek_dot="cd ~/BeakPeek/dotnet"
+alias zpeek_front="cd ~/BeakPeek/beakpeek"
 
 # Edit config files
 alias ez="zzsh && $EDITOR"
