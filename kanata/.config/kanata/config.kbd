@@ -7,7 +7,7 @@
 (defsrc
   f12
   caps   a   s   d   f  h  j   k   l   ;
-                     v
+                 c   v
 )
 
 (defvar
@@ -32,43 +32,55 @@
 (deflayer base
   @f12
   @caps  @a  @s  @d  @f  h  @j  @k  @l  @;
-                        @v
+                 @c  @v
 )
 
 (deflayer nomods
   @f12
   @caps  a   s   d   f  h  j   k   l   ;
-                        v
+                 c   v
 )
 
 (deflayer arrows-while-held
   @f12
   lrld  a   s   d   f  left down up rght ;
-                        v
+                c       v
 )
 
 (deflayer super-layer
   @f12
   @caps a   s   @d   @f  left down up rght ;
-                       v
+                 c    v
 )
 
 (deflayer alt-layer
   @f12
   @caps a  lctl  d  f  left down up rght ;
-                 v
+                 c  v
 )
 
 (deflayer alt_ctrl-right-layer
   @f12
   @caps tab s d f h j k ralt ;
-                v
+              c v
 )
 
 (deflayer game-layer
   @f12-game
   @caps a s d f h j k l ;
-              v
+            c v
+)
+
+(deflayer ctrl-layer
+  @f12
+  lrld @a  @s  @d  @f  h j k l ;
+               @c  @v
+)
+
+(deflayer page-layer
+    @f12
+    @caps @a @s @d @f home pgdn pgup end ;
+                @c  v
 )
 
 (deffakekeys
@@ -81,9 +93,15 @@
     (on-idle-fakekey to-base tap 20)
   )
 
+  v_page (layer-while-held page-layer)
+
   arws (layer-while-held arrows-while-held)
 
+  page (layer-while-held page-layer)
+
   super-uses (layer-while-held super-layer)
+
+  ctrl-uses (layer-while-held ctrl-layer)
 
   alt-uses (layer-while-held alt-layer)
 
@@ -95,12 +113,13 @@
   caps (tap-hold-press $tap-time $hold-time esc (multi lctrl @tap))
   a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) (multi lmet @super-uses) $left-hand-keys)
   s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) (multi lalt @alt-uses) $left-hand-keys)
-  d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) lctl $left-hand-keys)
+  d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) (multi lctl @ctrl-uses) $left-hand-keys)
   f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lsft $left-hand-keys)
   j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rsft $right-hand-keys)
   k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) (multi rctl @alt_ctrl-right-uses) $right-hand-keys)
   l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) (multi lalt @alt_ctrl-right-uses) $right-hand-keys)
   ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) rmet $right-hand-keys)
+  c (tap-hold-release $tap-time $hold-time c @page)
   v (tap-hold-release $tap-time $hold-time v @arws)
 )
 
