@@ -1,25 +1,8 @@
-# dotfiles/
+# dotfiles/nvim/.config/nvim
 
-<p align="center">
-    <a href="https://dotfyle.com/ChuufMaster/dotfiles">
-        <img
-            src="https://dotfyle.com/ChuufMaster/dotfiles/badges/plugins?style=for-the-badge"
-            alt="chuufmaster-plugins"
-        />
-    </a>
-    <a href="https://dotfyle.com/ChuufMaster/dotfiles">
-        <img
-            src="https://dotfyle.com/ChuufMaster/dotfiles/badges/leaderkey?style=for-the-badge"
-            alt="chuufmaster-leaderkey"
-        />
-    </a>
-    <a href="https://dotfyle.com/ChuufMaster/dotfiles">
-        <img
-            src="https://dotfyle.com/ChuufMaster/dotfiles/badges/plugin-manager?style=for-the-badge"
-            alt="chuufmaster-pluginmanager"
-        />
-    </a>
-</p>
+<a href="https://dotfyle.com/ChuufMaster/dotfiles-nvim-config-nvim"><img src="https://dotfyle.com/ChuufMaster/dotfiles-nvim-config-nvim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/ChuufMaster/dotfiles-nvim-config-nvim"><img src="https://dotfyle.com/ChuufMaster/dotfiles-nvim-config-nvim/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/ChuufMaster/dotfiles-nvim-config-nvim"><img src="https://dotfyle.com/ChuufMaster/dotfiles-nvim-config-nvim/badges/plugin-manager?style=flat" /></a>
 
 ## Install Instructions
 
@@ -34,7 +17,7 @@ git clone git@github.com:ChuufMaster/dotfiles ~/.config/ChuufMaster/dotfiles
 Open Neovim with this config:
 
 ```sh
-NVIM_APPNAME=ChuufMaster/dotfiles/ nvim
+NVIM_APPNAME=ChuufMaster/dotfiles/nvim/.config/nvim nvim
 ```
 
 ## Plugins
@@ -49,24 +32,24 @@ NVIM_APPNAME=ChuufMaster/dotfiles/ nvim
 
 ### comment
 
-+ [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
 + [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
++ [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
 
 ### completion
 
-+ [zbirenbaum/copilot.lua](https://dotfyle.com/plugins/zbirenbaum/copilot.lua)
 + [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
++ [zbirenbaum/copilot.lua](https://dotfyle.com/plugins/zbirenbaum/copilot.lua)
 
 ### debugging
 
-+ [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
 + [mfussenegger/nvim-dap](https://dotfyle.com/plugins/mfussenegger/nvim-dap)
++ [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
 
 ### editing-support
 
-+ [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
-+ [echasnovski/mini.ai](https://dotfyle.com/plugins/echasnovski/mini.ai)
 + [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
++ [echasnovski/mini.ai](https://dotfyle.com/plugins/echasnovski/mini.ai)
++ [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
 
 ### file-explorer
 
@@ -84,6 +67,7 @@ NVIM_APPNAME=ChuufMaster/dotfiles/ nvim
 ### git
 
 + [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
++ [kdheepak/lazygit.nvim](https://dotfyle.com/plugins/kdheepak/lazygit.nvim)
 
 ### icon
 
@@ -99,9 +83,9 @@ NVIM_APPNAME=ChuufMaster/dotfiles/ nvim
 
 ### lsp
 
++ [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
 + [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 + [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
-+ [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
 
 ### lsp-installer
 
@@ -109,9 +93,9 @@ NVIM_APPNAME=ChuufMaster/dotfiles/ nvim
 
 ### markdown-and-latex
 
++ [ChuufMaster/markdown-toc](https://dotfyle.com/plugins/ChuufMaster/markdown-toc)
 + [MeanderingProgrammer/markdown.nvim](https://dotfyle.com/plugins/MeanderingProgrammer/markdown.nvim)
 + [iamcco/markdown-preview.nvim](https://dotfyle.com/plugins/iamcco/markdown-preview.nvim)
-+ [ChuufMaster/markdown-toc](https://dotfyle.com/plugins/ChuufMaster/markdown-toc)
 + [tadmccorkle/markdown.nvim](https://dotfyle.com/plugins/tadmccorkle/markdown.nvim)
 
 ### motion
@@ -124,9 +108,10 @@ NVIM_APPNAME=ChuufMaster/dotfiles/ nvim
 
 ### nvim-dev
 
-+ [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
 + [folke/neodev.nvim](https://dotfyle.com/plugins/folke/neodev.nvim)
++ [folke/lazydev.nvim](https://dotfyle.com/plugins/folke/lazydev.nvim)
 + [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
++ [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
 
 ### plugin-manager
 
@@ -142,8 +127,8 @@ NVIM_APPNAME=ChuufMaster/dotfiles/ nvim
 
 ### snippet
 
-+ [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
 + [rafamadriz/friendly-snippets](https://dotfyle.com/plugins/rafamadriz/friendly-snippets)
++ [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
 
 ### startup
 
@@ -155,20 +140,24 @@ NVIM_APPNAME=ChuufMaster/dotfiles/ nvim
 
 ### syntax
 
-+ [nvim-treesitter/nvim-treesitter-textobjects](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-textobjects)
 + [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
++ [nvim-treesitter/nvim-treesitter-textobjects](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-textobjects)
 
 ### tabline
 
 + [akinsho/bufferline.nvim](https://dotfyle.com/plugins/akinsho/bufferline.nvim)
 
+### test
+
++ [nvim-neotest/neotest](https://dotfyle.com/plugins/nvim-neotest/neotest)
+
 ### utility
 
-+ [ChuufMaster/buffer-vacuum](https://dotfyle.com/plugins/ChuufMaster/buffer-vacuum)
++ [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
 + [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
++ [ChuufMaster/buffer-vacuum](https://dotfyle.com/plugins/ChuufMaster/buffer-vacuum)
 + [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
 + [echasnovski/mini.nvim](https://dotfyle.com/plugins/echasnovski/mini.nvim)
-+ [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
 
 ## Language Servers
 
