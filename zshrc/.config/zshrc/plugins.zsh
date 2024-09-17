@@ -7,7 +7,6 @@ plugins=(
   git
   github
   gradle
-  dotnet
   docker
   docker-compose
   flutter
