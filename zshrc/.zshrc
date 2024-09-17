@@ -10,3 +10,4 @@ source $CONFIG_ZSH/general.zsh
 source $CONFIG_ZSH/path.zsh
 source $CONFIG_ZSH/plugins.zsh
 source $CONFIG_ZSH/after.zsh
+source $CONFIG_ZSH/completions.zsh
