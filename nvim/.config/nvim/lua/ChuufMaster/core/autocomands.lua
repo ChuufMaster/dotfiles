@@ -29,3 +29,5 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
 set_file_type('*/hypr/*.conf', 'hyprlang')
 set_file_type('*.kbd', 'scheme')
 set_file_type('*.rasi', 'rasi')
+-- set_file_type('*.cshtml', 'cs.html.razor')
+-- set_file_type('*.razor', 'razor')
