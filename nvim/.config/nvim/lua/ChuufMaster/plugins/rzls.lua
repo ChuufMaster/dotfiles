@@ -1,0 +1,33 @@
+return {
+  -- 'tris203/rzls.nvim',
+  -- config = function()
+  --   local capabilities = vim.lsp.protocol.make_client_capabilities()
+  --   capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+  --
+  --   require('rzls').setup({
+  --     on_attach = function()
+  --       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
+  --     end,
+  --     capabilities = capabilities,
+  --     path = '/home/chuufmaster/Documents/razor/razor/artifacts/LanguageServer/Debug/net8.0/linux-x64/',
+  --   })
+  -- end,
+  -- 'Crashdummyy/cutlass.nvim',
+  -- config = function()
+  --   require('cutlass').setup()
+  --   -- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  --   --   pattern = { '*.cshtml', '*.razor' },
+  --   --   callback = function()
+  --   --     -- require('cutlass').setup({
+  --   --     --   rzls_path = '/home/chuufmaster/.local/share/nvim/lazy/cutlass.nvim/debug/rzls_wrapper.sh',
+  --   --     -- })
+  --   --     require('cutlass').setup()
+  --   --   end,
+  --   -- })
+  -- end,
+
+  -- 'moreiraio/razor.nvim',
+  -- config = function()
+  --   require('razor').setup({})
+  -- end,
+}

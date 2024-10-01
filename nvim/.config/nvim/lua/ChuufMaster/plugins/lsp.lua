@@ -6,7 +6,6 @@ return { -- LSP Configuration & Plugins
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     'nvim-java/nvim-java',
-
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
@@ -146,7 +145,7 @@ return { -- LSP Configuration & Plugins
         settings = { filetypes = { 'markdown' } },
       },
       markdownlint = {},
-      omnisharp = {},
+      -- omnisharp = {},
       -- omnisharp_mono = {},
       -- csharp_ls = {},
       pylsp = {},
@@ -222,7 +221,13 @@ return { -- LSP Configuration & Plugins
       -- root directory detection for detecting the project root
       root_dir = require('lspconfig.util').root_pattern('pack.pl'),
     })
-
+    -- require('rzls').setup({
+    --   on_attach = function()
+    --     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
+    --   end,
+    --   capabilities = capabilities,
+    --   path = '/home/chuufmaster/.local/share/nvim/rzls/',
+    -- })
     -- require('lspconfig').omnisharp.setup({
     --   cmd = { 'dotnet', '/home/chuufmaster/.local/share/nvim/mason/bin/omnisharp' },
     --
