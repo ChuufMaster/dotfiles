@@ -16,6 +16,7 @@ alias docker_clean="docker system prune -a -f && docker image prune -a -f && doc
 alias tm="tmux attach || tmux"
 alias e="exit"
 alias vim=nvim
+alias lvim="NVIM_APPNAME=nvim-lazyvim nvim"
 
 # Directory aliases
 alias dot="cd ~/dotfiles"
