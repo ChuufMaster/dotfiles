@@ -1,22 +1,19 @@
-@import "launcher.rasi"
-// @theme "~/.cache/wal/colors-rofi-dark.rasi"
+@import "config"
 
 configuration {
   show-icons: false;
 }
 
 element-text {
-  font: "JetBrains Mono NF Medium 25";
-  horizontal-align: 0.5;
-  padding: 10;
-}
-
-listview {
-  columns: 10;
-  lines: 5;
+  font: "JetBrains Mono Nerd Font 24";
 }
 
 element {
-  margin: 2 0 2 0;
-  padding: 6 0 6 0;
+    orientation: vertical;
+    padding: 0.1em;
+    border-color: lightblue /15%;
+    border: 3px;
+    border-radius: 0.4em;
+    background-image: linear-gradient(white/5%, white/20%);
+    children: [element-text];
 }

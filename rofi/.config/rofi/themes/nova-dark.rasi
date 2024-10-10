@@ -1,11 +1,11 @@
 /* config - Launcher */
 
 configuration {
-	modi:                         "drun,calc";
+    modi:                       "drun,calc";
     show-icons:                 true;
     display-calc:               " ";
     display-drun:               " ";
-  	drun-display-format:        "{name}";
+    drun-display-format:        "{name}";
     font:                        "JetBrains Mono Nerd Font 12";
 }
 
@@ -15,8 +15,8 @@ configuration {
 
 /* Main Window ------------------------------------------------ */
 window {
-    width:                       100%;
-    height:                      100%;
+    width:                       50%;
+    height:                      50%;
     margin:                      0px;
     padding:                     0px;
 }
@@ -25,7 +25,7 @@ window {
 mainbox {
 
     children:                    [ "inputbar", "message", "listview", "mode-switcher" ];
-    background-color:            transparent;
+    // background-color:            transparent;
 
     spacing:                     24px;
     margin:                      0px;

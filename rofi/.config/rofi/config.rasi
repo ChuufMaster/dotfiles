@@ -1,1 +1,110 @@
-@import "~/.config/rofi/themes/nova-dark.rasi"
+@theme "Arc-Dark"
+configuration {
+    display-drun: " ";
+    display-window: "Windows:";
+    display-calc: " ";
+    drun-display-format: "{name}";    
+    font: "JetBrains Mono Nerd Font 12";
+    modi: "window,run,drun,calc,filebrowser";
+    show-icons: true;
+    icon-theme: "Papirus";
+}
+
+* {  
+  background-color: transparent;
+}
+
+window {
+    width: 50%;
+    height: 60%;
+    background-color: black/80%;
+    border-radius: 10;
+    spacing: 1em;
+    border-color: #c4a7e7;
+    children: [wrap, listview];
+}
+
+wrap {
+    expand: false;
+    orientation: vertical;
+    children: [ inputbar, message ];
+    background-image: linear-gradient(white/5%, white/40%);
+    border-color: lightblue;
+    border: 3px;
+    border-radius: 0.4em;
+}
+
+message {
+    background-color: red/20%;
+    border-color: lightsalmon;
+    border: 3px 0px 0px 0px;
+    padding: 0.4em;
+    spacing: 0.4em;
+}
+
+
+inputbar {
+    spacing: 0.4em;
+    padding: 0.4em;
+    children: [icon-ib, entry];
+}
+
+icon-ib {
+    expand: false;
+    filename: "system-search";
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    size: 1em;
+}
+
+element {
+    orientation: vertical;
+    padding: 0.1em;
+    border-color: lightblue /15%;
+    border: 3px;
+    border-radius: 0.4em;
+    background-image: linear-gradient(white/5%, white/20%);
+    children: [element-icon, element-text ];
+}
+
+element-icon {
+    size: calc(((100% - 8em) / 10 ));
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-image: linear-gradient(white/25%, white/10%);
+    border-color: lightblue;
+    border: 3px;
+    border-radius: 0.4em;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    padding: 0.2em;
+}
+
+entry {
+    placeholder: "Search";
+    placeholder-color: grey;
+    text-color: white ;
+}
+
+prompt {
+
+  enabled: true;
+  padding: 12 0 0 12;
+  background-color: inherit;
+  text-color: inherit;
+}
+
+
+listview {
+    flow: horizontal;
+    fixed-columns: true;
+    columns: 4;
+    lines: 9;
+    spacing: 1.0em;
+}

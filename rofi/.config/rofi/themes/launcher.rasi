@@ -1,41 +1,43 @@
 // Used https://github.com/ericmurphyxyz/dotfiles as an example
 
 configuration {
-  display-drun: "Applications:";
+  display-drun: " ";
   display-window: "Windows:";
+  display-calc: " ";
   drun-display-format: "{name}";
-  font: "JetBrains Mono NF Medium 12";
-  modi: "window,run,drun,emoji";
+  font: "JetBrains Mono Nerd Font 12";
+  modi: "window,run,drun,emoji,calc,filebrowser";
   show-icons: true;
   icon-theme: "Papirus";
 }
 
 * {  
-  border: 0;
-  margin: 0;
-  padding: 0;
-  spacing: 0;
   background-color: transparent;
 }
 
 window {
-  width: 800px;
-  background-color: #191724;
-  border-radius: 10;
-  border: 1;
-  border-color: #c4a7e7;
+    // width: 800px;
+    width: 50%;
+    height: 60%;
+    background-color: black/80%;
+    border-radius: 10;
+    // border: 1;
+
+    spacing: 1em;
+    border-color: #c4a7e7;
 }
 
 element {
-  margin: 2 0 2 2;
-  padding: 6 0 6 10;
-  text-color: #e0def4;
+    margin: 2 0 2 2;
+    padding: 6 0 6 10;
+    background-image: linear-gradient(white/5%, white/20%);
 }
 
 element selected {
-  border-radius: 10;
-  text-color: #c4a7e7;
-  background-color: #26233a;
+    background-image: linear-gradient(white/25%, white/10%);
+    border-color: lightblue;
+    border: 3px;
+    border-radius: 0.4em;
 }
 
 element-text {
@@ -63,15 +65,13 @@ prompt {
 }
 
 inputbar {
-  children: [prompt, entry];
-  background-color: #c4a7e7;
-  text-color: #191724;
+    spacing: 0.4em;
+    padding: 0.4em;
+    children: [prompt, entry];
 }
 
 listview {
-  background-color: inherit;
-  text-color: #e0def4;
-  columns: 2;
+  columns: 4;
   lines: 9;
 }
 
