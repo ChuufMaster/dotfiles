@@ -13,6 +13,8 @@ path+=(
     /{sbin,bin}
     /home/chuufmaster/android-sdk/platform-tools/
     /home/chuufmaster/.pub-cache/bin
+    /home/chuufmaster/scripts
+    /home/chuufmaster/COS326_Pracs/basex/bin
     $path
 )
 
