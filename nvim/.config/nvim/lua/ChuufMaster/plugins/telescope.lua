@@ -53,17 +53,17 @@ return { -- Fuzzy Finder (files, lsp, etc)
           i = {
             ['<c-enter>'] = 'to_fuzzy_refine',
 
-            ['<Tab>'] = {
-              require('telescope.actions').move_selection_next,
-              type = 'action',
-              opts = { nowait = true, silent = true },
-            },
-
-            ['<S-Tab>'] = {
-              require('telescope.actions').move_selection_previous,
-              type = 'action',
-              opts = { nowait = true, silent = true },
-            },
+            -- ['<Tab>'] = {
+            --   require('telescope.actions').move_selection_next,
+            --   type = 'action',
+            --   opts = { nowait = true, silent = true },
+            -- },
+            --
+            -- ['<S-Tab>'] = {
+            --   require('telescope.actions').move_selection_previous,
+            --   type = 'action',
+            --   opts = { nowait = true, silent = true },
+            -- },
 
             ['<esc>'] = require('telescope.actions').close,
           },
@@ -98,6 +98,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>fo', '<cmd>ObsidianSearch<CR>', { desc = '[F]ind [O]sidian' })
     vim.keymap.set('n', '<leader>fO', '<cmd>ObsidianQuickSwitch<CR>', { desc = '[F]ind [O]sidian switch' })
 
+    vim.keymap.set('n', '<leader>fp', builtin.builtin, { desc = '[F]ind [P]ickers' })
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -120,5 +121,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files({ cwd = vim.fn.stdpath('config') })
     end, { desc = '[F]ind [N]eovim files' })
+
+    --- Telescope lsp pickers
+    vim.keymap.set('n', '<leader>lr', builtin.lsp_references, { desc = '[L]sp [R]eferences' })
+    vim.keymap.set('n', '<leader>lsd', builtin.lsp_document_symbols, { desc = '[L]sp [S]ymbols [D]ocument' })
+    vim.keymap.set('n', '<leader>lsw', builtin.lsp_workspace_symbols, { desc = '[L]sp [S]ymbols [W]orkspace' })
+    vim.keymap.set('n', '<leader>ld', builtin.diagnostics, { desc = '[L]sp [D]iagnostics' })
+    vim.keymap.set('n', '<leader>li', builtin.lsp_implementations, { desc = '[L]sp [I]mplementations' })
+    vim.keymap.set('n', '<leader>lD', builtin.lsp_definitions, { desc = '[L]sp [D]efinitions' })
+    vim.keymap.set('n', '<leader>lt', builtin.lsp_type_definitions, { desc = '[L]sp [T]ype definitions' })
   end,
 }
