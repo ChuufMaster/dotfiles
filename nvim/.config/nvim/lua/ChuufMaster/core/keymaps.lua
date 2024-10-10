@@ -48,6 +48,7 @@ vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { desc = 'Save file' })
 
 -- Copy all
 vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { desc = 'Copy whole file' })
+vim.keymap.set('n', '<C-f>', 'ggVG', { desc = 'Select the whole file' })
 
 vim.keymap.set('n', 'j', 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = 'Move down', expr = true })
 
