@@ -15,6 +15,7 @@ plugins=(
   fzf
   # kitty
   man
+  mvn
   # pyenv
   # python
   # pip
