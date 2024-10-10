@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# FILE=`find "$@"`
+# FILES=$(ls "$@" )
+
+# echo "$FILES"
+# echo "$(ls ?\(*\(*\)*|*\ *|*-*))"
+# for file in $(ls $PWD/?(*'('*')'*|*\ *\|*-*)); do
+# FILES=($(find . | grep '\([0-9]\)'))
+# for file in $FILES[@]; do
+#     # mv -- "$file" "${file// |\(*\)/}"
+#     remove_quotes="${file//\(*\)/}"
+#     remove_space="${remove_quotes// /_}"
+#     remove_dashes="${remove_space//-/}"
+#     # echo $renamed_file
+#     # echo "${remove_quotes// /_}"
+#     echo "$remove_dashes"
+# done
+
+
+for file in *'('*')'*
+do
+    mv -- "$file" "${file//\(*\)/}"
+    # echo "${file//\(*\)/}"
+done
+
+for file in *'  '*
+do
+  mv -- "$file" "${file//\ \ / }"
+  # echo "${file//\ /_}"
+done
+
+for file in *'-'*
+do
+  removed_left="${file//\ -/-}"
+  mv -- "$file" "$removed_left"
+  mv -- "$removed_left" "${file//-\ /-}"
+  # echo "${file// -/}"
+done
+
+for file in *' '*
+do
+  mv -- "$file" "${file//\ /_}"
+  # echo "${file//\ /_}"
+done
+
