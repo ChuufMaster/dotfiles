@@ -154,6 +154,9 @@ return { -- LSP Configuration & Plugins
       actionlint = {},
       dockerls = {},
       docker_compose_language_service = {},
+      sqlls = {
+        filetypes = { 'sql' },
+      },
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
