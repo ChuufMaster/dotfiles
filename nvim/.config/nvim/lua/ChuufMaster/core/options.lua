@@ -37,6 +37,7 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

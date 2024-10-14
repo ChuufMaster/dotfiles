@@ -5,7 +5,7 @@ return { -- LSP Configuration & Plugins
     { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    'nvim-java/nvim-java',
+    { 'nvim-java/nvim-java', ft = { 'java' } },
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
@@ -199,12 +199,14 @@ return { -- LSP Configuration & Plugins
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
-        jdtls = function()
-          require('java').setup({})
-          require('lspconfig').jdtls.setup({})
-        end,
+        -- jdtls = function()
+        --   require('java').setup({})
+        --   require('lspconfig').jdtls.setup({})
+        -- end,
       },
     })
+
+    require('lspconfig').jdtls.setup({})
 
     require('lspconfig').racket_langserver.setup({})
     require('lspconfig').prolog_ls.setup({

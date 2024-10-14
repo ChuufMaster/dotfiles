@@ -55,3 +55,19 @@ vim.keymap.set('n', 'j', 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc 
 vim.keymap.set('n', '<leader><tab>d', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
 
 vim.keymap.set('i', '<C-O>', '<Esc>o', { desc = 'Insert new line below' })
+
+vim.keymap.set('n', '<leader>ic', function()
+  -- This is the command that clears the images
+  -- I'm using [[ ]] to escape the special characters in a command
+  vim.cmd([[lua require("image").clear()]])
+  print('Images cleared')
+end, { desc = 'Clear images' })
+
+vim.keymap.set('n', '<leader>ir', function()
+  -- First I clear the images
+  -- I'm using [[ ]] to escape the special characters in a command
+  vim.cmd([[lua require("image").clear()]])
+  -- Reloads the file to reflect the changes
+  vim.cmd('edit!')
+  print('Images refreshed')
+end, { desc = 'Refresh images' })

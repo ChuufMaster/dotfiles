@@ -26,6 +26,14 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   end,
 })
 
+-- Fix bufferline when restoring a session
+vim.api.nvim_create_autocmd({ 'BufAdd', 'BufDelete' }, {
+  callback = function()
+    vim.schedule(function()
+      pcall(nvim_bufferline)
+    end)
+  end,
+})
 set_file_type('*/hypr/*.conf', 'hyprlang')
 set_file_type('*.kbd', 'scheme')
 set_file_type('*.rasi', 'rasi')
