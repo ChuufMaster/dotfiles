@@ -13,6 +13,7 @@ alias kanata_reload="systemctl --user restart kanata.service && systemctl --user
 alias docker_clean="docker system prune -a -f && docker image prune -a -f && docker volume prune -a -f"
 
 # TMUX aliases
+alias tmux="tmux -2"
 alias tm="tmux attach || tmux"
 alias e="exit"
 alias vim=nvim
