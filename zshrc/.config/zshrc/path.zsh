@@ -15,6 +15,7 @@ path+=(
     /home/chuufmaster/.pub-cache/bin
     /home/chuufmaster/scripts
     /home/chuufmaster/COS326_Pracs/basex/bin
+    /home/chuufmaster/.local/share/gem/ruby/3.3.0/bin
     $path
 )
 

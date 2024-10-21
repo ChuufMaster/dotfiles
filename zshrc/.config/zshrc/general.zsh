@@ -1,7 +1,7 @@
 bindkey -v
 set -o vi
 
-export EDITOR=nvim
+export EDITOR=rvim
 export CONFIG=~/.config
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export CHROME_EXECUTABLE=/usr/bin/firefox

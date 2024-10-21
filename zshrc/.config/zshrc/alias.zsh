@@ -17,7 +17,11 @@ alias tmux="tmux -2"
 alias tm="tmux attach || tmux"
 alias e="exit"
 alias vim=nvim
+alias rvim="NVIM_APPNAME=nvim-refactor nvim"
 alias lvim="NVIM_APPNAME=nvim-lazyvim nvim"
+
+# ACT
+alias act="act --secret-file .env --artifact-server-path /tmp/artifacts"
 
 # Directory aliases
 alias dot="cd ~/dotfiles"

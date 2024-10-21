@@ -72,7 +72,7 @@ return {
   },
   {
     'HakonHarnes/img-clip.nvim',
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
     ft = { 'markdown' },
     opts = {
       -- add options here
