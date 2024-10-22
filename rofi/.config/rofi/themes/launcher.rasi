@@ -12,19 +12,19 @@ configuration {
 }
 
 * {  
-  background-color: transparent;
+  // background-color: transparent;
 }
 
 window {
     // width: 800px;
     width: 50%;
     height: 60%;
-    background-color: black/80%;
+    // background-color: black/80%;
     border-radius: 10;
     // border: 1;
 
     spacing: 1em;
-    border-color: #c4a7e7;
+    // border-color: #c4a7e7;
 }
 
 element {
@@ -35,13 +35,13 @@ element {
 
 element selected {
     background-image: linear-gradient(white/25%, white/10%);
-    border-color: lightblue;
+    // border-color: lightblue;
     border: 3px;
     border-radius: 0.4em;
 }
 
 element-text {
-  text-color: inherit;
+  // text-color: inherit;
   vertical-align: 0.5;
 }
 
@@ -53,15 +53,15 @@ element-icon {
 
 entry {
   padding: 12;
-  background-color: inherit;
-  text-color: inherit;
+  // background-color: inherit;
+  // text-color: inherit;
 }
 
 prompt {
   enabled: true;
   padding: 12 0 0 12;
-  background-color: inherit;
-  text-color: inherit;
+  // background-color: inherit;
+  // text-color: inherit;
 }
 
 inputbar {
@@ -77,6 +77,6 @@ listview {
 
 mainbox {
   children: [inputbar, listview];
-  background-color: #191724;
-  text-color: #e0def4;
+  // background-color: #191724;
+  // text-color: #e0def4;
 }

@@ -22,7 +22,7 @@ window {
 /* Main Box --------------------------------------------------- */
 mainbox {
     children:                    [ "listview" ];
-    background-color:            transparent;
+    // background-color:            transparent;
 
     spacing:                     24px;
     margin:                      0px;
@@ -41,8 +41,8 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
 
-    background-color:           transparent;
-    text-color:                 @foreground;
+    // background-color:           transparent;
+    // text-color:                 @foreground;
 
     spacing:                     0px;
     margin:                      0px;
@@ -53,8 +53,8 @@ listview {
 element {
     cursor:                      pointer;
     border-radius:               36px;
-    background-color:            transparent;
-    text-color:                  @foreground;
+    // background-color:            transparent;
+    // text-color:                  @foreground;
     orientation:                 vertical;
 
     spacing:                     0px;
@@ -64,8 +64,8 @@ element {
 
 element-icon {
     expand:                      false;
-    background-color:            transparent;
-    text-color:                  inherit;
+    // background-color:            transparent;
+    // text-color:                  inherit;
     size:                        26%;
     cursor:                      inherit;
 }

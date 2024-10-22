@@ -23,7 +23,7 @@ window {
 mainbox {
     orientation:                 vertical;
     children:                    [ "inputbar", "textbox-help", "message", "listview" ];
-    background-color:            transparent;
+    // background-color:            transparent;
 
     spacing:                      16px;
     margin:                       0px;
@@ -42,7 +42,7 @@ inputbar {
 }
 
 dummy {
-  background-color: transparent;
+  // background-color: transparent;
 }
 
 textbox-help {
@@ -50,8 +50,8 @@ textbox-help {
     content: " [CTRL DEL]  Delete \n [ALT DEL]   Wipe";
 
     border-radius:                 12px;
-    background-color:              @shade-bg;
-    text-color:                    white;
+    // background-color:              @shade-bg;
+    // text-color:                    white;
 
     margin:                        0px;
     padding:                       6px;
@@ -59,8 +59,8 @@ textbox-help {
 
 textbox-icon {
     expand:                      true;
-    background-color:            transparent;
-    text-color:                  inherit;
+    // background-color:            transparent;
+    // text-color:                  inherit;
     margin: 0px 0px 0px 25px;
     content: "  ";
 }
@@ -69,11 +69,11 @@ textbox-icon {
 entry {
     cursor:                      inherit;
     placeholder:                 "Search";
-    placeholder-color:           inherit;
+    // placeholder-color:           inherit;
 
     border-radius:               12px;
-    background-color:            black / 48%;
-    text-color:                  @text;
+    // background-color:            black / 48%;
+    // text-color:                  @text;
 
     padding:                     16px;
     margin:                      0px;
@@ -81,7 +81,7 @@ entry {
 
 /* Listview --------------------------------------------------- */
 listview {
-    background-color:            transparent;
+    // background-color:            transparent;
     orientation:                 vertical;
     children:                    [ "message", "listview" ];
 }
@@ -98,8 +98,8 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    background-color:            transparent;
-    text-color:                  @foreground;
+    // background-color:            transparent;
+    // text-color:                  @foreground;
 
     spacing:                     12px;
     margin:                      0px;
@@ -110,8 +110,8 @@ listview {
 element {
     cursor:                      pointer;
     border-radius:               10px;
-    background-color:            transparent;
-    text-color:                  @foreground;
+    // background-color:            transparent;
+    // text-color:                  @foreground;
 
     spacing:                     0px;
     margin:                      0px;
@@ -119,8 +119,8 @@ element {
 }
 
 element-icon {
-    background-color:            transparent;
-    text-color:                  inherit;
+    // background-color:            transparent;
+    // text-color:                  inherit;
     size:                        36px;
     cursor:                      inherit;
 }
