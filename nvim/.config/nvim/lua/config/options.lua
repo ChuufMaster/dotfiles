@@ -92,6 +92,9 @@ vim.opt.foldnestmax = 4
 vim.opt.foldminlines = 3
 
 vim.opt.colorcolumn = "80"
+
+-- vim.opt.spelllang = "en_gb"
+
 -- This file is automatically loaded by lazyvim.config.init.
 
 -- vim.g.python3_host_prog = '/home/linuxbrew/.linuxbrew/bin/python3'
