@@ -11,6 +11,9 @@ alias sz="source ~/.zshrc"
 alias clr="clear"
 alias kanata_reload="systemctl --user restart kanata.service && systemctl --user status kanata.service"
 alias docker_clean="docker system prune -a -f && docker image prune -a -f && docker volume prune -a -f"
+alias gls="ls | grep"
+alias gla="la | grep"
+alias gll="ll | grep"
 
 # TMUX aliases
 alias tmux="tmux -2"
