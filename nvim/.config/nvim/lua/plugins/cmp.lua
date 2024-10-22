@@ -157,19 +157,70 @@ local new = {
         event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
-            "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-emoji",
+            "chrisgrieser/cmp-nerdfont",
+            "saadparwaiz1/cmp_luasnip",
+            "kdheepak/cmp-latex-symbols",
         },
         opts = function()
             vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
             local cmp = require("cmp")
             local defaults = require("cmp.config.default")()
+            local compare = require("cmp.config.compare")
+            local types = require("cmp.types")
             local auto_select = true
+            ---@type table<integer, integer>
+            local modified_priority = {
+                [types.lsp.CompletionItemKind.Variable] = types.lsp.CompletionItemKind.Method,
+                [types.lsp.CompletionItemKind.Snippet] = 0, -- top
+                [types.lsp.CompletionItemKind.Keyword] = 0, -- top
+                [types.lsp.CompletionItemKind.Text] = 100, -- bottom
+            }
+            ---@param kind integer: kind of completion entry
+            local function modified_kind(kind)
+                return modified_priority[kind] or kind
+            end
+
+            -- `/` cmdline setup.
+            cmp.setup.cmdline("/", {
+                preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
+                mapping = cmp.mapping.preset.cmdline({
+
+                    ["<CR>"] = cmp.mapping.confirm({ select = auto_select }),
+                }),
+                sources = {
+                    { name = "buffer" },
+                },
+            })
+            -- `:` cmdline setup.
+            cmp.setup.cmdline(":", {
+                preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
+                mapping = cmp.mapping.preset.cmdline({
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<S-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
+                }),
+                sources = cmp.config.sources({
+                    { name = "path" },
+                }, {
+                    {
+                        name = "cmdline",
+                        option = {
+                            ignore_cmds = { "Man", "!" },
+                        },
+                    },
+                }),
+            })
             return {
                 auto_brackets = {},
                 completion = {
                     completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
+                },
+                window = {
+                    documentation = cmp.config.window.bordered(),
+                    completion = cmp.config.window.bordered(),
                 },
                 preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
                 mapping = cmp.mapping.preset.insert({
@@ -177,6 +228,8 @@ local new = {
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
                     ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
                     ["<C-Space>"] = cmp.mapping.complete({}),
                     ["<CR>"] = cmp.mapping.confirm({ select = auto_select }),
                     ["<C-y>"] = cmp.mapping.confirm({ select = true }),
@@ -188,10 +241,24 @@ local new = {
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
-                    { name = "path" },
                     { name = "luasnip" },
-                }, {
-                    { name = "buffer" },
+                    {
+                        name = "buffer",
+                        keyword_length = 5,
+                        option = {
+                            get_bufnrs = function()
+                                local bufs = {}
+                                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                                    bufs[vim.api.nvim_win_get_buf(win)] = true
+                                end
+                                return vim.tbl_keys(bufs)
+                            end,
+                        },
+                    },
+                    { name = "emoji" },
+                    { name = "nerdfont" },
+                    { name = "latex_symbols" },
+                    { name = "path" },
                 }),
                 formatting = {
                     format = function(entry, item)
@@ -213,12 +280,35 @@ local new = {
                         return item
                     end,
                 },
-                experimental = {
-                    ghost_text = {
-                        hl_group = "CmpGhostText",
+                sorting = {
+                    comparators = {
+                        compare.exact,
+                        function(entry1, entry2) -- sort by length ignoring "=~"
+                            local len1 = string.len(string.gsub(entry1.completion_item.label, "[=~()_]", ""))
+                            local len2 = string.len(string.gsub(entry2.completion_item.label, "[=~()_]", ""))
+                            if len1 ~= len2 then
+                                return len1 - len2 < 0
+                            end
+                        end,
+                        compare.recently_used,
+                        function(entry1, entry2) -- sort by compare kind (Variable, Function etc)
+                            local kind1 = modified_kind(entry1:get_kind())
+                            local kind2 = modified_kind(entry2:get_kind())
+                            if kind1 ~= kind2 then
+                                return kind1 - kind2 < 0
+                            end
+                        end,
+                        function(entry1, entry2) -- score by lsp, if available
+                            local t1 = entry1.completion_item.sortText
+                            local t2 = entry2.completion_item.sortText
+                            if t1 ~= nil and t2 ~= nil and t1 ~= t2 then
+                                return t1 < t2
+                            end
+                        end,
+                        compare.score,
+                        compare.order,
                     },
                 },
-                sorting = defaults.sorting,
             }
         end,
     },
