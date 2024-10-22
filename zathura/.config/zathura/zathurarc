@@ -1,0 +1,726 @@
+set recolor "true"
+
+set completion-bg "#05030B"
+set completion-fg "#c0c0c2"
+set completion-group-bg "#05030B"
+set completion-group-fg "#F13847"
+set completion-highlight-bg "#c0c0c2"
+set completion-highlight-fg "#05030B"
+
+set recolor-lightcolor "#05030B"
+set recolor-darkcolor "#c0c0c2"
+set default-bg "#05030B"
+
+set inputbar-bg "#05030B"
+set inputbar-fg "#c0c0c2"
+set notification-bg "#05030B"
+set notification-fg "#c0c0c2"
+set notification-error-bg "#DA2B42"
+set notification-error-fg "#c0c0c2"
+set notification-warning-bg "#DA2B42"
+set notification-warning-fg "#c0c0c2"
+set statusbar-bg "#05030B"
+set statusbar-fg "#c0c0c2"
+set index-bg "#05030B"
+set index-fg "#c0c0c2"
+set index-active-bg "#c0c0c2"
+set index-active-fg "#05030B"
+set render-loading-bg "#05030B"
+set render-loading-fg "#c0c0c2"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#05030B"
+set completion-fg "#c0c0c2"
+set completion-group-bg "#05030B"
+set completion-group-fg "#F13847"
+set completion-highlight-bg "#c0c0c2"
+set completion-highlight-fg "#05030B"
+
+set recolor-lightcolor "#05030B"
+set recolor-darkcolor "#c0c0c2"
+set default-bg "#05030B"
+
+set inputbar-bg "#05030B"
+set inputbar-fg "#c0c0c2"
+set notification-bg "#05030B"
+set notification-fg "#c0c0c2"
+set notification-error-bg "#DA2B42"
+set notification-error-fg "#c0c0c2"
+set notification-warning-bg "#DA2B42"
+set notification-warning-fg "#c0c0c2"
+set statusbar-bg "#05030B"
+set statusbar-fg "#c0c0c2"
+set index-bg "#05030B"
+set index-fg "#c0c0c2"
+set index-active-bg "#c0c0c2"
+set index-active-fg "#05030B"
+set render-loading-bg "#05030B"
+set render-loading-fg "#c0c0c2"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#0f0f16"
+set completion-fg "#c3c3c4"
+set completion-group-bg "#0f0f16"
+set completion-group-fg "#5D6597"
+set completion-highlight-bg "#c3c3c4"
+set completion-highlight-fg "#0f0f16"
+
+set recolor-lightcolor "#0f0f16"
+set recolor-darkcolor "#c3c3c4"
+set default-bg "#0f0f16"
+
+set inputbar-bg "#0f0f16"
+set inputbar-fg "#c3c3c4"
+set notification-bg "#0f0f16"
+set notification-fg "#c3c3c4"
+set notification-error-bg "#4A4F71"
+set notification-error-fg "#c3c3c4"
+set notification-warning-bg "#4A4F71"
+set notification-warning-fg "#c3c3c4"
+set statusbar-bg "#0f0f16"
+set statusbar-fg "#c3c3c4"
+set index-bg "#0f0f16"
+set index-fg "#c3c3c4"
+set index-active-bg "#c3c3c4"
+set index-active-fg "#0f0f16"
+set render-loading-bg "#0f0f16"
+set render-loading-fg "#c3c3c4"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#131213"
+set completion-fg "#c4c3c4"
+set completion-group-bg "#131213"
+set completion-group-fg "#208A71"
+set completion-highlight-bg "#c4c3c4"
+set completion-highlight-fg "#131213"
+
+set recolor-lightcolor "#131213"
+set recolor-darkcolor "#c4c3c4"
+set default-bg "#131213"
+
+set inputbar-bg "#131213"
+set inputbar-fg "#c4c3c4"
+set notification-bg "#131213"
+set notification-fg "#c4c3c4"
+set notification-error-bg "#D30C03"
+set notification-error-fg "#c4c3c4"
+set notification-warning-bg "#D30C03"
+set notification-warning-fg "#c4c3c4"
+set statusbar-bg "#131213"
+set statusbar-fg "#c4c3c4"
+set index-bg "#131213"
+set index-fg "#c4c3c4"
+set index-active-bg "#c4c3c4"
+set index-active-fg "#131213"
+set render-loading-bg "#131213"
+set render-loading-fg "#c4c3c4"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#1b1f27"
+set completion-fg "#c6c7c9"
+set completion-group-bg "#1b1f27"
+set completion-group-fg "#6A829E"
+set completion-highlight-bg "#c6c7c9"
+set completion-highlight-fg "#1b1f27"
+
+set recolor-lightcolor "#1b1f27"
+set recolor-darkcolor "#c6c7c9"
+set default-bg "#1b1f27"
+
+set inputbar-bg "#1b1f27"
+set inputbar-fg "#c6c7c9"
+set notification-bg "#1b1f27"
+set notification-fg "#c6c7c9"
+set notification-error-bg "#597395"
+set notification-error-fg "#c6c7c9"
+set notification-warning-bg "#597395"
+set notification-warning-fg "#c6c7c9"
+set statusbar-bg "#1b1f27"
+set statusbar-fg "#c6c7c9"
+set index-bg "#1b1f27"
+set index-fg "#c6c7c9"
+set index-active-bg "#c6c7c9"
+set index-active-fg "#1b1f27"
+set render-loading-bg "#1b1f27"
+set render-loading-fg "#c6c7c9"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#211a1a"
+set completion-fg "#c7c5c5"
+set completion-group-bg "#211a1a"
+set completion-group-fg "#768586"
+set completion-highlight-bg "#c7c5c5"
+set completion-highlight-fg "#211a1a"
+
+set recolor-lightcolor "#211a1a"
+set recolor-darkcolor "#c7c5c5"
+set default-bg "#211a1a"
+
+set inputbar-bg "#211a1a"
+set inputbar-fg "#c7c5c5"
+set notification-bg "#211a1a"
+set notification-fg "#c7c5c5"
+set notification-error-bg "#CEA066"
+set notification-error-fg "#c7c5c5"
+set notification-warning-bg "#CEA066"
+set notification-warning-fg "#c7c5c5"
+set statusbar-bg "#211a1a"
+set statusbar-fg "#c7c5c5"
+set index-bg "#211a1a"
+set index-fg "#c7c5c5"
+set index-active-bg "#c7c5c5"
+set index-active-fg "#211a1a"
+set render-loading-bg "#211a1a"
+set render-loading-fg "#c7c5c5"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#05030B"
+set completion-fg "#c0c0c2"
+set completion-group-bg "#05030B"
+set completion-group-fg "#F13847"
+set completion-highlight-bg "#c0c0c2"
+set completion-highlight-fg "#05030B"
+
+set recolor-lightcolor "#05030B"
+set recolor-darkcolor "#c0c0c2"
+set default-bg "#05030B"
+
+set inputbar-bg "#05030B"
+set inputbar-fg "#c0c0c2"
+set notification-bg "#05030B"
+set notification-fg "#c0c0c2"
+set notification-error-bg "#DA2B42"
+set notification-error-fg "#c0c0c2"
+set notification-warning-bg "#DA2B42"
+set notification-warning-fg "#c0c0c2"
+set statusbar-bg "#05030B"
+set statusbar-fg "#c0c0c2"
+set index-bg "#05030B"
+set index-fg "#c0c0c2"
+set index-active-bg "#c0c0c2"
+set index-active-fg "#05030B"
+set render-loading-bg "#05030B"
+set render-loading-fg "#c0c0c2"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#000000"
+set completion-fg "#bfbfbf"
+set completion-group-bg "#000000"
+set completion-group-fg "#635E5B"
+set completion-highlight-bg "#bfbfbf"
+set completion-highlight-fg "#000000"
+
+set recolor-lightcolor "#000000"
+set recolor-darkcolor "#bfbfbf"
+set default-bg "#000000"
+
+set inputbar-bg "#000000"
+set inputbar-fg "#bfbfbf"
+set notification-bg "#000000"
+set notification-fg "#bfbfbf"
+set notification-error-bg "#393F46"
+set notification-error-fg "#bfbfbf"
+set notification-warning-bg "#393F46"
+set notification-warning-fg "#bfbfbf"
+set statusbar-bg "#000000"
+set statusbar-fg "#bfbfbf"
+set index-bg "#000000"
+set index-fg "#bfbfbf"
+set index-active-bg "#bfbfbf"
+set index-active-fg "#000000"
+set render-loading-bg "#000000"
+set render-loading-fg "#bfbfbf"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#11171e"
+set completion-fg "#c3c5c6"
+set completion-group-bg "#11171e"
+set completion-group-fg "#B36A79"
+set completion-highlight-bg "#c3c5c6"
+set completion-highlight-fg "#11171e"
+
+set recolor-lightcolor "#11171e"
+set recolor-darkcolor "#c3c5c6"
+set default-bg "#11171e"
+
+set inputbar-bg "#11171e"
+set inputbar-fg "#c3c5c6"
+set notification-bg "#11171e"
+set notification-fg "#c3c5c6"
+set notification-error-bg "#996272"
+set notification-error-fg "#c3c5c6"
+set notification-warning-bg "#996272"
+set notification-warning-fg "#c3c5c6"
+set statusbar-bg "#11171e"
+set statusbar-fg "#c3c5c6"
+set index-bg "#11171e"
+set index-fg "#c3c5c6"
+set index-active-bg "#c3c5c6"
+set index-active-fg "#11171e"
+set render-loading-bg "#11171e"
+set render-loading-fg "#c3c5c6"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#1b1f27"
+set completion-fg "#c6c7c9"
+set completion-group-bg "#1b1f27"
+set completion-group-fg "#6A829E"
+set completion-highlight-bg "#c6c7c9"
+set completion-highlight-fg "#1b1f27"
+
+set recolor-lightcolor "#1b1f27"
+set recolor-darkcolor "#c6c7c9"
+set default-bg "#1b1f27"
+
+set inputbar-bg "#1b1f27"
+set inputbar-fg "#c6c7c9"
+set notification-bg "#1b1f27"
+set notification-fg "#c6c7c9"
+set notification-error-bg "#597395"
+set notification-error-fg "#c6c7c9"
+set notification-warning-bg "#597395"
+set notification-warning-fg "#c6c7c9"
+set statusbar-bg "#1b1f27"
+set statusbar-fg "#c6c7c9"
+set index-bg "#1b1f27"
+set index-fg "#c6c7c9"
+set index-active-bg "#c6c7c9"
+set index-active-fg "#1b1f27"
+set render-loading-bg "#1b1f27"
+set render-loading-fg "#c6c7c9"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#070605"
+set completion-fg "#c1c0c0"
+set completion-group-bg "#070605"
+set completion-group-fg "#F60B2A"
+set completion-highlight-bg "#c1c0c0"
+set completion-highlight-fg "#070605"
+
+set recolor-lightcolor "#070605"
+set recolor-darkcolor "#c1c0c0"
+set default-bg "#070605"
+
+set inputbar-bg "#070605"
+set inputbar-fg "#c1c0c0"
+set notification-bg "#070605"
+set notification-fg "#c1c0c0"
+set notification-error-bg "#DE1222"
+set notification-error-fg "#c1c0c0"
+set notification-warning-bg "#DE1222"
+set notification-warning-fg "#c1c0c0"
+set statusbar-bg "#070605"
+set statusbar-fg "#c1c0c0"
+set index-bg "#070605"
+set index-fg "#c1c0c0"
+set index-active-bg "#c1c0c0"
+set index-active-fg "#070605"
+set render-loading-bg "#070605"
+set render-loading-fg "#c1c0c0"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#000000"
+set completion-fg "#bfbfbf"
+set completion-group-bg "#000000"
+set completion-group-fg "#635E5B"
+set completion-highlight-bg "#bfbfbf"
+set completion-highlight-fg "#000000"
+
+set recolor-lightcolor "#000000"
+set recolor-darkcolor "#bfbfbf"
+set default-bg "#000000"
+
+set inputbar-bg "#000000"
+set inputbar-fg "#bfbfbf"
+set notification-bg "#000000"
+set notification-fg "#bfbfbf"
+set notification-error-bg "#393F46"
+set notification-error-fg "#bfbfbf"
+set notification-warning-bg "#393F46"
+set notification-warning-fg "#bfbfbf"
+set statusbar-bg "#000000"
+set statusbar-fg "#bfbfbf"
+set index-bg "#000000"
+set index-fg "#bfbfbf"
+set index-active-bg "#bfbfbf"
+set index-active-fg "#000000"
+set render-loading-bg "#000000"
+set render-loading-fg "#bfbfbf"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#211a1a"
+set completion-fg "#c7c5c5"
+set completion-group-bg "#211a1a"
+set completion-group-fg "#768586"
+set completion-highlight-bg "#c7c5c5"
+set completion-highlight-fg "#211a1a"
+
+set recolor-lightcolor "#211a1a"
+set recolor-darkcolor "#c7c5c5"
+set default-bg "#211a1a"
+
+set inputbar-bg "#211a1a"
+set inputbar-fg "#c7c5c5"
+set notification-bg "#211a1a"
+set notification-fg "#c7c5c5"
+set notification-error-bg "#CEA066"
+set notification-error-fg "#c7c5c5"
+set notification-warning-bg "#CEA066"
+set notification-warning-fg "#c7c5c5"
+set statusbar-bg "#211a1a"
+set statusbar-fg "#c7c5c5"
+set index-bg "#211a1a"
+set index-fg "#c7c5c5"
+set index-active-bg "#c7c5c5"
+set index-active-fg "#211a1a"
+set render-loading-bg "#211a1a"
+set render-loading-fg "#c7c5c5"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#131213"
+set completion-fg "#c4c3c4"
+set completion-group-bg "#131213"
+set completion-group-fg "#208A71"
+set completion-highlight-bg "#c4c3c4"
+set completion-highlight-fg "#131213"
+
+set recolor-lightcolor "#131213"
+set recolor-darkcolor "#c4c3c4"
+set default-bg "#131213"
+
+set inputbar-bg "#131213"
+set inputbar-fg "#c4c3c4"
+set notification-bg "#131213"
+set notification-fg "#c4c3c4"
+set notification-error-bg "#D30C03"
+set notification-error-fg "#c4c3c4"
+set notification-warning-bg "#D30C03"
+set notification-warning-fg "#c4c3c4"
+set statusbar-bg "#131213"
+set statusbar-fg "#c4c3c4"
+set index-bg "#131213"
+set index-fg "#c4c3c4"
+set index-active-bg "#c4c3c4"
+set index-active-fg "#131213"
+set render-loading-bg "#131213"
+set render-loading-fg "#c4c3c4"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#1b1f27"
+set completion-fg "#c6c7c9"
+set completion-group-bg "#1b1f27"
+set completion-group-fg "#6A829E"
+set completion-highlight-bg "#c6c7c9"
+set completion-highlight-fg "#1b1f27"
+
+set recolor-lightcolor "#1b1f27"
+set recolor-darkcolor "#c6c7c9"
+set default-bg "#1b1f27"
+
+set inputbar-bg "#1b1f27"
+set inputbar-fg "#c6c7c9"
+set notification-bg "#1b1f27"
+set notification-fg "#c6c7c9"
+set notification-error-bg "#597395"
+set notification-error-fg "#c6c7c9"
+set notification-warning-bg "#597395"
+set notification-warning-fg "#c6c7c9"
+set statusbar-bg "#1b1f27"
+set statusbar-fg "#c6c7c9"
+set index-bg "#1b1f27"
+set index-fg "#c6c7c9"
+set index-active-bg "#c6c7c9"
+set index-active-fg "#1b1f27"
+set render-loading-bg "#1b1f27"
+set render-loading-fg "#c6c7c9"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#05030B"
+set completion-fg "#c0c0c2"
+set completion-group-bg "#05030B"
+set completion-group-fg "#F13847"
+set completion-highlight-bg "#c0c0c2"
+set completion-highlight-fg "#05030B"
+
+set recolor-lightcolor "#05030B"
+set recolor-darkcolor "#c0c0c2"
+set default-bg "#05030B"
+
+set inputbar-bg "#05030B"
+set inputbar-fg "#c0c0c2"
+set notification-bg "#05030B"
+set notification-fg "#c0c0c2"
+set notification-error-bg "#DA2B42"
+set notification-error-fg "#c0c0c2"
+set notification-warning-bg "#DA2B42"
+set notification-warning-fg "#c0c0c2"
+set statusbar-bg "#05030B"
+set statusbar-fg "#c0c0c2"
+set index-bg "#05030B"
+set index-fg "#c0c0c2"
+set index-active-bg "#c0c0c2"
+set index-active-fg "#05030B"
+set render-loading-bg "#05030B"
+set render-loading-fg "#c0c0c2"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#1b1f27"
+set completion-fg "#c6c7c9"
+set completion-group-bg "#1b1f27"
+set completion-group-fg "#6A829E"
+set completion-highlight-bg "#c6c7c9"
+set completion-highlight-fg "#1b1f27"
+
+set recolor-lightcolor "#1b1f27"
+set recolor-darkcolor "#c6c7c9"
+set default-bg "#1b1f27"
+
+set inputbar-bg "#1b1f27"
+set inputbar-fg "#c6c7c9"
+set notification-bg "#1b1f27"
+set notification-fg "#c6c7c9"
+set notification-error-bg "#597395"
+set notification-error-fg "#c6c7c9"
+set notification-warning-bg "#597395"
+set notification-warning-fg "#c6c7c9"
+set statusbar-bg "#1b1f27"
+set statusbar-fg "#c6c7c9"
+set index-bg "#1b1f27"
+set index-fg "#c6c7c9"
+set index-active-bg "#c6c7c9"
+set index-active-fg "#1b1f27"
+set render-loading-bg "#1b1f27"
+set render-loading-fg "#c6c7c9"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#070605"
+set completion-fg "#c1c0c0"
+set completion-group-bg "#070605"
+set completion-group-fg "#F60B2A"
+set completion-highlight-bg "#c1c0c0"
+set completion-highlight-fg "#070605"
+
+set recolor-lightcolor "#070605"
+set recolor-darkcolor "#c1c0c0"
+set default-bg "#070605"
+
+set inputbar-bg "#070605"
+set inputbar-fg "#c1c0c0"
+set notification-bg "#070605"
+set notification-fg "#c1c0c0"
+set notification-error-bg "#DE1222"
+set notification-error-fg "#c1c0c0"
+set notification-warning-bg "#DE1222"
+set notification-warning-fg "#c1c0c0"
+set statusbar-bg "#070605"
+set statusbar-fg "#c1c0c0"
+set index-bg "#070605"
+set index-fg "#c1c0c0"
+set index-active-bg "#c1c0c0"
+set index-active-fg "#070605"
+set render-loading-bg "#070605"
+set render-loading-fg "#c1c0c0"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#000000"
+set completion-fg "#bfbfbf"
+set completion-group-bg "#000000"
+set completion-group-fg "#635E5B"
+set completion-highlight-bg "#bfbfbf"
+set completion-highlight-fg "#000000"
+
+set recolor-lightcolor "#000000"
+set recolor-darkcolor "#bfbfbf"
+set default-bg "#000000"
+
+set inputbar-bg "#000000"
+set inputbar-fg "#bfbfbf"
+set notification-bg "#000000"
+set notification-fg "#bfbfbf"
+set notification-error-bg "#393F46"
+set notification-error-fg "#bfbfbf"
+set notification-warning-bg "#393F46"
+set notification-warning-fg "#bfbfbf"
+set statusbar-bg "#000000"
+set statusbar-fg "#bfbfbf"
+set index-bg "#000000"
+set index-fg "#bfbfbf"
+set index-active-bg "#bfbfbf"
+set index-active-fg "#000000"
+set render-loading-bg "#000000"
+set render-loading-fg "#bfbfbf"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#0f0f16"
+set completion-fg "#c3c3c4"
+set completion-group-bg "#0f0f16"
+set completion-group-fg "#5D6597"
+set completion-highlight-bg "#c3c3c4"
+set completion-highlight-fg "#0f0f16"
+
+set recolor-lightcolor "#0f0f16"
+set recolor-darkcolor "#c3c3c4"
+set default-bg "#0f0f16"
+
+set inputbar-bg "#0f0f16"
+set inputbar-fg "#c3c3c4"
+set notification-bg "#0f0f16"
+set notification-fg "#c3c3c4"
+set notification-error-bg "#4A4F71"
+set notification-error-fg "#c3c3c4"
+set notification-warning-bg "#4A4F71"
+set notification-warning-fg "#c3c3c4"
+set statusbar-bg "#0f0f16"
+set statusbar-fg "#c3c3c4"
+set index-bg "#0f0f16"
+set index-fg "#c3c3c4"
+set index-active-bg "#c3c3c4"
+set index-active-fg "#0f0f16"
+set render-loading-bg "#0f0f16"
+set render-loading-fg "#c3c3c4"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#211a1a"
+set completion-fg "#c7c5c5"
+set completion-group-bg "#211a1a"
+set completion-group-fg "#768586"
+set completion-highlight-bg "#c7c5c5"
+set completion-highlight-fg "#211a1a"
+
+set recolor-lightcolor "#211a1a"
+set recolor-darkcolor "#c7c5c5"
+set default-bg "#211a1a"
+
+set inputbar-bg "#211a1a"
+set inputbar-fg "#c7c5c5"
+set notification-bg "#211a1a"
+set notification-fg "#c7c5c5"
+set notification-error-bg "#CEA066"
+set notification-error-fg "#c7c5c5"
+set notification-warning-bg "#CEA066"
+set notification-warning-fg "#c7c5c5"
+set statusbar-bg "#211a1a"
+set statusbar-fg "#c7c5c5"
+set index-bg "#211a1a"
+set index-fg "#c7c5c5"
+set index-active-bg "#c7c5c5"
+set index-active-fg "#211a1a"
+set render-loading-bg "#211a1a"
+set render-loading-fg "#c7c5c5"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set recolor "true"
+
+set completion-bg "#05030B"
+set completion-fg "#c0c0c2"
+set completion-group-bg "#05030B"
+set completion-group-fg "#F13847"
+set completion-highlight-bg "#c0c0c2"
+set completion-highlight-fg "#05030B"
+
+set recolor-lightcolor "#05030B"
+set recolor-darkcolor "#c0c0c2"
+set default-bg "#05030B"
+
+set inputbar-bg "#05030B"
+set inputbar-fg "#c0c0c2"
+set notification-bg "#05030B"
+set notification-fg "#c0c0c2"
+set notification-error-bg "#DA2B42"
+set notification-error-fg "#c0c0c2"
+set notification-warning-bg "#DA2B42"
+set notification-warning-fg "#c0c0c2"
+set statusbar-bg "#05030B"
+set statusbar-fg "#c0c0c2"
+set index-bg "#05030B"
+set index-fg "#c0c0c2"
+set index-active-bg "#c0c0c2"
+set index-active-fg "#05030B"
+set render-loading-bg "#05030B"
+set render-loading-fg "#c0c0c2"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
