@@ -42,7 +42,7 @@ pywal() {
 }
 
 zathura_update() {
-    genzathurarc >>$HOME/.config/zathura/zathurarc
+    genzathurarc > $HOME/.config/zathura/zathurarc
 }
 
 webcord_update() {
