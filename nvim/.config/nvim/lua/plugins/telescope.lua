@@ -56,7 +56,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         { "<leader>f.", builtin.oldfiles, desc = '[F]ind Recent Files ("." for repeat)' },
         { "<leader><leader>", builtin.buffers, desc = "[ ] Find existing buffers" },
         { "<leader>fF", "<cmd>Telescope flutter commands<CR>", desc = "[F]ind [F]lutter commands" },
-        { "<leader>fo", "<cmd>ObsidianSearch<CR>", desc = "[F]ind [O]sidian" },
+        { "<leader>fo", builtin.vim_options, desc = "[F]ind [O]ptions" },
         { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
 
         { "<leader>fp", builtin.builtin, desc = "[F]ind [P]ickers" },
