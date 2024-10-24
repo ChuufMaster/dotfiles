@@ -131,10 +131,22 @@ vim.api.nvim_create_autocmd("FileType", {
 -- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
     group = augroup("wrap_spell"),
-    pattern = { "gitcommit", "markdown", "tex" },
+    pattern = { "gitcommit", "markdown", "tex", "latex" },
     callback = function()
         vim.opt_local.wrap = true
         vim.opt_local.spell = true
+        vim.opt_local.formatoptions = "btcqln"
+    end,
+})
+
+-- Set local options for vimtex
+vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+    group = augroup("vimtex"),
+    pattern = { "tex", "latex" },
+    callback = function()
+        vim.opt_local.foldmethod = "expr"
+        vim.opt_local.foldexpr = "vimtex#fold#level(v:lnum)"
+        vim.opt_local.foldtext = "vimtex#fold#text()"
     end,
 })
 
