@@ -1,0 +1,5 @@
+[plugin]
+deps = [{ use = "GrzegorzKozub/mdcat", rev = "1706af4" }, { use = "Rolv-Apneseth/bypass", rev = "db4c2a7" }]
+
+[flavor]
+deps = [{ use = "BennyOe/tokyo-night", rev = "024fb09" }]
