@@ -1,5 +1,5 @@
-bindkey -v
-set -o vi
+# bindkey -v
+# set -o vi
 
 export EDITOR=nvim
 export CONFIG=~/.config
