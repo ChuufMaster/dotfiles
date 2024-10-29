@@ -2,7 +2,7 @@
 CONFIGS=$HOME/.config
 CONFIG_ZSH=$CONFIGS/zshrc
 
-source $CONFIGS/zshrc/init.zsh
+source $CONFIG_ZSH/init.zsh
 source $CONFIG_ZSH/path.zsh
 source $CONFIG_ZSH/init.zsh
 source $CONFIG_ZSH/alias.zsh
