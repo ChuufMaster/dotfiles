@@ -31,7 +31,7 @@ pywal() {
 
     check_file "$wallpaper_path"
 
-    wal -n -i "$wallpaper_path" -s -t
+    wal -n -s -t --cols16 "lighten" -i "$wallpaper_path" 
 
     # Update sway config files and css
     swaync-client --reload-css
@@ -51,7 +51,27 @@ webcord_update() {
     mv $webcord_config/pywal-discord-default.theme.css $webcord_config/pywal-discord-default.theme
 }
 
+reload_kitty() {
+  [ "$1" ] && {
+    [ -f "${CONFDIR}/default/kitty.conf" ] || {
+      [ -d "${CONFDIR}/default" ] || mkdir -p "${CONFDIR}/default"
+      cp "${CONFDIR}/kitty.conf" "${CONFDIR}/default/kitty.conf"
+    }
+    cp "${CONFDIR}/$1/kitty.conf" "${CONFDIR}/kitty.conf"
+  }
+  kill -SIGUSR1 $(pidof kitty)
+}
+
+set_spicetify(){
+    cp -r $HOME/.cache/wal/colors-spicetify.ini $HOME/.config/spicetify/Themes/Pywal
+    cd $HOME/.config/spicetify/Themes/Pywal
+    mv colors-spicetify.ini color.ini
+    spicetify apply
+}
+
 executeCommand "$CHOSEN"
 pywal
 zathura_update
 webcord_update
+reload_kitty
+set_spicetify
