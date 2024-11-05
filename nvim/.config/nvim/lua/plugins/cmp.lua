@@ -140,6 +140,7 @@ return {
                 "rafamadriz/friendly-snippets",
             },
         },
+        "quangnguyen30192/cmp-nvim-ultisnips",
     },
     config = function(opts)
         local cmp = require("cmp")
@@ -173,6 +174,7 @@ return {
             sources = {
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
+                { name = "ultisnips" },
                 { name = "path" },
                 { name = "vimtex" },
                 {
