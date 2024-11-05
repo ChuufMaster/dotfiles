@@ -40,6 +40,9 @@ require("lazy").setup({
     },
     defaults = { lazy = true },
 
+    dev = {
+        path = "~/projects/plugins",
+    },
     checker = {
         enabled = true,
     },
