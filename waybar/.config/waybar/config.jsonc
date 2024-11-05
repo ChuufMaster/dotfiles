@@ -1,10 +1,10 @@
-// vim: filetype=json
+// vim: filetype=jsonc
 {
     // "layer": "top", // Waybar at top layer
     
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 50, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     
     "spacing": 4, // Gaps between modules (4px)
@@ -20,13 +20,13 @@
         "group/quicklinks",
         "hyprland/window",
         "custom/notification",
-        "cava"
     ],
     "modules-center": [
         "hyprland/workspaces",
     ],
     "modules-right": [
-        "mpd", 
+        "cava",
+        // "mpd", 
         "pulseaudio", 
         "network", 
         "cpu", 

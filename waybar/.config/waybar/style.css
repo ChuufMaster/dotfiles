@@ -10,22 +10,27 @@
  * ----------------------------------------------------- 
 */
 
-@define-color backgroundlight #FFFFFF;
-@define-color backgrounddark #FFFFFF;
-@define-color workspacesbackground1 #FFFFFF;
-@define-color workspacesbackground2 #CCCCCC;
-@define-color bordercolor #FFFFFF;
-@define-color textcolor1 #000000;
-@define-color textcolor2 #000000;
-@define-color textcolor3 #FFFFFF;
-@define-color iconcolor #FFFFFF;
+
+@import '/home/chuufmaster/.cache/wal/colors-waybar.css';
+
+@define-color backgroundlight @color1;
+@define-color backgrounddark @color1;
+@define-color workspacesbackground1 @color1;
+@define-color workspacesbackground2 @color5;
+@define-color bordercolor @color5;
+@define-color textcolor1 @color0;
+@define-color textcolor2 @color0;
+@define-color textcolor3 @cursor;
+@define-color iconcolor @cursor;
+
 
 /* -----------------------------------------------------
  * General 
  * ----------------------------------------------------- */
 
 * {
-    font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "JetBrainsMono Nerd Font";
+    /* font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
     border: none;
     border-radius: 0px;
 }
@@ -161,7 +166,12 @@ window#waybar.empty #window {
     font-weight: bold;
     color: @iconcolor;
     padding: 4px 10px 2px 10px;
-    font-size: 16px;
+    /* font-size: 16px; */
+}
+
+#cava {
+    padding: 0 0 0 0;
+    font-size: 20px;
 }
 
 #custom-quicklink1,
@@ -220,6 +230,7 @@ window#waybar.empty #window {
     font-size: 20px;
     color: @iconcolor;
 }
+
 /* -----------------------------------------------------
  * Hardware Group
  * ----------------------------------------------------- */
@@ -272,21 +283,21 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #network {
-    background-color: @backgroundlight;
+    background-color: @backgrounddark;
     font-size: 16px;
-    color: @textcolor2;
+    color: @textcolor1;
     border-radius: 15px;
     margin: 10px 10px 10px 0px;
 }
 
 #network.ethernet {
-    background-color: @backgroundlight;
-    color: @textcolor2;
+    background-color: @backgrounddark;
+    color: @textcolor1;
 }
 
 #network.wifi {
-    background-color: @backgroundlight;
-    color: @textcolor2;
+    background-color: @backgrounddark;
+    color: @textcolor1;
 }
 
 /* -----------------------------------------------------
@@ -382,4 +393,3 @@ label:focus {
 #network.disconnected {
     background-color: #f53c3c;
 }
-
