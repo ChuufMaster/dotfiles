@@ -158,16 +158,27 @@ local servers = {
     },
     markdownlint = {},
     -- omnisharp = {},
-    pylsp = {},
+    -- pylsp = {},
+    ruff_lsp = {},
     yamlls = {},
     actionlint = {},
     dockerls = {},
     -- ruby_lsp = {},
     solargraph = {},
-    csharp_ls = {},
+    -- csharp_ls = {},
     docker_compose_language_service = {},
     sqlls = {
         filetypes = { "sql" },
+    },
+    texlab = {
+        build = {
+            args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+            executable = "latexmk",
+            forwardSearchAfter = false,
+            onSave = false,
+            logDirectory = "./build",
+            auxDirectory = "./build",
+        },
     },
     ltex = {
         settings = {
@@ -195,6 +206,7 @@ local servers = {
             },
         },
     },
+    taplo = {},
 }
 return {
     "neovim/nvim-lspconfig",
@@ -219,6 +231,7 @@ return {
         vim.list_extend(ensure_installed, {
             "stylua",
             "markdownlint",
+            "codespell",
         })
 
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
