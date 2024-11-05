@@ -16,6 +16,7 @@ path+=(
     /home/chuufmaster/scripts
     /home/chuufmaster/COS326_Pracs/basex/bin
     /home/chuufmaster/.local/share/gem/ruby/3.3.0/bin
+    /home/chuufmaster/projects/color_output
     $path
 )
 
