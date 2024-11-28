@@ -5,10 +5,22 @@
 )
 
 (defsrc
-  f12
-  caps   a   s   d   f  h  j   k   l   ;
-                 c   v
+esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+caps a    s    d    f    g    h    j    k    l    ;    '    ret
+lsft z    x    c    v    b    n    m    ,    .    /    rsft
+lctl   lmet lalt           spc             ralt rmet rctl
 )
+
+;; (deflayer default
+;; esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+;; grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+;; tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+;; caps a    s    d    f    g    h    j    k    l    ;    '    ret
+;; lsft z    x    c    v    b    n    m    ,    .    /    rsft
+;; lctl   lmet lalt           spc             ralt rmet rctl
+;; )
 
 (defvar
   ;; Note: consider using different time values for your different fingers.
@@ -30,57 +42,41 @@
 )
 
 (deflayer base
-  @f12
-  @caps  @a  @s  @d  @f  h  @j  @k  @l  @;
-                 @c  @v
+ esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  @f12
+ grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+ tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+@caps @a @s   @d   @f    @g    @h   @j   @k   @l   @;    '    ret
+ lsft z    x   c   @v    b    n    m    ,    .    /    rsft
+ lctl   lmet lalt          spc            @ralt rmet rctl
 )
 
 (deflayer nomods
-  @f12
-  @caps  a   s   d   f  h  j   k   l   ;
-                 c   v
+ esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  @f12-back
+ grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+ tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+@caps a    s    d    f    g    h    j    k    l    ;    '    ret
+ lsft z    x    c    v    b    n    m    ,    .    /    rsft
+ lctl   lmet lalt           spc             ralt rmet rctl
 )
 
-(deflayer arrows-while-held
-  @f12
-  lrld  a   s   d   f  left down up rght ;
-                c       v
+(deflayer symbols
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12 bspc
+  _      1    2    3    4    5    6    7    8    9    0  _    _    _
+  _    S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  S-\    _
+  _    =    -    +    S-[  S-]    [    ]    -    +    \    _
+  _    _    _              _              _    _    _
 )
 
-(deflayer super-layer
-  @f12
-  @caps a   s   @d   @f  left down up rght ;
-                 c    v
-)
-
-(deflayer alt-layer
-  @f12
-  @caps a  lctl  d  f  left down up rght ;
-                 c  v
-)
-
-(deflayer alt_ctrl-right-layer
-  @f12
-  @caps tab s d f h j k ralt ;
-              c v
-)
-
-(deflayer game-layer
-  @f12-game
-  @caps a s d f h j k l ;
-            c v
-)
-
-(deflayer ctrl-layer
-  @f12
-  lrld @a  @s  @d  @f  h j k l ;
-               @c  @v
-)
-
-(deflayer page-layer
-    @f12
-    @caps @a @s @d @f home pgdn pgup end ;
-                @c  v
+(deflayermap (nav-map)
+u pgup
+d pgdn
+e end
+a home
+h left
+j down
+k up
+l right
 )
 
 (deffakekeys
@@ -92,36 +88,33 @@
     (layer-switch nomods)
     (on-idle-fakekey to-base tap 20)
   )
-
-  v_page (layer-while-held page-layer)
-
-  arws (layer-while-held arrows-while-held)
-
-  page (layer-while-held page-layer)
-
-  super-uses (layer-while-held super-layer)
-
-  ctrl-uses (layer-while-held ctrl-layer)
-
-  alt-uses (layer-while-held alt-layer)
-
-  alt_ctrl-right-uses (layer-while-held alt_ctrl-right-layer)
-
-  f12 (layer-switch game-layer)
-  f12-game (layer-switch base)
-
+  sym (layer-while-held symbols)
+  spc-hold (tap-hold-release $tap-time $hold-time spc @sym)
+  ;; spc ( tap-dance 200 (spc @spc-hold) )
+  ralt (tap-hold-release $tap-time $hold-time ralt @sym)
+  g (tap-hold-release $tap-time $hold-time (multi g @tap) @sym)
+  h (tap-hold-release $tap-time $hold-time (multi h @tap) @sym)
+  nav (layer-while-held nav-map)
+  f12 (layer-switch nomods)
+  f12-back (layer-switch base)
   caps (tap-hold-press $tap-time $hold-time esc (multi lctrl @tap))
-  a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) (multi lmet @super-uses) $left-hand-keys)
-  s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) (multi lalt @alt-uses) $left-hand-keys)
-  d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) (multi lctl @ctrl-uses) $left-hand-keys)
-  f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lsft $left-hand-keys)
-  j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rsft $right-hand-keys)
-  k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) (multi rctl @alt_ctrl-right-uses) $right-hand-keys)
-  l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) (multi lalt @alt_ctrl-right-uses) $right-hand-keys)
-  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) rmet $right-hand-keys)
-  c (tap-hold-release $tap-time $hold-time c @page)
-  v (tap-hold-release $tap-time $hold-time v @arws)
+  a (tap-hold-release $tap-time $hold-time (multi a @tap) lmet)
+  s (tap-hold-release $tap-time $hold-time (multi s @tap) lalt)
+  d (tap-hold-release $tap-time $hold-time (multi d @tap) lctrl)
+  f (tap-hold-release $tap-time $hold-time (multi f @tap) lsft)
+  j (tap-hold-release $tap-time $hold-time (multi j @tap) rsft)
+  k (tap-hold-release $tap-time $hold-time (multi k @tap) rctrl)
+  l (tap-hold-release $tap-time $hold-time (multi l @tap) ralt)
+  ; (tap-hold-release $tap-time $hold-time (multi ; @tap) rmet)
+  v (tap-hold-release $tap-time $hold-time (multi v @tap) @nav)
 )
 
-;; ___A___ ___S___ ___D___ ___F___ ___J___ ___K___ ___L___ ___;___
-;; __lmet_ __lalt_ __lctl_ __lsft_ __rsft_ __rclt_ __ralt_ __rmet_
+
+;; (deflayer arrows-while-held
+;;  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  @f12
+;;  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+;;  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+;; @caps a    s    d    f    g    h    j    k    l    ;    '    ret
+;;  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+;;  lctl   lmet lalt           spc             ralt rmet rctl
+;; )
