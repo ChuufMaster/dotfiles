@@ -65,6 +65,7 @@ bars = 100
 # For fifo 'source' will be the path to fifo-file.
 # For shmem 'source' will be /squeezelite-AA:BB:CC:DD:EE:FF where 'AA:BB:CC:DD:EE:FF' will be squeezelite's MAC address
 method = pulse
+# method = raw
 ; source = auto
 
 ; method = alsa
@@ -127,6 +128,7 @@ data_format = ascii
 
 # Ascii max value. In 'ascii' mode range will run from 0 to value specified here
 ; ascii_max_range = 1000
+# ascii_max_range = 9
 
 # Ascii delimiters. In ascii format each bar and frame is separated by a delimiters.
 # Use decimal value in ascii table (i.e. 59 = ';' and 10 = '\n' (line feed)).
