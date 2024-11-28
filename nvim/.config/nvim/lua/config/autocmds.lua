@@ -7,7 +7,7 @@ local function set_file_type(_pattern, _filetype)
 end
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-    pattern = "config.kbd",
+    pattern = "**/kanata/**.kbd",
     callback = function()
         print("filtype kanata detected")
     end,

@@ -27,7 +27,7 @@ return { -- Autoformat
     opts = {
         notify_on_error = true,
         format_on_save = function(bufnr)
-            local disable_filetypes = { "c", "cpp", "python" }
+            local disable_filetypes = { "c", "cpp", "python", "css", "json" }
             if vim.tbl_contains(disable_filetypes, vim.bo[bufnr].filetype) then
                 return
             end
@@ -49,6 +49,7 @@ return { -- Autoformat
             lua = { "stylua" },
             markdown = { "markdownlint" },
             tex = { "latexindent" },
+            -- json = { "clang-format" },
             -- ["*"] = { "codespell" },
             -- yaml = { 'prettier'}
             -- Conform can also run multiple formatters sequentially

@@ -159,13 +159,15 @@ local servers = {
     markdownlint = {},
     -- omnisharp = {},
     -- pylsp = {},
-    ruff_lsp = {},
+    ruff = {},
     yamlls = {},
     actionlint = {},
     dockerls = {},
+    cssls = {},
     -- ruby_lsp = {},
     solargraph = {},
     -- csharp_ls = {},
+    jsonls = {},
     docker_compose_language_service = {},
     sqlls = {
         filetypes = { "sql" },
@@ -253,7 +255,7 @@ return {
         })
 
         -- require("lspconfig").jdtls.setup({})
-        require("lspconfig").racket_langserver.setup({})
+        -- require("lspconfig").racket_langserver.setup({})
         require("lspconfig").prolog_ls.setup({
             cmd = {
                 "swipl",

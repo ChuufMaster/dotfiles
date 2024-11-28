@@ -2,7 +2,7 @@ return {
     "seblj/roslyn.nvim",
     ft = "cs",
     -- opts = {},
-    -- dev = true,
+    dev = true,
     -- init = function()
     --     vim.cmd("!source ~/.config/zshrc/functions.zsh; randomfiglet yes")
     -- end,

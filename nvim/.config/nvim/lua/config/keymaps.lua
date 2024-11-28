@@ -29,13 +29,14 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -5<CR>", {desc = "Decrease Window Width"})
-vim.keymap.set("n", "<C-Down>", "<cmd>resize -5<CR>", {desc = "Decrease Window Height"})
-vim.keymap.set("n", "<C-Up>", "<cmd>resize +5<CR>", {desc = "Increase Window Height"})
-vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +5<CR>", {desc = "Increase Window Width"})
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -5<CR>", { desc = "Decrease Window Width" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -5<CR>", { desc = "Decrease Window Height" })
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +5<CR>", { desc = "Increase Window Height" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +5<CR>", { desc = "Increase Window Width" })
 -- Vim remap overides
 
-vim.keymap.set("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
+-- vim.keymap.set("i", "<C-b>", "<Esc><S-I>", { desc = "Beginning of line" })
+vim.keymap.set("i", "<C-b>", "<End>", { desc = "Beginning of line" })
 vim.keymap.set("i", "<C-e>", "<End>", { desc = "End of line" })
 
 -- navigate within insert mode
@@ -55,6 +56,7 @@ vim.keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 vim.keymap.set("n", "<C-q>", "ggVG", { desc = "Select the whole file" })
 
 vim.keymap.set("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
+vim.keymap.set("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
 
 vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
@@ -76,4 +78,4 @@ vim.keymap.set("n", "<leader>ir", function()
     print("Images refreshed")
 end, { desc = "Refresh images" })
 
-vim.keymap.set("n", "<leader>ts", "<cmd>set spell!<CR>" , {desc = "[ T ]oggle [ S ]pelling"})
+vim.keymap.set("n", "<leader>ts", "<cmd>set spell!<CR>", { desc = "[ T ]oggle [ S ]pelling" })

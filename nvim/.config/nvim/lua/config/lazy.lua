@@ -49,7 +49,7 @@ require("lazy").setup({
     --[[ changed_detection = {
         notify = false,
     }, ]]
-    -- rocks = { hererocks = true },
+    rocks = { hererocks = true },
     performance = {
         cache = {
             enabled = true,
@@ -59,7 +59,7 @@ require("lazy").setup({
                 "gzip",
                 -- "matchit",
                 -- "matchparen",
-                -- "netrwPlugin",
+                "netrwPlugin",
                 "rplugin",
                 "tarPlugin",
                 "tohtml",

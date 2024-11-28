@@ -1,45 +1,3 @@
-local kinds = {
-    Array = " ",
-    Boolean = "󰨙 ",
-    Class = " ",
-    Codeium = "󰘦 ",
-    Color = " ",
-    Control = " ",
-    Collapsed = " ",
-    Constant = "󰏿 ",
-    Constructor = " ",
-    Copilot = " ",
-    Enum = " ",
-    EnumMember = " ",
-    Event = " ",
-    Field = " ",
-    File = " ",
-    Folder = " ",
-    Function = "󰊕 ",
-    Interface = " ",
-    Key = " ",
-    Keyword = " ",
-    Method = "󰊕 ",
-    Module = " ",
-    Namespace = "󰦮 ",
-    Null = " ",
-    Number = "󰎠 ",
-    Object = " ",
-    Operator = " ",
-    Package = " ",
-    Property = " ",
-    Reference = " ",
-    Snippet = " ",
-    String = " ",
-    Struct = "󰆼 ",
-    TabNine = "󰏚 ",
-    Text = " ",
-    TypeParameter = " ",
-    Unit = " ",
-    Value = " ",
-    Variable = "󰀫 ",
-}
-
 local lsp_icons = {
     Array = "󰅪 ",
     Boolean = " ",
@@ -140,7 +98,7 @@ return {
                 "rafamadriz/friendly-snippets",
             },
         },
-        "quangnguyen30192/cmp-nvim-ultisnips",
+        { "f3fora/cmp-spell" },
     },
     config = function(opts)
         local cmp = require("cmp")
@@ -148,7 +106,6 @@ return {
         local types = require("cmp.types")
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
-        local auto_select = true
 
         ---@type table<integer, integer>
         local modified_priority = {
@@ -164,8 +121,6 @@ return {
         end
         require("luasnip.loaders.from_vscode").lazy_load()
         opts = {
-            -- auto_brackets = {},
-
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
@@ -173,19 +128,37 @@ return {
             },
             sources = {
                 { name = "nvim_lsp" },
-                { name = "luasnip" },
-                { name = "ultisnips" },
+                { name = "luasnip", keyword_length = 3 },
                 { name = "path" },
-                { name = "vimtex" },
+                { name = "vimtex", keyword_length = 3 },
+                {
+                    name = "spell",
+                    option = {
+                        keep_all_entries = false,
+                        enable_in_context = function(params)
+                            return require("cmp.config.context").in_treesitter_capture("spell")
+                        end,
+                        preselect_correct_word = true,
+                    },
+                },
                 {
                     name = "buffer",
+                    keyword_length = 3,
                     option = {
                         get_bufnrs = function()
-                            local bufs = {}
-                            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                            local bufs = vim.api.nvim_list_bufs()
+                            local result = {}
+                            for _, v in ipairs(bufs) do
+                                local byt_size = vim.api.nvim_buf_get_offset(v, vim.api.nvim_buf_line_count(v))
+                                if byt_size < 1024 * 1024 then
+                                    result[#result + 1] = v
+                                end
+                            end
+                            return result
+                            --[[ for _, win in ipairs(vim.api.nvim_list_wins()) do
                                 bufs[vim.api.nvim_win_get_buf(win)] = true
                             end
-                            return vim.tbl_keys(bufs)
+                            return vim.tbl_keys(bufs) ]]
                         end,
                     },
                 },
@@ -215,11 +188,6 @@ return {
             },
             sorting = {
                 comparators = {
-                    -- cmp.config.compare.offset,
-                    -- cmp.config.compare.exact,
-                    -- cmp.config.compare.score,
-                    -- cmp.config.compare.recently_used,
-                    -- cmp.config.compare.kind,
                     compare.exact,
                     compare.recently_used,
                     function(entry1, entry2) -- sort by compare kind (Variable, Function etc)
@@ -263,10 +231,31 @@ return {
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
                 ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-                ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-                ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if luasnip.expandable() then
+                        luasnip.expand()
+                    elseif cmp.visible() then
+                        cmp.select_next_item()
+                    elseif luasnip.jumpable(1) then
+                        luasnip.jump(1)
+                        --NOTE:look at tabout for tabbing out of brackets and such
+                        -- elseif vim.api.nvim_get_mode().mode == 'i' then
+                        --     tabout.tabout()
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item()
+                    elseif luasnip.jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
                 ["<C-Space>"] = cmp.mapping.complete({}),
-                ["<CR>"] = cmp.mapping.confirm({ select = auto_select }),
+                ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
                 ["<C-y>"] = cmp.mapping.confirm({ select = true }),
                 ["<S-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                 ["<C-CR>"] = function(fallback)
@@ -287,7 +276,7 @@ return {
         -- `/` cmdline setup.
         cmp.setup.cmdline("/", {
             mapping = cmp.mapping.preset.cmdline({
-                ["<CR>"] = cmp.mapping.confirm({ select = auto_select }),
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
             }),
             sources = {
                 { name = "buffer" },
@@ -296,7 +285,7 @@ return {
         -- `:` cmdline setup.
         cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline({
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
                 ["<S-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
             }),
             sources = cmp.config.sources({
