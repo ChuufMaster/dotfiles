@@ -27,4 +27,3 @@ jq -c '.[]' $path/hyprctl.json | while read i; do
     echo ":: Execute: hyprctl keyword $key $val"
     hyprctl keyword $key $val
 done
-
