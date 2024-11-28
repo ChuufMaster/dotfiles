@@ -1,5 +1,6 @@
 # zsh parameter completion for the dotnet CLI
 source ~/.fastlane/completions/completion.zsh
+source ~/qmk_firmware/util/qmk_tab_complete.sh
 
 _dotnet_zsh_complete() 
 {

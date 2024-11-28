@@ -30,6 +30,7 @@ ueberzug_scale = 1
 ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
+edit_dir = [{ run = "nvim", desc = "$EDITOR", block = true, for = "unix" }]
 edit = [
     { run = 'nvim "$@"', desc = "$EDITOR", block = true, for = "unix" },
     { run = 'code %*', orphan = true, desc = "code", for = "windows" },
@@ -40,6 +41,13 @@ open = [
     { run = 'open "$@"', block = true, desc = "Open", for = "macos" },
     { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
 ]
+
+open_ophan = [
+    { run = 'xdg-open "$1"', orphan = true, desc = "Open", for = "linux" },
+    { run = 'open "$@"', block = true, desc = "Open", for = "macos" },
+    { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
+]
+
 reveal = [
     { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "linux" },
     { run = 'open -R "$1"', desc = "Reveal", for = "macos" },
@@ -60,7 +68,7 @@ play = [
 rules = [
     # Folder
     { name = "*/", use = [
-        "edit",
+        "edit_dir",
         "open",
         "reveal",
     ] },
@@ -74,6 +82,10 @@ rules = [
     { mime = "image/*", use = [
         "open",
         "reveal",
+    ] },
+    # PDF
+    { name = "*.pdf", use = [
+        "open_ophan",
     ] },
     # Media
     { mime = "{audio,video}/*", use = [

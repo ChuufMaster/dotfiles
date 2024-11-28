@@ -11,3 +11,4 @@ source $CONFIG_ZSH/general.zsh
 source $CONFIG_ZSH/plugins.zsh
 source $CONFIG_ZSH/after.zsh
 source $CONFIG_ZSH/completions.zsh
+# ~/projects/color_output/test.py

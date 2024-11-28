@@ -3,6 +3,10 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 # CUSTOM
+[[manager.prepend_keymap]]
+on = "!"
+run = 'shell "$SHELL" --block --confirm'
+desc = "Open shell here"
 
 [[manager.prepend_keymap]]
 on = "y"

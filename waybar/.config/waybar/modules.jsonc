@@ -1,4 +1,3 @@
-// vim: filetype=jsonc
 //  __  __           _       _            
 // |  \/  | ___   __| |_   _| | ___  ___  
 // | |\/| |/ _ \ / _` | | | | |/ _ \/ __| 
@@ -6,40 +5,47 @@
 // |_|  |_|\___/ \__,_|\__,_|_|\___||___/ 
 //                                        
 //  
-// by Stephan Raabe (2023) 
+// changed from Stephan Raabe (2023) by ChuufMaster
 // ----------------------------------------------------- 
 //
 {
     // Workspaces
-    "hyprland/workspaces" : {
+    "hyprland/workspaces": {
         "on-click": "activate",
         "active-only": false,
         "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "󰙯",
-        "4": "",
-        "5": "",
+            "1": "",
+            "2": "",
+            "3": "󰙯",
+            "4": "",
+            "5": ""
         },
         "persistent-workspaces": {
-        "*": 5
+            "*": 5
         }
     },
-
     // Hyprland Window
     "hyprland/window": {
+        "format": "{initialTitle}",
+        "icon": true,
         "rewrite": {
+            "Spotify": " Spotify",
             "(.*) - Brave": "$1",
             "(.*) - Chromium": "$1",
             "(.*) - Brave Search": "$1",
             "(.*) - Outlook": "$1",
-            "(.*) Microsoft Teams": "$1"
+            "(.*\/.*):.*": "$1 ",
+            "(.*):.* (.*\/.*? )— Mozilla Firefox": "$1 $2 ",
+            "(.*) — Arch manual pages — Mozilla Firefox": "$1 ",
+            "(.*):.*": "$1",
+            "(.*) — Mozilla Firefox": "$1",
+            "(.*) Microsoft Teams": "$1",
+            "(.{30}).*": "$1..."
         },
         "separate-outputs": true
     },
-
     // Rofi Application Launcher
     "custom/appmenu": {
         "format": "Apps",
@@ -48,15 +54,21 @@
         "on-click-right": "~/.config/ml4w/scripts/keybindings.sh",
         "tooltip": false
     },
-    
     // Power Menu
     "custom/exit": {
         "format": "",
         "tooltip-format": "Powermenu",
         "on-click": "wlogout -b 4",
-        "tooltip": false
+        "menu": "on-click-right",
+        "tooltip": false,
+        "menu-file": "~/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "shutdown",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate",
+        }
     },
-
     // Keyboard State
     "keyboard-state": {
         "numlock": true,
@@ -67,50 +79,42 @@
             "unlocked": ""
         }
     },
-
     // System tray
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
-
     // Clock
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
-
     // System
     "custom/system": {
         "format": "",
         "tooltip": false
     },
-
     // CPU
     "cpu": {
         "format": "/ C {usage}% ",
         "on-click": "kitty -e htop"
     },
-
     // Memory
     "memory": {
         "format": "/ M {}% ",
         "on-click": "kitty -e htop"
     },
-
     // Harddisc space used
     "disk": {
         "interval": 30,
         "format": "D {percentage_used}% ",
         "path": "/",
         "on-click": "kitty -e htop"
-    }, 
-
+    },
     "hyprland/language": {
         "format": "/ K {short}"
     },
-
     // Group Hardware
     "group/hardware": {
         "orientation": "inherit",
@@ -118,7 +122,7 @@
             "transition-duration": 300,
             "children-class": "not-memory",
             "transition-left-to-right": false
-        },        
+        },
         "modules": [
             "custom/system",
             "disk",
@@ -127,8 +131,7 @@
             "hyprland/language"
         ]
     },
-    
-   // Network
+    // Network
     "network": {
         "format": "{ifname}",
         "format-wifi": "   {signalStrength}%",
@@ -141,7 +144,6 @@
         "max-length": 50,
         "on-click": "kitty -e nmtui"
     },
-
     // Battery
     "battery": {
         "states": {
@@ -155,9 +157,14 @@
         "format-alt": "{icon}  {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ]
     },
-
     // Pulseaudio
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -174,11 +181,14 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", " ", " "]
+            "default": [
+                "",
+                " ",
+                " "
+            ]
         },
         "on-click": "pavucontrol"
     },
-
     // Bluetooth
     "bluetooth": {
         "format-disabled": "",
@@ -187,41 +197,39 @@
         "format-no-controller": "",
         "on-click": "kitty -e bluetui"
     },
-
     // Other
     "user": {
         "format": "{user}",
         "interval": 60,
-        "icon": false,
+        "icon": false
     },
-
     // Idle Inhibator
     "idle_inhibitor": {
         "format": "{icon}",
         "tooltip": true,
-        "format-icons":{
+        "format-icons": {
             "activated": "",
             "deactivated": ""
         },
-        "on-click-right": "hyprlock"        
+        "on-click-right": "hyprlock"
     },
     "custom/notify": {
         "format": "󰂚",
         "on-click": "~/scripts/dunsthistory.sh",
-        "tooltip": false,
+        "tooltip": false
     },
     "custom/notification": {
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-          "notification": "<span foreground='red'><sup></sup></span>",
-          "none": "",
-          "dnd-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-none": "",
-          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "inhibited-none": "",
-          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-inhibited-none": ""
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
         },
         "return-type": "json",
         "exec-if": "which swaync-client",
@@ -231,7 +239,7 @@
         "escape": true
     },
     "cava": {
-       // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+        // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
         "framerate": 120,
         "autosens": 1,
         // "sensitivity": 100,
@@ -247,9 +255,51 @@
         "waves": false,
         "noise_reduction": 0.77,
         "input_delay": 2,
-        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "format-icons": [
+            "▁",
+            "▂",
+            "▃",
+            "▄",
+            "▅",
+            "▆",
+            "▇",
+            "█"
+        ],
         "actions": {
-                   "on-click-right": "mode"
-                   }
+            "on-click-right": "mode"
+        }
     },
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "ignored-players": [
+            "firefox"
+        ],
+        "interval": 1,
+        "dynamic-order": [
+            "artist",
+            "title",
+            "position",
+            "length"
+        ]
+    },
+    "gamemode": {
+        "format": "{glyph}",
+        "format-alt": "{glyph} {count}",
+        "glyph": "",
+        "hide-not-running": true,
+        "use-icon": true,
+        "icon-name": "input-gaming-symbolic",
+        "icon-spacing": 4,
+        "icon-size": 20,
+        "tooltip": true,
+        "tooltip-format": "Games running: {count}"
+    }
 }
