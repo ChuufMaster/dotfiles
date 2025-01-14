@@ -70,7 +70,7 @@ require("lazy").setup({
     },
 })
 
-icons = {
+_G.icons = {
     misc = {
         dots = "󰇘",
     },

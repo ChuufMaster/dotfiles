@@ -78,4 +78,4 @@ vim.keymap.set("n", "<leader>ir", function()
     print("Images refreshed")
 end, { desc = "Refresh images" })
 
-vim.keymap.set("n", "<leader>ts", "<cmd>set spell!<CR>", { desc = "[ T ]oggle [ S ]pelling" })
+vim.keymap.set("n", "<leader>ts", "<cmd>set spell!<CR>", { desc = "[T]oggle [S]pelling" })

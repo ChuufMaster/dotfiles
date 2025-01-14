@@ -77,7 +77,7 @@ zathura_update
 webcord_update
 reload_kitty
 set_spicetify
-~/scripts/reload-waybar.sh
+# ~/scripts/reload-waybar.sh
 
 swww query
 if [ $? -eq 1 ]; then
