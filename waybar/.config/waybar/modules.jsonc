@@ -239,6 +239,12 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
+    "custom/headset_battery": {
+        "tooltip": false,
+        "format": "󰋋 {} ",
+        "interval": 30,
+        "exec": "headsetcontrol -b | grep -o 'Level.*'"
+    },
     "cava": {
         // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
         "framerate": 120,

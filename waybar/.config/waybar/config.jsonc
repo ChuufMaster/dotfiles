@@ -25,6 +25,7 @@
     ],
     "modules-right": [
         "custom/notification",
+        "custom/headset_battery",
         "pulseaudio",
         "network",
         "cpu",
