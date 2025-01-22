@@ -44,7 +44,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         }
     end,
     keys = {
-
+        --[[ 
         { "<leader>fh", builtin.help_tags, desc = "[F]ind [H]elp" },
         { "<leader>fk", builtin.keymaps, desc = "[F]ind [K]eymaps" },
         { "<leader>ff", builtin.find_files, desc = "[F]ind [F]iles" },
@@ -55,9 +55,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
         { "<leader>fr", builtin.resume, desc = "[F]ind [R]esume" },
         { "<leader>f.", builtin.oldfiles, desc = '[F]ind Recent Files ("." for repeat)' },
         { "<leader><leader>", builtin.buffers, desc = "[ ] Find existing buffers" },
-        { "<leader>fF", "<cmd>Telescope flutter commands<CR>", desc = "[F]ind [F]lutter commands" },
-        { "<leader>fo", builtin.vim_options, desc = "[F]ind [O]ptions" },
-        { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
 
         { "<leader>fp", builtin.builtin, desc = "[F]ind [P]ickers" },
 
@@ -69,7 +66,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
         { "<leader>li", builtin.lsp_implementations, desc = "[L]sp [I]mplementations" },
         { "<leader>lD", builtin.lsp_definitions, desc = "[L]sp [D]efinitions" },
         { "<leader>lt", builtin.lsp_type_definitions, desc = "[L]sp [T]ype definitions" },
+    ]]
 
+        { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
+        { "<leader>fF", "<cmd>Telescope flutter commands<CR>", desc = "[F]ind [F]lutter commands" },
+        { "<leader>fo", builtin.vim_options, desc = "[F]ind [O]ptions" },
         -- Slightly advanced example of overriding default behavior and theme
         {
             "<leader>/",

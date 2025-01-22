@@ -81,7 +81,18 @@ return {
         gitbrowse = {
             enabled = true,
         },
+        picker = {
+            enabled = true,
+            win = {
+                input = {
+                    keys = {
+                        ["<Esc>"] = { "close", mode = { "n", "i" } },
+                    },
+                },
+            },
+        },
     },
+    -- stylua: ignore
     keys = {
         {
             "<leader>go",
@@ -101,6 +112,40 @@ return {
             end,
             desc = "[T]oggle [D]im",
         },
+        -- [ Picker keys ]
+        { "<leader>fh", function() Snacks.picker.help() end, desc = "[F]ind [H]elp" },
+        { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "[F]ind [K]eymaps" },
+        { "<leader>ff", function() Snacks.picker.files() end, desc = "[F]ind [F]iles" },
+        { "<leader>fs", function() Snacks.picker.pickers() end, desc = "[F]ind [S]elect Telescope" },
+        { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "[F]ind current [W]ord" },
+        { "<leader>fg", function() Snacks.picker.grep() end, desc = "[F]ind by [G]rep" },
+        { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "[F]ind [D]iagnostics" },
+        { "<leader>fr", function() Snacks.picker.resume() end, desc = "[F]ind [R]esume" },
+        { "<leader>f.", function() Snacks.picker.recent() end, desc = '[F]ind Recent Files ("." for repeat)' },
+        { "<leader>fc", function() Snacks.picker.commands() end, desc = '[F]ind [C]ommands' },
+        { "<leader>fa", function() Snacks.picker.autocmds() end, desc = '[F]ind [A]uto commands' },
+        { "<leader><leader>", function() Snacks.picker.buffers() end, desc = "[ ] Find existing buffers" },
+        -- { "<leader>fF", "<cmd>Telescope flutter commands<CR>", desc = "[F]ind [F]lutter commands" },
+        -- TODO: 
+        -- { "<leader>fo", function() Snacks.picker.vim_options() end, desc = "[F]ind [O]ptions" },
+        { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
+
+        { "<leader>fp", function() Snacks.picker.pickers() end, desc = "[F]ind [P]ickers" },
+        { "<leader>ft", function() Snacks.picker.todo_comments() end, desc = "[F]ind [T]odo" },
+
+        --- Telescope lsp pickers
+        { "<leader>lr", function() Snacks.picker.lsp_references() end, desc = "[L]sp [R]eferences" },
+        { "<leader>lsd", function() Snacks.picker.lsp_symbols() end, desc = "[L]sp [S]ymbols [D]ocument" },
+        -- { "<leader>lsw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "[L]sp [S]ymbols [W]orkspace" },
+        { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "[L]sp [D]iagnostics" },
+        { "<leader>li", function() Snacks.picker.lsp_implementations() end, desc = "[L]sp [I]mplementations" },
+        { "<leader>lD", function() Snacks.picker.lsp_definitions() end, desc = "[L]sp [D]efinitions" },
+        { "<leader>lt", function() Snacks.picker.lsp_type_definitions() end, desc = "[L]sp [T]ype definitions" },
+
+        -- picker unique
+        { "<leader>ph", function() Snacks.picker.cliphist() end, desc = "[P]ick [H]istory}" },
+        { "<leader>pu", function() Snacks.picker.undo() end, desc = "[P]ick [U]dotree" },
+        { "<leader>pc", function() Snacks.picker.colorschemes() end, desc = "[P]ick [C]olorscheme" }
     },
     init = function()
         vim.api.nvim_create_autocmd("User", {
