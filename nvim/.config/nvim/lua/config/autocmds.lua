@@ -136,19 +136,29 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.wrap = true
         vim.opt_local.spell = true
         vim.opt_local.formatoptions = "btcqln"
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.keymap.set(
+            "v",
+            "<leader>b",
+            "sa*<esc>F*vf*sa*f*l",
+            { remap = true, desc = "Surround selection in two stars" }
+        )
+        vim.keymap.set("i", "<C-o>", "<Esc>o", { desc = "Make ctrl-o be enter in markdown", remap = true })
     end,
 })
 
 -- Set local options for vimtex
-vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
-    group = augroup("vimtex"),
-    pattern = { "tex", "latex" },
-    callback = function()
-        vim.opt_local.foldmethod = "expr"
-        vim.opt_local.foldexpr = "vimtex#fold#level(v:lnum)"
-        vim.opt_local.foldtext = "vimtex#fold#text()"
-    end,
-})
+-- vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+--     group = augroup("vimtex"),
+--     pattern = { "tex", "latex" },
+--     callback = function()
+--         vim.opt_local.foldmethod = "expr"
+--         vim.opt_local.foldexpr = "vimtex#fold#level(v:lnum)"
+--         vim.opt_local.foldtext = "vimtex#fold#text()"
+--     end,
+-- })
 
 -- Fix conceallevel for json files
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -173,6 +183,35 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- When leaving vim fix the cursor
 -- without this I was always having the cursor be a block when leaving vim
+
 vim.cmd([[
   au VimLeave * set guicursor=a:ver10-blinkwait800
 ]])
+
+-- -- Dim inactive windows
+-- vim.cmd("highlight default DimInactiveWindows guifg=#666666")
+--
+-- -- When leaving a window, set all highlight groups to a "dimmed" hl_group
+-- vim.api.nvim_create_autocmd({ "WinLeave" }, {
+--     callback = function()
+--         local highlights = {}
+--         for hl, _ in pairs(vim.api.nvim_get_hl(0, {})) do
+--             table.insert(highlights, hl .. ":DimInactiveWindows")
+--         end
+--         vim.wo.winhighlight = table.concat(highlights, ",")
+--     end,
+-- })
+--
+-- -- when entering a window, restore all highlight groups to original
+-- vim.api.nvim_create_autocmd({ "WinEnter" }, {
+--     callback = function()
+--         vim.wo.winhighlight = ""
+--     end,
+-- })
+
+-- split help to the right
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "Automatically Split help Buffers to the right",
+    pattern = "help",
+    command = "wincmd L",
+})

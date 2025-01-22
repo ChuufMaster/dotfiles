@@ -47,6 +47,7 @@ vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move cursor to middle" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move cursor to middle" })
+vim.keymap.set("n", "G", "Gzz", { desc = "Move cursor to bottom of buffer and center" })
 vim.keymap.set("n", "<Esc>", "<cmd> noh <CR><cmd>Noice dismiss<CR>", { desc = "Clear highlights" })
 
 vim.keymap.set("n", "<C-s>", "<cmd> w <CR>", { desc = "Save file" })
@@ -57,10 +58,12 @@ vim.keymap.set("n", "<C-q>", "ggVG", { desc = "Select the whole file" })
 
 vim.keymap.set("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 vim.keymap.set("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
+vim.keymap.set({ "v", "n" }, "H", "^", { desc = "Go to Beginning of line" })
+vim.keymap.set({ "v", "n" }, "L", "$", { desc = "Go to End of line" })
 
 vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
-vim.keymap.set("i", "<C-O>", "<Esc>o", { desc = "Insert new line below" })
+vim.keymap.set("i", "<C-O>", "<Esc>o", { desc = "Insert new line below", remap = true })
 
 vim.keymap.set("n", "<leader>ic", function()
     -- This is the command that clears the images
@@ -79,3 +82,44 @@ vim.keymap.set("n", "<leader>ir", function()
 end, { desc = "Refresh images" })
 
 vim.keymap.set("n", "<leader>ts", "<cmd>set spell!<CR>", { desc = "[T]oggle [S]pelling" })
+-- stylua: ignore
+vim.keymap.set("n", "[s", "[s<cmd>WhichKey z=<cr>", { remap = true, desc = "go to spelling mistake and prompt for correction" })
+-- stylua: ignore
+vim.keymap.set("n", "]s", "]s<cmd>WhichKey z=<cr>", { remap = true, desc = "go to spelling mistake and prompt for correction" })
+vim.keymap.set("n", "yc", "yygccp", { remap = true, desc = "[Y]ank [C]omment" })
+
+-- Alt + jk to move line up/down
+vim.keymap.set("n", "<A-j>", ":m .+1<cr>==", { noremap = true, silent = true, desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", ":m .-2<cr>==", { noremap = true, silent = true, desc = "Move line up" })
+vim.keymap.set(
+    "i",
+    "<A-j>",
+    "<Esc>:m .+1<cr>==gi",
+    { noremap = true, silent = true, desc = "Move line down (insert mode)" }
+)
+vim.keymap.set(
+    "i",
+    "<A-k>",
+    "<Esc>:m .-2<cr>==gi",
+    { noremap = true, silent = true, desc = "Move line up (insert mode)" }
+)
+vim.keymap.set("x", "<A-j>", ":m '>+1<cr>gv=gv", { noremap = true, silent = true, desc = "Move block down" })
+vim.keymap.set("x", "<A-k>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true, desc = "Move block up" })
+
+vim.keymap.set("n", "<leader>L", "<CMD>Lazy<CR>", { desc = "Open the lazy UI" })
+
+vim.keymap.set("n", "gG", "gg<S-v>G", { desc = "Select all" })
+
+vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>", { silent = false, desc = "vertically split buffer" })
+vim.keymap.set("n", "<leader>|", "<cmd>split<cr>", { silent = false, desc = "horizontally split buffer" })
+
+vim.keymap.set("n", "<leader>G", "G<cmd>%norm! gww<cr>zz", { desc = "format and go to the bottom of buffer" })
+
+local surround_map = function(character)
+    vim.keymap.set("v", "<leader>" .. character, "sa" .. character, { remap = true, desc = "Surround selection" })
+end
+
+local surround_char = { "'", '"', "[", "]", "{", "}", "(", ")", "`", "<", ">", "*" }
+for _, char in pairs(surround_char) do
+    surround_map(char)
+end
