@@ -170,6 +170,7 @@ local servers = {
     jsonls = {},
     docker_compose_language_service = {},
     sqlls = {
+
         filetypes = { "sql" },
     },
     texlab = {

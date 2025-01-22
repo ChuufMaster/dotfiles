@@ -234,22 +234,22 @@ return {
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if luasnip.expandable() then
                         luasnip.expand()
-                    elseif cmp.visible() then
-                        cmp.select_next_item()
                     elseif luasnip.jumpable(1) then
                         luasnip.jump(1)
                         --NOTE:look at tabout for tabbing out of brackets and such
                         -- elseif vim.api.nvim_get_mode().mode == 'i' then
                         --     tabout.tabout()
+                    elseif cmp.visible() then
+                        cmp.select_next_item()
                     else
                         fallback()
                     end
                 end, { "i", "s" }),
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
+                    if luasnip.jumpable(-1) then
                         luasnip.jump(-1)
+                    elseif cmp.visible() then
+                        cmp.select_prev_item()
                     else
                         fallback()
                     end

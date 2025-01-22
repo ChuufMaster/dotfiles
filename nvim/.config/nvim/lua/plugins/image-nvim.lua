@@ -1,7 +1,7 @@
 return {
     {
         "3rd/image.nvim",
-        -- enabled = false,
+        enabled = false,
         ft = { "markdown" },
         config = function()
             local opts = {
@@ -10,7 +10,7 @@ return {
                 integrations = {
                     markdown = {
                         enabled = true,
-                        clear_in_insert_mode = false,
+                        clear_in_insert_mode = true,
                         download_remote_images = true,
                         only_render_image_at_cursor = true,
                         filetypes = { "markdown", "vimwiki" },
@@ -35,8 +35,14 @@ return {
 
                 max_height_window_percentage = 40,
 
-                window_overlap_clear_enabled = false,
-                window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+                window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+                window_overlap_clear_ft_ignore = {
+                    "cmp_menu",
+                    "cmp_docs",
+                    "snacks_notif",
+                    "scrollview",
+                    "scrollview_sign",
+                },
 
                 editor_only_render_when_focused = true,
 
@@ -56,7 +62,7 @@ return {
         "HakonHarnes/img-clip.nvim",
         -- event = 'VeryLazy',
         ft = { "markdown" },
-        -- enabled = false,
+        enabled = false,
         opts = {
             -- add options here
             -- or leave it empty to use the default settings

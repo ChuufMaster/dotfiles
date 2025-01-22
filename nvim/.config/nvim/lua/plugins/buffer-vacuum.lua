@@ -4,6 +4,6 @@ return {
     lazy = false,
     opts = {
         max_buffers = 6,
-        enable_messages = true,
+        enable_messages = false,
     },
 }
