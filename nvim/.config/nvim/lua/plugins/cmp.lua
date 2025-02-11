@@ -1,70 +1,3 @@
-local lsp_icons = {
-    Array = "󰅪 ",
-    Boolean = " ",
-    BreakStatement = "󰙧 ",
-    Call = "󰃷 ",
-    CaseStatement = "󱃙 ",
-    Class = " ",
-    Color = "󰏘 ",
-    Constant = "󰏿 ",
-    Constructor = " ",
-    ContinueStatement = "→ ",
-    Copilot = " ",
-    Declaration = "󰙠 ",
-    Delete = "󰩺 ",
-    DoStatement = "󰑖 ",
-    Enum = " ",
-    EnumMember = " ",
-    Event = " ",
-    Field = " ",
-    File = "󰈔 ",
-    Folder = "󰉋 ",
-    ForStatement = "󰑖 ",
-    Function = "󰊕 ",
-    Identifier = "󰀫 ",
-    IfStatement = "󰇉 ",
-    Interface = " ",
-    Key = "󰌋 ",
-    Keyword = "󰌋 ",
-    List = "󰅪 ",
-    Log = "󰦪 ",
-    Lsp = " ",
-    Macro = "󰁌 ",
-    MarkdownH1 = "󰉫 ",
-    MarkdownH2 = "󰉬 ",
-    MarkdownH3 = "󰉭 ",
-    MarkdownH4 = "󰉮 ",
-    MarkdownH5 = "󰉯 ",
-    MarkdownH6 = "󰉰 ",
-    Method = "󰆧 ",
-    Module = "󰏗 ",
-    Namespace = "󰅩 ",
-    Null = "󰢤 ",
-    Number = "󰎠 ",
-    Object = "󰅩 ",
-    Operator = "󰆕 ",
-    Package = "󰆦 ",
-    Property = " ",
-    Reference = "󰦾 ",
-    Regex = " ",
-    Repeat = "󰑖 ",
-    Scope = "󰅩 ",
-    Snippet = "󰩫 ",
-    Specifier = "󰦪 ",
-    Statement = "󰅩 ",
-    String = "󰉾 ",
-    Struct = " ",
-    SwitchStatement = "󰺟 ",
-    Terminal = " ",
-    Text = " ",
-    Type = " ",
-    TypeParameter = "󰆩 ",
-    Unit = " ",
-    Value = "󰎠 ",
-    Variable = "󰀫 ",
-    WhileStatement = "󰑖 ",
-}
-
 return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -74,12 +7,13 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-        "hrsh7th/cmp-emoji",
-        "chrisgrieser/cmp-nerdfont",
         "saadparwaiz1/cmp_luasnip",
-        "kdheepak/cmp-latex-symbols",
+        -- "hrsh7th/cmp-emoji",
+        -- "chrisgrieser/cmp-nerdfont",
+        -- "kdheepak/cmp-latex-symbols",
         {
             "micangl/cmp-vimtex",
+            ft = { "latex" },
             keys = {
                 {
                     "<C-s>",
@@ -97,6 +31,7 @@ return {
             dependencies = {
                 "rafamadriz/friendly-snippets",
             },
+            build = "make install_jsregexp",
         },
         { "f3fora/cmp-spell" },
     },
@@ -120,17 +55,20 @@ return {
             return modified_priority[kind] or kind
         end
         require("luasnip.loaders.from_vscode").lazy_load()
+
         opts = {
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
                 end,
             },
-            sources = {
+            sources = cmp.config.sources({
                 { name = "nvim_lsp" },
+                { name = "lazydev", group_index = 0 },
                 { name = "luasnip", keyword_length = 3 },
                 { name = "path" },
-                { name = "vimtex", keyword_length = 3 },
+            }, {
+
                 {
                     name = "spell",
                     option = {
@@ -162,32 +100,30 @@ return {
                         end,
                     },
                 },
-                { name = "emoji" },
-                { name = "nerdfont" },
-                { name = "latex_symbols" },
-            },
+                -- { name = "vimtex", keyword_length = 3 },
+                -- { name = "emoji" },
+                -- { name = "nerdfont" },
+                -- { name = "latex_symbols" },
+            }),
             formatting = {
-                format = lspkind.cmp_format(),
-            },
-            oldformatting = {
-                fields = { "kind", "abbr", "menu" },
-                format = function(entry, vim_item)
-                    vim_item.kind = string.format("%s %s", lsp_icons[vim_item.kind], vim_item.kind)
-                    vim_item.menu = ({
-                        nvim_lsp = "[LSP]",
-                        luasnip = "[LuaSnip]",
-                        buffer = "[Buff]",
-                        path = "[Path]",
-                        dictionary = "[Text]",
-                        spell = "[Spell]",
-                        latex_symbols = "[LaTeX]",
-                        vimtex = vim_item.menu,
-                    })[entry.source.name]
-                    return vim_item
-                end,
+                format = lspkind.cmp_format({
+                    maxwidth = {
+                        menu = 15,
+                        abbr = 15,
+                    },
+                    ellipsis_char = "...",
+                    show_labelDetails = true,
+                }),
             },
             sorting = {
                 comparators = {
+                    function(entry1, entry2) -- score by lsp, if available
+                        local t1 = entry1.completion_item.sortText
+                        local t2 = entry2.completion_item.sortText
+                        if t1 ~= nil and t2 ~= nil and t1 ~= t2 then
+                            return t1 < t2
+                        end
+                    end,
                     compare.exact,
                     compare.recently_used,
                     function(entry1, entry2) -- sort by compare kind (Variable, Function etc)
@@ -195,13 +131,6 @@ return {
                         local kind2 = modified_kind(entry2:get_kind())
                         if kind1 ~= kind2 then
                             return kind1 - kind2 < 0
-                        end
-                    end,
-                    function(entry1, entry2) -- score by lsp, if available
-                        local t1 = entry1.completion_item.sortText
-                        local t2 = entry2.completion_item.sortText
-                        if t1 ~= nil and t2 ~= nil and t1 ~= t2 then
-                            return t1 < t2
                         end
                     end,
                     compare.score,
