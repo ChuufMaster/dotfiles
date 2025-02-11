@@ -24,6 +24,7 @@ alias rvim="NVIM_APPNAME=nvim-refactor nvim"
 alias tmux="tmux -2"
 alias tm="tmux attach || tmux"
 alias vim=nvim
+alias vi=/usr/bin/vim
 
 # ACT
 alias act="act --secret-file .env --artifact-server-path /tmp/artifacts"
