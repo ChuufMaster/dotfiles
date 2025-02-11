@@ -1,6 +1,6 @@
 return {
     "aznhe21/actions-preview.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     config = function()
         local hl = require("actions-preview.highlight")
         require("actions-preview").setup({
@@ -24,7 +24,13 @@ return {
                 hl.delta("delta --no-gitconfig --side-by-side --paging=always"),
             },
         })
-        vim.keymap.set({ "v", "n" }, "<leader>a", require("actions-preview").code_actions)
     end,
-
+    keys = {
+        {
+            "<leader>a",
+            function()
+                require("actions-preview").code_actions()
+            end,
+        },
+    },
 }

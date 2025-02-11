@@ -1,7 +1,7 @@
 return {
     "ChuufMaster/buffer-vacuum",
-    dev = true,
-    lazy = false,
+    -- dev = true,
+    event = "BufEnter",
     opts = {
         max_buffers = 6,
         enable_messages = false,

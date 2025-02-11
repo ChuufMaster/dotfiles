@@ -1,6 +1,6 @@
 return { -- Autoformat
     "stevearc/conform.nvim",
-    event = { "BufWritePre" },
+    event = { "VeryLazy" },
     cmd = { "ConformInfo" },
     keys = {
         {
@@ -27,7 +27,7 @@ return { -- Autoformat
     opts = {
         notify_on_error = true,
         format_on_save = function(bufnr)
-            local disable_filetypes = { "c", "cpp", "python", "css", "json" }
+            local disable_filetypes = { "c", "cpp", "python", "css", "json", "toml" }
             if vim.tbl_contains(disable_filetypes, vim.bo[bufnr].filetype) then
                 return
             end
@@ -47,7 +47,7 @@ return { -- Autoformat
         end,
         formatters_by_ft = {
             lua = { "stylua" },
-            markdown = { "markdownlint" },
+            markdown = { "markdownlint-cli2" },
             tex = { "latexindent" },
             -- json = { "clang-format" },
             -- ["*"] = { "codespell" },

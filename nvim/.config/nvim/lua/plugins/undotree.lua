@@ -1,7 +1,7 @@
 return {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
-    lazy = false,
+    -- lazy = false,
     keys = {
         "<leader>tu",
         "UndotreeToggle",
