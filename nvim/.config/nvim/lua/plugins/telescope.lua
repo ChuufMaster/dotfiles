@@ -1,4 +1,4 @@
-local builtin = require("telescope.builtin")
+-- local builtin = require("telescope.builtin")
 return { -- Fuzzy Finder (files, lsp, etc)
     "nvim-telescope/telescope.nvim",
 
@@ -44,38 +44,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
         }
     end,
     keys = {
-        --[[ 
-        { "<leader>fh", builtin.help_tags, desc = "[F]ind [H]elp" },
-        { "<leader>fk", builtin.keymaps, desc = "[F]ind [K]eymaps" },
-        { "<leader>ff", builtin.find_files, desc = "[F]ind [F]iles" },
-        { "<leader>fs", builtin.builtin, desc = "[F]ind [S]elect Telescope" },
-        { "<leader>fw", builtin.grep_string, desc = "[F]ind current [W]ord" },
-        { "<leader>fg", builtin.live_grep, desc = "[F]ind by [G]rep" },
-        { "<leader>fd", builtin.diagnostics, desc = "[F]ind [D]iagnostics" },
-        { "<leader>fr", builtin.resume, desc = "[F]ind [R]esume" },
-        { "<leader>f.", builtin.oldfiles, desc = '[F]ind Recent Files ("." for repeat)' },
-        { "<leader><leader>", builtin.buffers, desc = "[ ] Find existing buffers" },
 
-        { "<leader>fp", builtin.builtin, desc = "[F]ind [P]ickers" },
-
-        --- Telescope lsp pickers
-        { "<leader>lr", builtin.lsp_references, desc = "[L]sp [R]eferences" },
-        { "<leader>lsd", builtin.lsp_document_symbols, desc = "[L]sp [S]ymbols [D]ocument" },
-        { "<leader>lsw", builtin.lsp_workspace_symbols, desc = "[L]sp [S]ymbols [W]orkspace" },
-        { "<leader>ld", builtin.diagnostics, desc = "[L]sp [D]iagnostics" },
-        { "<leader>li", builtin.lsp_implementations, desc = "[L]sp [I]mplementations" },
-        { "<leader>lD", builtin.lsp_definitions, desc = "[L]sp [D]efinitions" },
-        { "<leader>lt", builtin.lsp_type_definitions, desc = "[L]sp [T]ype definitions" },
-    ]]
-
-        { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
-        { "<leader>fF", "<cmd>Telescope flutter commands<CR>", desc = "[F]ind [F]lutter commands" },
-        { "<leader>fo", builtin.vim_options, desc = "[F]ind [O]ptions" },
+        -- { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
+        { "<leader>fo", require("telescope.builtin").vim_options, desc = "[F]ind [O]ptions" },
         -- Slightly advanced example of overriding default behavior and theme
         {
             "<leader>/",
             function()
-                builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+                require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
                     winblend = 10,
                     previewer = false,
                 }))
@@ -88,7 +64,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         {
             "<leader>s/",
             function()
-                builtin.live_grep({
+                require("telescope.builtin").live_grep({
                     grep_open_files = true,
                     prompt_title = "Live Grep in open files",
                 })
@@ -97,12 +73,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
         },
 
         -- Shortcut for searching your Neovim configuration files
-        {
-            "<leader>fn",
-            function()
-                builtin.find_files({ cwd = vim.fn.stdpath("config") })
-            end,
-            desc = "[F]ind [N]eovim files",
-        },
+        -- {
+        --     "<leader>fn",
+        --     function()
+        --         builtin.find_files({ cwd = vim.fn.stdpath("config") })
+        --     end,
+        --     desc = "[F]ind [N]eovim files",
+        -- },
     },
 }
