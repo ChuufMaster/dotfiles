@@ -87,6 +87,7 @@ vim.keymap.set("n", "[s", "[s<cmd>WhichKey z=<cr>", { remap = true, desc = "go t
 -- stylua: ignore
 vim.keymap.set("n", "]s", "]s<cmd>WhichKey z=<cr>", { remap = true, desc = "go to spelling mistake and prompt for correction" })
 vim.keymap.set("n", "yc", "yygccp", { remap = true, desc = "[Y]ank [C]omment" })
+vim.keymap.set("n", "yp", "yyp", { remap = true, desc = "[Y]ank [P]ut" })
 
 -- Alt + jk to move line up/down
 vim.keymap.set("n", "<A-j>", ":m .+1<cr>==", { noremap = true, silent = true, desc = "Move line down" })
@@ -119,7 +120,7 @@ local surround_map = function(character)
     vim.keymap.set("v", "<leader>" .. character, "sa" .. character, { remap = true, desc = "Surround selection" })
 end
 
-local surround_char = { "'", '"', "[", "]", "{", "}", "(", ")", "`", "<", ">", "*" }
+local surround_char = { "'", '"', "[", "]", "{", "}", "(", ")", "`", "<", ">", "*", "?" }
 for _, char in pairs(surround_char) do
     surround_map(char)
 end
