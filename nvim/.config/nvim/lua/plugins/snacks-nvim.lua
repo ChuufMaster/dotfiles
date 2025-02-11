@@ -2,14 +2,23 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    ---@type snacks.Config
     opts = {
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
         bigfile = { enabled = true },
+        indent = {
+            enabled = true,
+        },
+        scroll = {
+            enabled = false,
+        },
+        image = {
+            enabled = true,
+        },
         ---@class snacks.dim.Config
-        {
-            ---@type snacks.scope.Config
+        dim = {
             scope = {
                 min_size = 5,
                 max_size = 20,
@@ -81,6 +90,10 @@ return {
         gitbrowse = {
             enabled = true,
         },
+        notifier = {
+            enabled = true,
+            style = "fancy",
+        },
         picker = {
             enabled = true,
             win = {
@@ -113,39 +126,52 @@ return {
             desc = "[T]oggle [D]im",
         },
         -- [ Picker keys ]
+        { "<leader><leader>", function() Snacks.picker.buffers() end, desc = "[ ] Find existing buffers" },
+        { "<leader>f.", function() Snacks.picker.recent() end, desc = '[F]ind Recent Files ("." for repeat)' },
+        { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
+        { "<leader>fa", function() Snacks.picker.autocmds() end, desc = '[F]ind [A]uto commands' },
+        { "<leader>fc", function() Snacks.picker.commands() end, desc = '[F]ind [C]ommands' },
+        { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "[F]ind [D]iagnostics" },
+        { "<leader>fe", function() Snacks.picker.explorer() end, desc = "[F]ind [E]xplorer" },
+        { "<leader>ff", function() Snacks.picker.files() end, desc = "[F]ind [F]iles" },
+        { "<leader>fg", function() Snacks.picker.grep() end, desc = "[F]ind by [G]rep" },
         { "<leader>fh", function() Snacks.picker.help() end, desc = "[F]ind [H]elp" },
         { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "[F]ind [K]eymaps" },
-        { "<leader>ff", function() Snacks.picker.files() end, desc = "[F]ind [F]iles" },
-        { "<leader>fs", function() Snacks.picker.pickers() end, desc = "[F]ind [S]elect Telescope" },
-        { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "[F]ind current [W]ord" },
-        { "<leader>fg", function() Snacks.picker.grep() end, desc = "[F]ind by [G]rep" },
-        { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "[F]ind [D]iagnostics" },
+        { "<leader>fl", function() Snacks.picker.lazy() end, desc = "[F]ind [L]azy" },
+        { "<leader>fn", function() Snacks.picker.notifications() end, desc = "[F]ind [P]ickers" },
+        { "<leader>fp", function() Snacks.picker.pickers() end, desc = "[F]ind [P]ickers" },
+        { "<leader>fq", function() Snacks.picker.gflist() end, desc = "[F]ind [Q]uick Fix List" },
         { "<leader>fr", function() Snacks.picker.resume() end, desc = "[F]ind [R]esume" },
-        { "<leader>f.", function() Snacks.picker.recent() end, desc = '[F]ind Recent Files ("." for repeat)' },
-        { "<leader>fc", function() Snacks.picker.commands() end, desc = '[F]ind [C]ommands' },
-        { "<leader>fa", function() Snacks.picker.autocmds() end, desc = '[F]ind [A]uto commands' },
-        { "<leader><leader>", function() Snacks.picker.buffers() end, desc = "[ ] Find existing buffers" },
-        -- { "<leader>fF", "<cmd>Telescope flutter commands<CR>", desc = "[F]ind [F]lutter commands" },
+        { "<leader>fs", function() Snacks.picker.smart() end, desc = "[F]ind [S]mart" },
+        { "<leader>ft", function() Snacks.picker.todo_comments() end, desc = "[F]ind [T]odo" },
+        { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "[F]ind current [W]ord" },
         -- TODO: 
         -- { "<leader>fo", function() Snacks.picker.vim_options() end, desc = "[F]ind [O]ptions" },
-        { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
+        -- { "<leader>fF", "<cmd>Telescope flutter commands<CR>", desc = "[F]ind [F]lutter commands" },
 
-        { "<leader>fp", function() Snacks.picker.pickers() end, desc = "[F]ind [P]ickers" },
-        { "<leader>ft", function() Snacks.picker.todo_comments() end, desc = "[F]ind [T]odo" },
+        -- Git Pickers
+        { "<leader>gS", function() Snacks.picker.git_status() end, desc = "[G]it [S]tatus" },
+        { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "[G]it [B]ranches" },
+        { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "[G]it [D]iff" },
+        { "<leader>gf", function() Snacks.picker.git_files() end, desc = "[G]it [F]iles" },
+        { "<leader>gl", function() Snacks.picker.git_log() end, desc = "[G]it [L]og" },
+        { "<leader>gs", function() Snacks.picker.git_stash() end, desc = "[G]it [S]tash" },
 
         --- Telescope lsp pickers
-        { "<leader>lr", function() Snacks.picker.lsp_references() end, desc = "[L]sp [R]eferences" },
-        { "<leader>lsd", function() Snacks.picker.lsp_symbols() end, desc = "[L]sp [S]ymbols [D]ocument" },
-        -- { "<leader>lsw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "[L]sp [S]ymbols [W]orkspace" },
-        { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "[L]sp [D]iagnostics" },
+        { "<leader>lD", function() Snacks.picker.lsp_declarations() end, desc = "[L]sp [D]eclarations" },
+        { "<leader>ld", function() Snacks.picker.lsp_definitions() end, desc = "[L]sp [D]efinitions" },
         { "<leader>li", function() Snacks.picker.lsp_implementations() end, desc = "[L]sp [I]mplementations" },
-        { "<leader>lD", function() Snacks.picker.lsp_definitions() end, desc = "[L]sp [D]efinitions" },
+        { "<leader>lr", function() Snacks.picker.lsp_references() end, desc = "[L]sp [R]eferences" },
+        { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "[L]sp [S]ymbols [D]ocument" },
+        { "<leader>lS", function() Snacks.picker.treesitter() end, desc = "[L]sp tree[S]itter" },
         { "<leader>lt", function() Snacks.picker.lsp_type_definitions() end, desc = "[L]sp [T]ype definitions" },
+        { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "[L]sp [S]ymbols [W]orkspace" },
 
         -- picker unique
-        { "<leader>ph", function() Snacks.picker.cliphist() end, desc = "[P]ick [H]istory}" },
-        { "<leader>pu", function() Snacks.picker.undo() end, desc = "[P]ick [U]dotree" },
-        { "<leader>pc", function() Snacks.picker.colorschemes() end, desc = "[P]ick [C]olorscheme" }
+        { "<leader>sc", function() Snacks.picker.colorschemes() end, desc = "[S]earch [C]olorscheme" },
+        { "<leader>sh", function() Snacks.picker.cliphist() end, desc = "[S]earch [H]istory}" },
+        { "<leader>si", function() Snacks.picker.icons() end, desc = "[S]earch [I]con" },
+        { "<leader>su", function() Snacks.picker.undo() end, desc = "[S]earch [U]dotree" },
     },
     init = function()
         vim.api.nvim_create_autocmd("User", {
@@ -161,6 +187,7 @@ return {
                 vim.print = _G.dd -- Override print to use snacks for `:=` command
 
                 -- Create some toggle mappings
+                Snacks.toggle.scroll():map("<leader>tS")
                 Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
                 Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
                 Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
