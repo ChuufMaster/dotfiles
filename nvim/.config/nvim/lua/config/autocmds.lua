@@ -133,7 +133,7 @@ vim.api.nvim_create_autocmd("FileType", {
     group = augroup("wrap_spell"),
     pattern = { "gitcommit", "markdown", "tex", "latex" },
     callback = function()
-        vim.opt_local.wrap = true
+        vim.opt_local.wrap = false
         vim.opt_local.spell = true
         vim.opt_local.formatoptions = "btcqln"
         vim.opt_local.softtabstop = 2
@@ -146,6 +146,8 @@ vim.api.nvim_create_autocmd("FileType", {
             { remap = true, desc = "Surround selection in two stars" }
         )
         vim.keymap.set("i", "<C-o>", "<Esc>o", { desc = "Make ctrl-o be enter in markdown", remap = true })
+
+        vim.keymap.set("v", "<leader>C", "sa?```bash<CR>```<CR>", { remap = true, desc = "Add a bash codeblock" })
     end,
 })
 
