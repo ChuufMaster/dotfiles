@@ -1,6 +1,7 @@
 local markdown_plugins = {
     {
         "iamcco/markdown-preview.nvim",
+        enabled = false,
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
         build = function()
@@ -21,17 +22,43 @@ local markdown_plugins = {
         ft = { "markdown" },
     },
     {
+        "OXY2DEV/markview.nvim",
+        branch = "dev",
+        enabled = true,
+        ft = { "markdown" },
+        -- lazy = false,
+        opts = {
+            preview = {
+                enable = true,
+                modes = { "n", "no", "c" },
+                filetypes = { "markdown" },
+            },
+            markdown = {
+                list_items = {
+                    indent_size = 2,
+                    shift_width = 2,
+                },
+            },
+        },
+    },
+    {
         "MeanderingProgrammer/render-markdown.nvim",
+        enabled = false,
         name = "render-markdown",
         dependencies = { "nvim-treesitter" },
         ft = "markdown",
         -- cmd = { "RenderMarkdownToggle" },
+        ---@type render.md.Config
+        ---@diagnostic disable-next-line: missing-fields
         opts = {
             win_options = {
                 conceallevel = {
-                    defualt = vim.api.nvim_get_option_value("conceallevel", {}),
+                    default = vim.api.nvim_get_option_value("conceallevel", {}),
                     rendered = 3,
                 },
+            },
+            pipe_table = {
+                style = "normal",
             },
         },
         --[[ config = function()
