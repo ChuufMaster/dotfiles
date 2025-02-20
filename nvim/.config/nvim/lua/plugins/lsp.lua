@@ -163,9 +163,13 @@ local servers = {
         filetypes = { "yaml.docker-compose" },
     },
     dockerls = {},
+    gopls = {},
     hyprls = {},
     jedi_language_server = {},
     jsonls = {},
+    jinja_lsp = {
+        filetypes = { "jinja", "yaml.ansible" },
+    },
     markdownlint = {},
     marksman = {
         settings = { filetypes = { "markdown" } },
@@ -231,6 +235,10 @@ return {
     config = function()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+        capabilities.textDocument.foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+        }
 
         require("mason").setup()
         -- Ensure the servers above are installed

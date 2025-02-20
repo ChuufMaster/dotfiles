@@ -20,6 +20,9 @@ local markdown_plugins = {
     {
         "bullets-vim/bullets.vim",
         ft = { "markdown" },
+        -- init = function()
+        --     vim.g.bullets_mapping_leader = "\\"
+        -- end,
     },
     {
         "OXY2DEV/markview.nvim",
@@ -32,11 +35,27 @@ local markdown_plugins = {
                 enable = true,
                 modes = { "n", "no", "c" },
                 filetypes = { "markdown" },
+                -- hybrid_modes = { "n", "no", "c" },
+                -- linewise_hybrid_mode = true,
             },
             markdown = {
                 list_items = {
-                    indent_size = 2,
-                    shift_width = 2,
+                    shift_width = function(buffer, item)
+                        --- Reduces the `indent` by 1 level.
+                        ---
+                        ---         indent                      1
+                        --- ------------------------- = 1 ÷ --------- = new_indent
+                        --- indent * (1 / new_indent)       new_indent
+                        ---
+                        local parent_indnet = math.max(1, item.indent - vim.bo[buffer].shiftwidth)
+
+                        return item.indent * (1 / (parent_indnet * 2))
+                    end,
+                    marker_minus = {
+                        add_padding = function(_, item)
+                            return item.indent > 1
+                        end,
+                    },
                 },
             },
         },

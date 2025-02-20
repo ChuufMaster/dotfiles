@@ -9,7 +9,7 @@ return {
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
         -- "hrsh7th/cmp-emoji",
-        -- "chrisgrieser/cmp-nerdfont",
+        "chrisgrieser/cmp-nerdfont",
         -- "kdheepak/cmp-latex-symbols",
         {
             "micangl/cmp-vimtex",
@@ -102,7 +102,7 @@ return {
                 },
                 -- { name = "vimtex", keyword_length = 3 },
                 -- { name = "emoji" },
-                -- { name = "nerdfont" },
+                { name = "nerdfont" },
                 -- { name = "latex_symbols" },
             }),
             formatting = {

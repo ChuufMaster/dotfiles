@@ -158,6 +158,7 @@ return {
         { "<leader>gs", function() Snacks.picker.git_stash() end, desc = "[G]it [S]tash" },
 
         --- Telescope lsp pickers
+        { "<leader>lc", function() Snacks.picker.lsp_config() end, desc = "[L]sp [C]onfig" },
         { "<leader>lD", function() Snacks.picker.lsp_declarations() end, desc = "[L]sp [D]eclarations" },
         { "<leader>ld", function() Snacks.picker.lsp_definitions() end, desc = "[L]sp [D]efinitions" },
         { "<leader>li", function() Snacks.picker.lsp_implementations() end, desc = "[L]sp [I]mplementations" },

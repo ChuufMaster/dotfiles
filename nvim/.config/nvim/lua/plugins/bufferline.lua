@@ -14,11 +14,11 @@ return {
         { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
         { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
         { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-        { "<leader>x", "<cmd>bdelete<cr>", desc = "Close the current buffer" },
+        -- { "<leader>x", "<cmd>bdelete<cr>", desc = "Close the current buffer" },
     },
     opts = {
         options = {
-            close_command = function (n)
+            close_command = function(n)
                 LazyVim.ui.bufremove(n)
             end,
             diagnostics = "nvim_lsp",

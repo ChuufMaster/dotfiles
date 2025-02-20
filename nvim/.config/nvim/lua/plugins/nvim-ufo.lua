@@ -1,14 +1,16 @@
 return {
     "kevinhwang91/nvim-ufo",
-    dependencies = "kevinhwang91/promise-async",
+    -- enabled = false,
+    dependencies = { "kevinhwang91/promise-async" },
     lazy = false,
-    opts = function(_, opts)
+    event = "BufRead",
+    config = function()
         vim.o.foldcolumn = "1"
-        vim.o.foldlevel = 99
+        vim.o.foldlevel = 2
         vim.o.foldlevelstart = 99
-        vim.o.foldenable = false
-        vim.opt.foldnestmax = 4
-        vim.opt.foldminlines = 3
+        -- vim.o.foldenable = true
+        -- vim.opt.foldnestmax = 4
+        -- vim.opt.foldminlines = 3
         -- To show number of folded lines
         local handler = function(virtText, lnum, endLnum, width, truncate)
             local newVirtText = {}
@@ -37,10 +39,32 @@ return {
             table.insert(newVirtText, { suffix, "MoreMsg" })
             return newVirtText
         end
+        local opts = {}
         opts.fold_virt_text_handler = handler
         local ftMap = {
             markdown = { "treesitter" },
         }
+
+        ---@param bufnr number
+        ---@return Promise
+        local function customizeSelector(bufnr)
+            local function handleFallbackException(err, providerName)
+                if type(err) == "string" and err:match("UfoFallbackException") then
+                    return require("ufo").getFolds(bufnr, providerName)
+                else
+                    return require("promise").reject(err)
+                end
+            end
+
+            return require("ufo")
+                .getFolds(bufnr, "lsp")
+                :catch(function(err)
+                    return handleFallbackException(err, "treesitter")
+                end)
+                :catch(function(err)
+                    return handleFallbackException(err, "indent")
+                end)
+        end
         opts.preview = {
             win_config = {
                 border = "rounded",
@@ -55,8 +79,9 @@ return {
             },
         }
         opts.provider_selector = function(bufnr, filetype, buftype)
-            return ftMap[filetype]
+            return ftMap[filetype] or customizeSelector
         end
+        require("ufo").setup(opts)
     end,
     keys = {
         {
@@ -71,6 +96,18 @@ return {
                 require("ufo").closeAllFolds()
             end,
         },
+        -- {
+        --     "zm",
+        --     function()
+        --         require("ufo").closeFoldsWith()
+        --     end,
+        -- },
+        -- {
+        --     "zr",
+        --     function()
+        --         require("ufo").openFoldsExceptKinds()
+        --     end,
+        -- },
         {
             "<leader>k",
             function()
