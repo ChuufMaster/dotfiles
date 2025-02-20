@@ -45,9 +45,9 @@ lctl   lmet lalt           spc             ralt rmet rctl
  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  @f12
  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-@caps @a @s   @d   @f    @g    @h   @j   @k   @l   @;    '    ret
-@lsft z    x   c   @v    b    n    m    ,    .    /    rsft
- lctl   lmet lalt          spc            @ralt rmet rctl
+@caps @a @s   @d   @f     g     h   @j   @k   @l   @;    '    ret
+@lsft z    x  @c    v    b    n     @m    ,    .    /    rsft
+ lctl   lmet lalt          @spc            @ralt rmet rctl
 )
 
 (deflayer nomods
@@ -92,8 +92,8 @@ l right
   spc-hold (tap-hold-release $tap-time $hold-time spc @sym)
   ;; spc ( tap-dance 200 (spc @spc-hold) )
   ralt (tap-hold-release $tap-time $hold-time ralt @sym)
-  g (tap-hold-release $tap-time $hold-time (multi g @tap) @sym)
-  h (tap-hold-release $tap-time $hold-time (multi h @tap) @sym)
+  c (tap-hold-release $tap-time $hold-time (multi c @tap) @sym)
+  m (tap-hold-release $tap-time $hold-time (multi m @tap) @sym)
   nav (layer-while-held nav-map)
   f12 (layer-switch nomods)
   f12-back (layer-switch base)
@@ -106,7 +106,7 @@ l right
   k (tap-hold-release $tap-time $hold-time (multi k @tap) rctrl)
   l (tap-hold-release $tap-time $hold-time (multi l @tap) ralt)
   ; (tap-hold-release $tap-time $hold-time (multi ; @tap) rmet)
-  v (tap-hold-release $tap-time $hold-time (multi v @tap) @nav)
+  spc (tap-hold-release $tap-time $hold-time (multi spc @tap) @nav)
   lsft (tap-hold-release $tap-time $hold-time (multi tab @tap) lsft)
 )
 
