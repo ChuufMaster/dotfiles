@@ -109,7 +109,7 @@ listview {
 /* ---- Elements ---- */
 element {
     cursor:                      pointer;
-    border-radius:               10px;
+    // border-radius:               10px;
     // background-color:            transparent;
     // text-color:                  @foreground;
 

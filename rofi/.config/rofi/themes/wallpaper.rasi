@@ -23,7 +23,7 @@ element {
 }
 
 element-icon {
-    size: calc(((100% - 8em) / 7 ));
+    size: calc(((100% - 4em) / 5 ));
     horizontal-align: 0.5;
     vertical-align: 0.5;
 }

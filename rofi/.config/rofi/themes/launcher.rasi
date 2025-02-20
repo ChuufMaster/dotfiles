@@ -20,7 +20,7 @@ window {
     width: 50%;
     height: 60%;
     // background-color: black/80%;
-    border-radius: 10;
+    // border-radius: 10;
     // border: 1;
 
     spacing: 1em;
@@ -37,7 +37,7 @@ element selected {
     background-image: linear-gradient(white/25%, white/10%);
     // border-color: lightblue;
     border: 3px;
-    border-radius: 0.4em;
+    // border-radius: 0.4em;
 }
 
 element-text {
@@ -48,7 +48,7 @@ element-text {
 element-icon {
   size: 28;
   margin: 0 10 0 0;
-  border-radius: 10;
+  // border-radius: 10;
 }
 
 entry {

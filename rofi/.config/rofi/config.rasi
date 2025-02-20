@@ -19,7 +19,7 @@ window {
     width: 50%;
     height: 60%;
     // background-color: black/80%;
-    border-radius: 10;
+    // border-radius: 10;
     spacing: 1em;
     // border-color: #c4a7e7;
     children: [wrap, listview];
@@ -32,14 +32,14 @@ wrap {
     background-image: linear-gradient(white/5%, white/40%);
     // border-color: lightblue;
     border: 3px;
-    border-radius: 0.4em;
+    // border-radius: 0.4em;
 }
 
 message {
     // background-color: red/20%;
     // border-color: lightsalmon;
     border: 3px 0px 0px 0px;
-    padding: 0.4em;
+    // padding: 0.4em;
     spacing: 0.4em;
 }
 
@@ -60,10 +60,10 @@ icon-ib {
 
 element {
     orientation: vertical;
-    padding: 0.1em;
+    // padding: 0.1em;
     // border-color: lightblue /15%;
     border: 3px;
-    border-radius: 0.4em;
+    // border-radius: 0.4em;
     background-image: linear-gradient(white/5%, white/20%);
     children: [element-icon, element-text ];
 }
@@ -78,7 +78,7 @@ element selected {
     background-image: linear-gradient(white/25%, white/10%);
     // border-color: lightblue;
     border: 3px;
-    border-radius: 0.4em;
+    // border-radius: 0.4em;
 }
 
 element-text {
@@ -104,7 +104,7 @@ prompt {
 
 listview {
     flow: horizontal;
-    fixed-columns: true;
+    // fixed-columns: true;
     columns: 4;
     lines: 9;
     spacing: 1.0em;

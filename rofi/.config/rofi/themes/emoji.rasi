@@ -13,7 +13,7 @@ element {
     padding: 0.1em;
     // border-color: lightblue /15%;
     border: 3px;
-    border-radius: 0.4em;
+    // border-radius: 0.4em;
     background-image: linear-gradient(white/5%, white/20%);
     children: [element-text];
 }
