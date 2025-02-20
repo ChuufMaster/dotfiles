@@ -1,3 +1,4 @@
+---@diagnostic disable: return-type-mismatch
 ---@type integer Current buffer.
 local buffer = vim.api.nvim_get_current_buf()
 
@@ -123,9 +124,9 @@ _G.heading_foldtext = function()
     end
 end
 
-vim.o.fillchars = "fold: "
-
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-
-vim.o.foldtext = "v:lua.heading_foldtext()"
+-- vim.o.fillchars = "fold: "
+--
+-- vim.o.foldmethod = "expr"
+-- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+--
+-- vim.o.foldtext = "v:lua.heading_foldtext()"
