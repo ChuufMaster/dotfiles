@@ -13,7 +13,7 @@
     "hyprland/workspaces": {
         "on-click": "activate",
         "active-only": false,
-        "all-outputs": true,
+        "all-outputs": false,
         "format": "{icon}",
         "format-icons": {
             "1": "",
@@ -21,10 +21,16 @@
             "3": "󰙯",
             "4": "",
             "5": "",
-            "6": ""
+            "6": "",
+            "7": "󰒱",
+            "8": "󰾨"
         },
         "persistent-workspaces": {
-            "*": 6
+            "*": 6,
+            "DP-2": [
+                7,
+                8
+            ]
         }
     },
     // Hyprland Window
