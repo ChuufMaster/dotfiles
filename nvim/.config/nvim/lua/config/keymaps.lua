@@ -124,3 +124,7 @@ local surround_char = { "'", '"', "[", "]", "{", "}", "(", ")", "`", "<", ">", "
 for _, char in pairs(surround_char) do
     surround_map(char)
 end
+
+vim.keymap.set("n", "<leader>x", "<CMD>bdelete<CR>", { noremap = true, desc = "Close buffer" })
+
+vim.keymap.set({ "n", "v" }, "<A-x>", "<C-a>", { desc = "Increase Number" })

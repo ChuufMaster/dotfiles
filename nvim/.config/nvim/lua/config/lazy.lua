@@ -21,6 +21,7 @@ vim.g.maplocalleader = "\\"
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
+-- require("config.folding")
 
 -- LazyVim utils
 local lazyvimpath = vim.fn.stdpath("data") .. "/lazy/LazyVim"

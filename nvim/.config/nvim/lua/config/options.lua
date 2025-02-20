@@ -65,7 +65,7 @@ vim.o.expandtab = true
 vim.o.inccommand = "split"
 
 -- Show which line your cursor is on
-vim.o.cursorline = true
+-- vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 10
@@ -102,9 +102,20 @@ vim.opt.formatoptions = {
 vim.o.colorcolumn = "80"
 
 -- vim.o.foldtext = ""
+-- vim.o.foldtext = "v:folddashes.substitute(getline(v:foldstart),'/\\*\\|\\*/\\|{{{\\d\\=','','g')"
+-- vim.o.foldmethod = "expr"
+-- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.o.foldlevel = 99
+-- vim.o.foldlevelstart = 1
 
 -- vim.o.spelllang = "en_gb"
 
 -- This file is automatically loaded by lazyvim.config.init.
 
 -- vim.g.python3_host_prog = '/home/linuxbrew/.linuxbrew/bin/python3'
+
+vim.filetype.add({
+    extension = {
+        yml = "yaml.ansible",
+    },
+})
