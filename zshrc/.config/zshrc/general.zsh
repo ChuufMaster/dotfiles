@@ -7,6 +7,7 @@ export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export XDG_CONFIG_HOME=$HOME/.config
 export NVIM_HOME=$CONFIG/nvim
 export CHROME_EXECUTABLE=/usr/bin/firefox
+export ANSIBLE_NOCOWS=1
 
 eval $(thefuck --alias)
 

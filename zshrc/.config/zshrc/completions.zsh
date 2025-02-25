@@ -1,6 +1,8 @@
 # zsh parameter completion for the dotnet CLI
-source ~/.fastlane/completions/completion.zsh
+# source ~/.fastlane/completions/completion.zsh
 source ~/qmk_firmware/util/qmk_tab_complete.sh
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
 
 _dotnet_zsh_complete() 
 {

@@ -16,7 +16,7 @@ alias lg="lazygit"
 alias "nvim ."=nvim
 alias sync_tuks="rclone copy --drive-shared-with-me --stats-one-line -v ~/TUKS TUKS:TUKS"
 alias sz="source ~/.zshrc"
-alias zsh="~/Documents/PERSONAL/projects/color_output/test.py"
+# alias zsh="~/Documents/PERSONAL/projects/color_output/test.py"
 
 # TMUX aliases
 alias lvim="NVIM_APPNAME=nvim-lazyvim nvim"
@@ -55,16 +55,17 @@ alias eh="zhypr ; $EDITOR"
 alias ek="zkitty ; $EDITOR"
 alias ekk="zkanata ; $EDITOR"
 alias en="znotes ; $EDITOR"
-# alias ep="peek ; $EDITOR" # removed because BeakPeek is finished
 alias ep="proj ; $EDITOR"
-# alias epb="cd ~/BeakPeek/beakpeek ; $EDITOR" # BeakPeek archived
 alias epd="cd ~/BeakPeek/dotnet ; $EDITOR"
 alias epr="cd ~/BeakPeek ; $EDITOR README.md"
 alias er="zrofi ; $EDITOR"
 alias es="zscript ; $EDITOR"
+alias est="cd ~/.config ; $EDITOR starship.toml"
 alias esw="zswaync ; $EDITOR"
 alias et="ztmux ; $EDITOR"
 alias ev="zvim ; $EDITOR"
 alias ew="zwaybar ; $EDITOR"
 alias ey="zyazi ; $EDITOR"
 alias ez="zzsh ; $EDITOR"
+# alias ep="peek ; $EDITOR" # removed because BeakPeek is finished
+# alias epb="cd ~/BeakPeek/beakpeek ; $EDITOR" # BeakPeek archived

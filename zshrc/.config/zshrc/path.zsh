@@ -1,6 +1,8 @@
 typeset -gxU path PATH
 
 export ANDROID_HOME=$HOME/android-sdk
+export GEM_HOME="$(gem env user_gemhome)"
+export GEM_PATH="$(gem env gemdir)"
 # export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
 path+=(
@@ -15,8 +17,9 @@ path+=(
     /home/chuufmaster/.pub-cache/bin
     /home/chuufmaster/scripts
     /home/chuufmaster/COS326_Pracs/basex/bin
-    /home/chuufmaster/.local/share/gem/ruby/3.3.0/bin
+    $GEM_HOME/bin
     /home/chuufmaster/projects/color_output
+    # /root/.local/share/gem/ruby/3.3.0/bin
     $path
 )
 

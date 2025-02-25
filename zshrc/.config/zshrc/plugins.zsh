@@ -9,15 +9,16 @@ export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(
     github
-    gradle
+    # gradle
     docker
     docker-compose
     fzf
     # kitty
     man
-    mvn
+    # mvn
     zoxide
     git
+    ssh
     zsh-completions
     zsh-autosuggestions
     zsh-syntax-highlighting
