@@ -16,6 +16,9 @@ return {
         },
         image = {
             enabled = true,
+            doc = {
+                inline = false,
+            },
         },
         ---@class snacks.dim.Config
         dim = {

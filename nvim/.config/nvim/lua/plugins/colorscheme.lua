@@ -20,6 +20,11 @@ return { -- You can easily change to a different colorscheme.
         end,
     },
     {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1001,
+    },
+    {
         "uZer/pywal16.nvim",
         priority = 1000, -- Make sure to load this before all the other start plugins.
         enabled = false,

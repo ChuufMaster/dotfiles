@@ -67,6 +67,7 @@ return {
                 { name = "lazydev", group_index = 0 },
                 { name = "luasnip", keyword_length = 3 },
                 { name = "path" },
+                { name = "vimtex", keyword_length = 2 },
             }, {
 
                 {
@@ -100,7 +101,6 @@ return {
                         end,
                     },
                 },
-                -- { name = "vimtex", keyword_length = 3 },
                 -- { name = "emoji" },
                 { name = "nerdfont" },
                 -- { name = "latex_symbols" },
