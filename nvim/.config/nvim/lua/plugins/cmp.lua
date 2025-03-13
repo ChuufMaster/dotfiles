@@ -108,8 +108,8 @@ return {
             formatting = {
                 format = lspkind.cmp_format({
                     maxwidth = {
-                        menu = 15,
-                        abbr = 15,
+                        menu = 30,
+                        abbr = 30,
                     },
                     ellipsis_char = "...",
                     show_labelDetails = true,

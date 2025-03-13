@@ -145,7 +145,8 @@ return {
         { "<leader>fp", function() Snacks.picker.pickers() end, desc = "[F]ind [P]ickers" },
         { "<leader>fq", function() Snacks.picker.gflist() end, desc = "[F]ind [Q]uick Fix List" },
         { "<leader>fr", function() Snacks.picker.resume() end, desc = "[F]ind [R]esume" },
-        { "<leader>fs", function() Snacks.picker.smart() end, desc = "[F]ind [S]mart" },
+        { "<leader>fs", function() Snacks.picker.spelling() end, desc = "[F]ind [S]pelling" },
+        { "<leader>fS", function() Snacks.picker.smart() end, desc = "[F]ind [S]mart" },
         { "<leader>ft", function() Snacks.picker.todo_comments() end, desc = "[F]ind [T]odo" },
         { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "[F]ind current [W]ord" },
         -- TODO: 
