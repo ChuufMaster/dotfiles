@@ -112,7 +112,7 @@ vim.keymap.set("n", "<leader>L", "<CMD>Lazy<CR>", { desc = "Open the lazy UI" })
 vim.keymap.set("n", "gG", "gg<S-v>G", { desc = "Select all" })
 
 vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>", { silent = false, desc = "vertically split buffer" })
-vim.keymap.set("n", "<leader>|", "<cmd>split<cr>", { silent = false, desc = "horizontally split buffer" })
+vim.keymap.set("n", "<leader>S", "<cmd>split<cr>", { silent = false, desc = "horizontally split buffer" })
 
 vim.keymap.set("n", "<leader>G", "G<cmd>%norm! gww<cr>zz", { desc = "format and go to the bottom of buffer" })
 

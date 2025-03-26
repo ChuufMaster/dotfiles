@@ -184,6 +184,7 @@ local servers = {
         },
     },
     -- ruff = {},
+    ruby_lsp = {},
     solargraph = {},
     --[[ sqlls = {
         filetypes = { "sql" },
@@ -259,12 +260,12 @@ return {
                     local server = servers[server_name] or {}
                     server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                     require("lspconfig")[server_name].setup(server)
-                    --[[ require("lspconfig")[server_name].setup({
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        settings = servers[server_name],
-                        filetypes = (servers[server_name] or {}).filetypes,
-                    }) ]]
+                    -- require("lspconfig")[server_name].setup({
+                    --     capabilities = capabilities,
+                    --     on_attach = on_attach,
+                    --     settings = servers[server_name],
+                    --     filetypes = (servers[server_name] or {}).filetypes,
+                    -- })
                 end,
             },
             ensure_installed = {},
