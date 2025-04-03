@@ -99,6 +99,13 @@ return {
         },
         picker = {
             enabled = true,
+            sources = {
+                explorer = {
+                    layout = {
+                        layout = { position = "right" },
+                    },
+                },
+            },
             win = {
                 input = {
                     keys = {
@@ -136,7 +143,7 @@ return {
         { "<leader>fc", function() Snacks.picker.commands() end, desc = '[F]ind [C]ommands' },
         { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "[F]ind [D]iagnostics" },
         { "<leader>fe", function() Snacks.picker.explorer() end, desc = "[F]ind [E]xplorer" },
-        { "<leader>ff", function() Snacks.picker.files() end, desc = "[F]ind [F]iles" },
+        { "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, desc = "[F]ind [F]iles" },
         { "<leader>fg", function() Snacks.picker.grep() end, desc = "[F]ind by [G]rep" },
         { "<leader>fh", function() Snacks.picker.help() end, desc = "[F]ind [H]elp" },
         { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "[F]ind [K]eymaps" },

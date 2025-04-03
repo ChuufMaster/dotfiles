@@ -13,19 +13,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     end,
 })
 
--- Hyprlang LSP
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-    pattern = { "*.hl", "hypr*.conf", "*/hypr/*.conf" },
-    callback = function(event)
-        -- print(string.format("starting hyprls for %s", vim.inspect(event)))
-        vim.lsp.start({
-            name = "hyprlang",
-            cmd = { "hyprls" },
-            root_dir = vim.fn.getcwd(),
-        })
-    end,
-})
-
 -- Fix bufferline when restoring a session
 vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
     callback = function()
@@ -228,4 +215,27 @@ vim.api.nvim_create_autocmd("FileType", {
     desc = "Automatically Split help Buffers to the right",
     pattern = "help",
     command = "wincmd L",
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "kitty.conf",
+    callback = function()
+        require("which-key").add({
+            {
+                "<S-K>",
+                function()
+                    local current_line = vim.fn.getline(".")
+                    local first_word = current_line:match("^%s*(%S+)")
+                    if first_word then
+                        local url = "https://sw.kovidgoyal.net/kitty/conf/#opt-kitty." .. first_word
+                        vim.fn.system({ "xdg-open", url })
+                    else
+                        print("No valid option found on the current line.")
+                    end
+                end,
+                icon = "i",
+                desc = "show information about the current cursor position",
+            },
+        })
+    end,
 })

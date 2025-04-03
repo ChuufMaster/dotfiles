@@ -14,7 +14,7 @@ local lsp_callback = function(event)
     map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
     map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
     map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-    map("K", vim.lsp.buf.hover, "Hover Documentation")
+    -- map("K", vim.lsp.buf.hover({ border = "rounded" }), "Hover Documentation")
     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
     -- The following two autocommands are used to highlight references of the
@@ -154,7 +154,7 @@ local for_future = {
 
 local servers = {
     actionlint = {},
-    ansiblels = {},
+    -- ansiblels = {},
     bashls = {},
     clangd = {},
     -- cssls = {},
@@ -164,11 +164,10 @@ local servers = {
     },
     dockerls = {},
     gopls = {},
-    hyprls = {},
     jedi_language_server = {},
     jsonls = {},
     jinja_lsp = {
-        filetypes = { "jinja", "yaml.ansible" },
+        filetypes = { "jinja" },
     },
     markdownlint = {},
     marksman = {
@@ -184,8 +183,6 @@ local servers = {
         },
     },
     -- ruff = {},
-    ruby_lsp = {},
-    solargraph = {},
     --[[ sqlls = {
         filetypes = { "sql" },
     }, ]]
@@ -211,15 +208,15 @@ local servers = {
             },
         },
     },
-    lua_ls = {
-        settings = {
-            Lua = {
-                completion = {
-                    callSnippet = "Replace",
-                },
-            },
-        },
-    },
+    -- lua_ls = {
+    --     settings = {
+    --         Lua = {
+    --             completion = {
+    --                 callSnippet = "Replace",
+    --             },
+    --         },
+    --     },
+    -- },
     taplo = {},
 }
 return {
@@ -227,15 +224,28 @@ return {
     event = "BufReadPre",
     lazy = true,
     dependencies = {
-        { "williamboman/mason.nvim", config = true },
+        {
+            "williamboman/mason.nvim",
+            config = function()
+                ---@diagnostic disable-next-line: missing-fields
+                require("mason").setup({
+                    registries = {
+                        "github:mason-org/mason-registry",
+                        "github:crashdummyy/mason-registry",
+                    },
+                })
+            end,
+        },
         { "williamboman/mason-lspconfig.nvim" },
         { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+        { "saghen/blink.cmp" },
         { "j-hui/fidget.nvim", opts = {} },
     },
 
     config = function()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+        -- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+        capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
         capabilities.textDocument.foldingRange = {
             dynamicRegistration = false,
             lineFoldingOnly = true,
@@ -274,6 +284,8 @@ return {
 
         -- require("lspconfig").jdtls.setup({})
         -- require("lspconfig").racket_langserver.setup({})
+        -- require("lspconfig").ruby_lsp.setup({})
+        -- require("lspconfig").solargraph.setup({})
         require("lspconfig").prolog_ls.setup({
             cmd = {
                 "swipl",

@@ -1,6 +1,7 @@
 return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
+    enabled = false,
     lazy = false,
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
@@ -14,16 +15,16 @@ return {
         {
             "micangl/cmp-vimtex",
             ft = { "latex" },
-            keys = {
-                {
-                    "<C-s>",
-                    function()
-                        require("cmp_vimtex.search").perform_search({ engine = "google_scholar" })
-                    end,
-                    mode = "i",
-                    desc = "Search Latex Bib Sources Online",
-                },
-            },
+            -- keys = {
+            --     {
+            --         "<M-S>",
+            --         function()
+            --             require("cmp_vimtex.search").perform_search({ engine = "google_scholar" })
+            --         end,
+            --         mode = "n",
+            --         desc = "Search Latex Bib Sources Online",
+            --     },
+            -- },
         },
         "onsails/lspkind.nvim",
         {

@@ -8,12 +8,12 @@ return {
         view_options = {
             show_hidden = true,
         },
-
         keymaps = {
             ["<Esc>"] = { callback = "actions.close", mode = "n" },
         },
         float = {
             padding = 5,
+            preview_split = "right",
         },
     },
     dependencies = { "echasnovski/mini.icons", opts = {} },
@@ -25,7 +25,8 @@ return {
                 oil.set_is_hidden_file(function(name, bufnr)
                     return false
                 end)
-                require("oil").toggle_float()
+                -- require("oil").toggle_float()
+                oil.open_float(nil, { preview = { split = "botright" } })
             end,
             desc = "Open Oil in parent directory",
         },

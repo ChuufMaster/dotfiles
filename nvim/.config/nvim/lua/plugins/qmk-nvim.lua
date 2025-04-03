@@ -37,6 +37,10 @@ local keymap_overrides = {
     TAB_MED = " tab ",
     TL_LOWR = "lowr",
     TL_UPPR = "uppr",
+    N_BRC = "n/[",
+    M_BRC = "m/]",
+    V_CBR = "v/{",
+    B_CBR = "b/}",
 }
 
 vim.api.nvim_create_autocmd("BufEnter", {

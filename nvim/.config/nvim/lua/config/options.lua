@@ -119,3 +119,5 @@ vim.filetype.add({
         yml = "yaml.ansible",
     },
 })
+
+vim.diagnostic.config({ virtual_text = true })

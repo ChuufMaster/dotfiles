@@ -58,12 +58,11 @@ return {
             "<cmd>lua require('telescope').extensions.tmux.switch_prev_session()<cr>",
             desc = "Tmux switch to previous session",
         },
-        {
-            "<leader>-",
-            "<cmd>lua require('telescope').extensions.tmux.switch_prev_window()<cr>",
-            desc = "Tmux switch to previous window",
-        },
-
+        -- {
+        --     "<leader>-",
+        --     "<cmd>lua require('telescope').extensions.tmux.switch_prev_window()<cr>",
+        --     desc = "Tmux switch to previous window",
+        -- },
         {
             "<leader>mr",
             "<cmd>lua require('telescope').extensions.tmux.rename_current_session()<cr>",

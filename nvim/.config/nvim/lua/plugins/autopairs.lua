@@ -4,19 +4,14 @@
 return {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    -- Optional dependency
-    dependencies = { "hrsh7th/nvim-cmp" },
-
     config = function()
         require("nvim-autopairs").setup({})
-        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-        local cmp = require("cmp")
-        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
         local Rule = require("nvim-autopairs.rule")
         local npairs = require("nvim-autopairs")
         local cond = require("nvim-autopairs.conds")
 
         npairs.add_rule(Rule("$", "$", { "tex", "latex" }))
+        npairs.add_rule(Rule("|", "|", { "ruby", "eruby" }))
         local function rule2(a1, ins, a2, lang)
             npairs.add_rule(Rule(ins, ins, lang)
                 :with_pair(function(opts)
@@ -34,6 +29,7 @@ return {
         rule2("[", " ", "]")
         rule2("{", " ", "}")
         rule2("$", " ", "$")
+        rule2("|", " ", "|")
 
         for _, punct in pairs({ ",", ";" }) do
             require("nvim-autopairs").add_rules({
