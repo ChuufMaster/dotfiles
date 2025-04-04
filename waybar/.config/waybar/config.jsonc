@@ -42,6 +42,24 @@
     },
     {
         "output": "DP-2",
+        "position": "bottom",
+        "include": [
+            "~/.config/waybar/quicklinks.jsonc",
+            "~/.config/waybar/modules.jsonc"
+        ],
+        "modules-left": [
+            "hyprland/window",
+            "cava",
+            "custom/headset_battery",
+        ],
+        "modules-center": [
+            "hyprland/workspaces",
+        ],
+        "modules-right": [
+            "tray",
+            "clock",
+        ]
+    },
         "include": [
             "~/.config/waybar/quicklinks.jsonc",
             "~/.config/waybar/modules.jsonc"

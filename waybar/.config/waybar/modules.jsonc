@@ -105,12 +105,12 @@
     // CPU
     "cpu": {
         "format": "/ C {usage}% ",
-        "on-click": "kitty -e htop"
+        "on-click": "kitty --title btop --class floating -e btop"
     },
     // Memory
     "memory": {
         "format": "/ M {}% ",
-        "on-click": "kitty -e htop"
+        "on-click": "kitty --title btop --class floating -e btop"
     },
     // Harddisc space used
     "disk": {
@@ -149,7 +149,7 @@
         "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click": "kitty -e nmtui"
+        "on-click": "nm-connection-editor"
     },
     // Battery
     "battery": {
@@ -202,7 +202,7 @@
         "format-off": "",
         "interval": 30,
         "format-no-controller": "",
-        "on-click": "kitty -e bluetui"
+        "on-click": "blueman-manager"
     },
     // Other
     "user": {
@@ -251,6 +251,12 @@
         "interval": 30,
         "exec": "headsetcontrol -b | grep -o 'Level.*'"
     },
+    "custom/mouse_battery": {
+        "tooltip": false,
+        "format": " {} ",
+        "interval": 1,
+        "exec": "polychromatic-cli -k | grep 'Battery' | sed 's/Battery//'"
+    },
     "cava": {
         // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
         "framerate": 120,
@@ -286,11 +292,11 @@
         "format": "{player_icon} {dynamic}",
         "format-paused": "{status_icon} <i>{dynamic}</i>",
         "player-icons": {
-            "default": "▶",
+            "default": "⏸",
             "mpv": "🎵"
         },
         "status-icons": {
-            "paused": "⏸"
+            "paused": "▶"
         },
         "ignored-players": [
             "firefox"
