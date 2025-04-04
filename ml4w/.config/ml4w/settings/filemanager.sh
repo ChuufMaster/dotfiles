@@ -1,1 +1,1 @@
-kitty -e ~/scripts/launch_yazi.sh
+kitty --class floating -e ~/scripts/launch_yazi.sh
