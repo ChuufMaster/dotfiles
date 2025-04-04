@@ -8,15 +8,25 @@ return { -- You can easily change to a different colorscheme.
         priority = 1001, -- Make sure to load this before all the other start plugins.
         -- enabled = false,
         init = function()
-            -- Load the colorscheme here.
-            -- Like many other themes, this one has different styles, and you could load
             -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-            -- vim.cmd.colorscheme("tokyonight-storm")
-            vim.cmd.colorscheme("tokyonight-night")
+            -- vim.cmd.colorscheme("tokyonight-night")
 
             vim.api.nvim_set_hl(0, "CursorLine", { underline = true, bg = "#292e42" })
-            -- You can configure highlights by doing something like:
-            -- vim.cmd.hi("Comment gui=none")
+            require("tokyonight").setup({
+                -- use the night style
+                style = "day",
+                -- disable italic for functions
+                styles = {
+                    functions = {},
+                },
+                -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+                on_colors = function(colors)
+                    colors.bg = "#000000"
+                    -- colors.comment = "#ffffff"
+                end,
+            })
+            vim.cmd.colorscheme("tokyonight-night")
+            vim.cmd("hi ColorColumn ctermbg=white guibg=darkcyan")
         end,
     },
     {
