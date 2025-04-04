@@ -46,8 +46,13 @@ message {
 
 inputbar {
     spacing: 0.4em;
-    padding: 0.4em;
+    // padding: 0.4em;
+    padding:                     128px 64px;
     children: [icon-ib, entry];
+    border-radius:               24px;
+    orientation:                 horizontal;
+    anchor: center;
+    background-image:            url("~/.current_wallpaper", width);
 }
 
 icon-ib {
@@ -107,5 +112,5 @@ listview {
     // fixed-columns: true;
     columns: 4;
     lines: 9;
-    spacing: 1.0em;
+    // spacing: 1.0em;
 }
