@@ -1,12 +1,13 @@
 // @theme "Arc-Dark"
-@import "~/.cache/wal/colors-rofi-dark.rasi"
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
+
 configuration {
     display-drun: " ";
     display-window: "Windows:";
     display-calc: " ";
     drun-display-format: "{name}";    
     font: "JetBrains Mono Nerd Font 12";
-    modi: "window,run,drun,calc,filebrowser";
+    modi: "window,run,drun,calc,filebrowser,ssh";
     show-icons: true;
     icon-theme: "Papirus";
 }
@@ -16,13 +17,13 @@ configuration {
 }
 
 window {
+    fullscreen:                  false;
+    transparency:                "real";
+    cursor:                      "default";
+    border:                      0px;
     width: 50%;
-    height: 60%;
-    // background-color: black/80%;
-    // border-radius: 10;
+    height: 75%;
     spacing: 1em;
-    // border-color: #c4a7e7;
-    children: [wrap, listview];
 }
 
 wrap {
@@ -46,13 +47,17 @@ message {
 
 inputbar {
     spacing: 0.4em;
-    // padding: 0.4em;
-    padding:                     128px 64px;
-    children: [icon-ib, entry];
+    children:                    [ "dummy", "entry", "dummy" ];
     border-radius:               24px;
+    spacing:                     0px;
+    padding:                     128px 64px;
     orientation:                 horizontal;
     anchor: center;
-    background-image:            url("~/.current_wallpaper", width);
+    background-image:            url("~/.current_wallpaper", height);
+}
+
+dummy {
+  background-color: transparent;
 }
 
 icon-ib {
@@ -65,12 +70,10 @@ icon-ib {
 
 element {
     orientation: vertical;
-    // padding: 0.1em;
-    // border-color: lightblue /15%;
     border: 3px;
-    // border-radius: 0.4em;
+    border-radius:               10px;
     background-image: linear-gradient(white/5%, white/20%);
-    children: [element-icon, element-text ];
+    // children: [element-icon, element-text ];
 }
 
 element-icon {
@@ -81,36 +84,29 @@ element-icon {
 
 element selected {
     background-image: linear-gradient(white/25%, white/10%);
-    // border-color: lightblue;
     border: 3px;
-    // border-radius: 0.4em;
 }
 
 element-text {
     horizontal-align: 0.5;
     vertical-align: 0.5;
-    padding: 0.2em;
 }
 
 entry {
-    placeholder: "Search";
-    // placeholder-color: grey;
-    // text-color: white ;
+    cursor:                      inherit;
+    placeholder:                 "Search";
+    border-radius:               12px;
+    padding:                     16px;
+    margin:                      0px;
 }
 
 prompt {
-
   enabled: true;
   padding: 12 0 0 12;
-  // background-color: inherit;
-  // text-color: inherit;
 }
 
 
 listview {
     flow: horizontal;
-    // fixed-columns: true;
     columns: 4;
-    lines: 9;
-    // spacing: 1.0em;
 }

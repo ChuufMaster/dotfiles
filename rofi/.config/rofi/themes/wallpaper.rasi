@@ -14,7 +14,7 @@ listview-split {
 
 listview {
     columns: 7;
-    lines: 5;
+    // lines: 5;
 }
 
 element {

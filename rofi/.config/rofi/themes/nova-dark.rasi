@@ -70,7 +70,7 @@ entry {
 listview {
     cursor:                      "default";
     columns:                     6;
-    lines:                       4;
+    // lines:                       4;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
