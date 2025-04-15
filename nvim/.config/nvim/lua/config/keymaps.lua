@@ -50,7 +50,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move cursor to middle" })
 vim.keymap.set("n", "G", "Gzz", { desc = "Move cursor to bottom of buffer and center" })
 vim.keymap.set("n", "<Esc>", "<cmd> noh <CR><cmd>Noice dismiss<CR>", { desc = "Clear highlights" })
 
-vim.keymap.set("n", "<C-s>", "<cmd> w <CR>", { desc = "Save file" })
+vim.keymap.set("n", "<C-s>", "<CMD>w<CR>zz", { desc = "Save file" })
 
 -- Copy all
 vim.keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
@@ -133,3 +133,5 @@ vim.keymap.set("n", "gK", function()
     local new_config = not vim.diagnostic.config().virtual_lines
     vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = "Toggle diagnostic virtual_lines" })
+
+vim.keymap.set("i", "<C-Z>", "<ESC>zzi", { desc = "Centre screen" })

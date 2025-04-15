@@ -22,6 +22,9 @@ return { -- Collection of various small independent plugins/modules
             windows = {
                 preview = true,
             },
+            options = {
+                use_as_default_explorer = false,
+            },
         })
 
         -- Simple and easy statusline.

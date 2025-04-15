@@ -3,9 +3,25 @@ return {
         "saghen/blink.cmp",
         dependencies = {
             "onsails/lspkind.nvim",
-            "L3MON4D3/LuaSnip",
+            {
+                "L3MON4D3/LuaSnip",
+                dependencies = {
+                    { "rafamadriz/friendly-snippets" },
+                },
+                config = function()
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                    require("config.snippets")
+                    vim.keymap.set("s", "<C-c>", function()
+                        require("luasnip.extras.select_choice")()
+                    end, {})
+                end,
+            },
             "ribru17/blink-cmp-spell",
             "flke/lazydev.nvim",
+            {
+                "Kaiser-Yang/blink-cmp-dictionary",
+                dependencies = { "nvim-lua/plenary.nvim" },
+            },
         },
         version = "*",
         ---@module 'blink.cmp'
@@ -54,15 +70,40 @@ return {
                         score_offset = 10000,
                         async = true,
                     },
+                    dictionary = {
+                        module = "blink-cmp-dictionary",
+                        name = "Dict",
+                        min_keyword_length = 3,
+                        max_items = 8,
+                        opts = {
+                            dictionary_directories = { vim.fn.expand("~/.dictionaries") },
+                        },
+                    },
                 },
-                default = {
-                    "lazydev",
-                    "lsp",
-                    "easy-dotnet",
-                    "path",
-                    "snippets",
-                    "buffer",
-                    "spell",
+                default = function(ctx)
+                    local default_sources = {
+                        "lsp",
+                        "lazydev",
+                        "easy-dotnet",
+                        "path",
+                        "snippets",
+                        "buffer",
+                        "omni",
+                    }
+                    local ft = vim.bo.filetype
+                    if ft == "lua" then
+                        return vim.tbl_extend("keep", { "lazydev" }, default_sources)
+                    elseif ft == "markdown" then
+                        return vim.tbl_extend("keep", { "dictionary", "spell" }, default_sources)
+                    elseif ft == "csharp" then
+                        return vim.tbl_extend("keep", { "easy-dotnet" }, default_sources)
+                    end
+                    return default_sources
+                end,
+                per_filetype = {
+                    lua = { "lazydev" },
+                    markdown = { "lsp", "snippets", "dictionary", "buffer", "spell", "path", "omni" },
+                    csharp = { "easy-dotnet" },
                 },
             },
             fuzzy = { implementation = "prefer_rust_with_warning" },

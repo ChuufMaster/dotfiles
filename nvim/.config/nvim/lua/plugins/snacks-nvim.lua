@@ -109,7 +109,7 @@ return {
             win = {
                 input = {
                     keys = {
-                        ["<Esc>"] = { "close", mode = { "n", "i" } },
+                        -- ["<Esc>"] = { "close", mode = { "n", "i" } },
                     },
                 },
             },

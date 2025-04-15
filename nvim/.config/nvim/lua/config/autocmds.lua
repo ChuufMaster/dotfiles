@@ -135,6 +135,8 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set("i", "<C-o>", "<Esc>o", { desc = "Make ctrl-o be enter in markdown", remap = true })
 
         vim.keymap.set("v", "<leader>C", "sa?```bash<CR>```<CR>", { remap = true, desc = "Add a bash codeblock" })
+
+        vim.keymap.set("i", "<C-V>", "<ESC>[s", { remap = true, desc = "Goto previous spelling mistak" })
     end,
 })
 
