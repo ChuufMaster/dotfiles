@@ -1,5 +1,19 @@
-[plugin]
-deps = [{ use = "GrzegorzKozub/mdcat", rev = "1706af4" }, { use = "Rolv-Apneseth/bypass", rev = "db4c2a7" }]
+[[plugin.deps]]
+use = "GrzegorzKozub/mdcat"
+rev = "1706af4"
+hash = "eb2d998e2e16ea5345f60af2b36e9409"
 
-[flavor]
-deps = [{ use = "BennyOe/tokyo-night", rev = "024fb09" }]
+[[plugin.deps]]
+use = "Rolv-Apneseth/bypass"
+rev = "db4c2a7"
+hash = "571931871e1935c1975b61fe28831977"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "9a09505"
+hash = "7918aab6a71caf31b58411f789195677"
+
+[[flavor.deps]]
+use = "BennyOe/tokyo-night"
+rev = "024fb09"
+hash = "b29ad177b283b0067a345d8c20aca236"

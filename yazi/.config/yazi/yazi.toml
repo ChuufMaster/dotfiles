@@ -37,13 +37,14 @@ edit = [
     { run = 'code -w %*', block = true, desc = "code (block)", for = "windows" },
 ]
 open = [
-    { run = 'xdg-open "$1"', block = true, desc = "Open", for = "linux" },
+    { run = 'xdg-open "$1"; ya emit quit', block = true, desc = "Open", for = "linux" },
     { run = 'open "$@"', block = true, desc = "Open", for = "macos" },
     { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
 ]
 
 open_ophan = [
-    { run = 'xdg-open "$1"', orphan = true, desc = "Open", for = "linux" },
+    # { run = 'xdg-open "$1"; ya emit quit', orphan = true, desc = "Open", for = "linux" },
+    { run = 'ya emit quit; xdg-open "$1"', orphan = true, desc = "Open", for = "linux" },
     { run = 'open "$@"', block = true, desc = "Open", for = "macos" },
     { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
 ]
