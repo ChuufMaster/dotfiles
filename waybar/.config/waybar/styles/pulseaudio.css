@@ -1,0 +1,38 @@
+
+/* -----------------------------------------------------
+ * Pulseaudio
+ * ----------------------------------------------------- */
+
+#pulseaudio {
+    background-color: @backgroundlight;
+    font-size: 16px;
+    color: @textcolor2;
+    /* border-radius: 0px; */
+    margin: 10px 10px 10px 0px;
+}
+
+#pulseaudio.muted {
+    background-color: @backgrounddark;
+    color: @textcolor1;
+}
+
+#pulseaudio-slider slider {
+  background: @backgroundlight;
+  background-color: transparent;
+  box-shadow: none;
+  margin-right: 7px;
+}
+
+#pulseaudio-slider trough {
+  margin-top: -3px;
+  min-width: 90px;
+  min-height: 10px;
+  margin-bottom: -4px;
+  border-radius: 8px;
+  background: #343434;
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 8px;
+  background: @bordercolor;
+}
