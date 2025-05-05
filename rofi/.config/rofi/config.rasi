@@ -46,14 +46,14 @@ message {
 
 
 inputbar {
-    spacing: 0.4em;
-    children:                    [ "dummy", "entry", "dummy" ];
-    border-radius:               24px;
-    spacing:                     0px;
-    padding:                     128px 64px;
-    orientation:                 horizontal;
-    anchor: center;
-    background-image:            url("~/.current_wallpaper", height);
+    spacing:               0.4em;
+    children:              [ "dummy", "entry", "dummy" ];
+    border-radius:         24px;
+    spacing:               0px;
+    padding:               128px 32px;
+    orientation:           horizontal;
+    anchor:                center;
+    background-image:      url("~/.current_wallpaper", width);
 }
 
 dummy {
