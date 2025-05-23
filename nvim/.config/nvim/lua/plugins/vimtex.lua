@@ -13,8 +13,8 @@ return {
             continuous = 1,
             executable = "latexmk",
             -- hooks = {},
-            -- aux_dir = ".build",
-            -- out_dir = "",
+            aux_dir = ".build",
+            out_dir = ".out",
             options = {
                 "-shell-escape",
                 "-verbose",

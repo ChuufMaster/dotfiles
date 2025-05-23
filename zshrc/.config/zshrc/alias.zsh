@@ -13,6 +13,7 @@ alias gla="la | grep"
 alias gll="ll | grep"
 alias kanata_reload="systemctl --user restart kanata.service && systemctl --user status kanata.service"
 alias lg="lazygit"
+alias lm="exa --long --icons --git --group-directories-first --header --octal-permissions"
 alias "nvim ."=nvim
 alias sync_tuks="rclone copy --drive-shared-with-me --stats-one-line -v ~/TUKS TUKS:TUKS"
 alias sz="source ~/.zshrc"
@@ -20,7 +21,7 @@ alias sz="source ~/.zshrc"
 
 # TMUX aliases
 alias lvim="NVIM_APPNAME=nvim-lazyvim nvim"
-alias rvim="NVIM_APPNAME=nvim-refactor nvim"
+alias rvim="NVIM_APPNAME=rvim nvim"
 alias tmux="tmux -2"
 alias tm="tmux attach || tmux"
 alias vim=nvim
@@ -69,3 +70,8 @@ alias ey="zyazi ; $EDITOR"
 alias ez="zzsh ; $EDITOR"
 # alias ep="peek ; $EDITOR" # removed because BeakPeek is finished
 # alias epb="cd ~/BeakPeek/beakpeek ; $EDITOR" # BeakPeek archived
+
+alias sshv='f(){ ssh "$@" -t bash -o vi }; f'
+
+alias bak='f(){mv "$1" "$1.bak"}; f'
+alias unbak='f(){mv "$1" "$(echo "$1" | sed -e 's/\.bak//g')"}; f'

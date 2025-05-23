@@ -1,3 +1,4 @@
+local orgmode = require("plugins.orgmode")
 return {
     {
         "saghen/blink.cmp",
@@ -80,30 +81,17 @@ return {
                         },
                     },
                 },
-                default = function(ctx)
-                    local default_sources = {
-                        "lsp",
-                        "lazydev",
-                        "easy-dotnet",
-                        "path",
-                        "snippets",
-                        "buffer",
-                        "omni",
-                    }
-                    local ft = vim.bo.filetype
-                    if ft == "lua" then
-                        return vim.tbl_extend("keep", { "lazydev" }, default_sources)
-                    elseif ft == "markdown" then
-                        return vim.tbl_extend("keep", { "dictionary", "spell" }, default_sources)
-                    elseif ft == "csharp" then
-                        return vim.tbl_extend("keep", { "easy-dotnet" }, default_sources)
-                    end
-                    return default_sources
-                end,
+                default = {
+                    "lsp",
+                    "path",
+                    "snippets",
+                    "buffer",
+                    "omni",
+                },
                 per_filetype = {
-                    lua = { "lazydev" },
-                    markdown = { "lsp", "snippets", "dictionary", "buffer", "spell", "path", "omni" },
-                    csharp = { "easy-dotnet" },
+                    lua = { "lazydev", inherit_defaults = true },
+                    markdown = { inherit_defaults = true },
+                    csharp = { "easy-dotnet", inherit_defaults = true },
                 },
             },
             fuzzy = { implementation = "prefer_rust_with_warning" },

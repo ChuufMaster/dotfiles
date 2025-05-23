@@ -27,7 +27,16 @@ return { -- Autoformat
     opts = {
         notify_on_error = true,
         format_on_save = function(bufnr)
-            local disable_filetypes = { "c", "cpp", "python", "css", "json", "toml" }
+            local disable_filetypes = {
+                "c",
+                "cpp",
+                -- "python",
+                "css",
+                "json",
+                "toml",
+                "yaml.ansible",
+                "yaml",
+            }
             if vim.tbl_contains(disable_filetypes, vim.bo[bufnr].filetype) then
                 return
             end
@@ -47,7 +56,7 @@ return { -- Autoformat
         end,
         formatters_by_ft = {
             lua = { "stylua" },
-            markdown = { "markdownlint-cli2" },
+            markdown = { "prettier", "markdownlint-cli2" },
             tex = { "latexindent" },
             -- json = { "clang-format" },
             -- ["*"] = { "codespell" },
@@ -58,6 +67,17 @@ return { -- Autoformat
             -- You can use a sub-list to tell conform to run *until* a formatter
             -- is found.
             -- javascript = { { "prettierd", "prettier" } },
+            javascript = { "prettier" },
+            typescript = { "prettier" },
+            javascriptreact = { "prettier" },
+            typescriptreact = { "prettier" },
+            svelte = { "prettier" },
+            vue = { "prettier" },
+            css = { "prettier" },
+            html = { "prettier" },
+            json = { "prettier" },
+            graphql = { "prettier" },
+            python = { "isort", "black" },
         },
         default_format_opts = {
             lsp_format = "fallback",

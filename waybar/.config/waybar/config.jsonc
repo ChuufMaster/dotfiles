@@ -1,7 +1,7 @@
 // vim: filetype=jsonc
 [
     {
-        "output": "eDP-1",
+        "output": "DP-1",
         // "layer": "top", // Waybar at top layer
         // "position": "bottom", // Waybar position (top|bottom|left|right)
         "height": 50, // Waybar height (to be removed for auto height)
@@ -46,7 +46,7 @@
         ],
         "modules-left": [
             "hyprland/window",
-            "cava",
+            // "cava",
             "custom/headset_battery",
         ],
         "modules-center": [
@@ -57,4 +57,24 @@
             "clock",
         ]
     },
+    {
+        "output": "DP-2",
+        "position": "top",
+        "include": [
+            "~/.config/waybar/quicklinks.jsonc",
+            "~/.config/waybar/modules.jsonc"
+        ],
+        "modules-left": [
+            "hyprland/window",
+            "cava",
+            "custom/headset_battery",
+        ],
+        "modules-center": [
+            "hyprland/workspaces",
+        ],
+        "modules-right": [
+            "tray",
+            "clock",
+        ]
+    }
 ]

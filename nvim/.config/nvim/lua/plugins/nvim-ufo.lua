@@ -6,7 +6,7 @@ return {
     event = "BufRead",
     config = function()
         vim.o.foldcolumn = "1"
-        vim.o.foldlevel = 2
+        vim.o.foldlevel = 99
         vim.o.foldlevelstart = 99
         -- vim.o.foldenable = true
         -- vim.opt.foldnestmax = 4
@@ -96,18 +96,6 @@ return {
                 require("ufo").closeAllFolds()
             end,
         },
-        -- {
-        --     "zm",
-        --     function()
-        --         require("ufo").closeFoldsWith()
-        --     end,
-        -- },
-        -- {
-        --     "zr",
-        --     function()
-        --         require("ufo").openFoldsExceptKinds()
-        --     end,
-        -- },
         {
             "<leader>k",
             function()

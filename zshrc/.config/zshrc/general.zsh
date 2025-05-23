@@ -8,6 +8,19 @@ export XDG_CONFIG_HOME=$HOME/.config
 export NVIM_HOME=$CONFIG/nvim
 export CHROME_EXECUTABLE=/usr/bin/firefox
 export ANSIBLE_NOCOWS=1
+export ANSIBLE_VAULT_PASSWORD_FILE=./.vault_pass
+
+# set -o vi
+
+# set editing-mode vi
+# set show-mode-in-prompt on
+# set vi-ins-mode-string "\1\e[6 q\2"
+# set vi-cmd-mode-string "\1\e[2 q\2"
+
+# optionally:
+# switch to block cursor before executing a command
+
+# bindkey -v
 
 eval $(thefuck --alias)
 

@@ -28,7 +28,7 @@ local markdown_plugins = {
         "OXY2DEV/markview.nvim",
         branch = "dev",
         enabled = true,
-        ft = { "markdown", "yaml", "yaml.ansible" },
+        ft = { "markdown" },
         -- lazy = false,
         ---@module "markview"
         ---@type mkv.config
@@ -36,8 +36,7 @@ local markdown_plugins = {
             preview = {
                 enable = true,
                 modes = { "n", "no", "c" },
-                -- filetypes = { "markdown", "yaml", "yaml.ansible" },
-                filetypes = { "markdown", "yaml" },
+                filetypes = { "markdown" },
                 -- hybrid_modes = { "n", "no", "c" },
                 -- linewise_hybrid_mode = true,
             },

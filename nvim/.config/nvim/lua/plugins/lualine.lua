@@ -1,6 +1,9 @@
 return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    dependencies = {
+        "echasnovski/mini.icons",
+    },
     init = function()
         vim.g.lualine_laststatus = vim.o.laststatus
         if vim.fn.argc(-1) > 0 then
@@ -16,7 +19,7 @@ return {
         local lualine_require = require("lualine_require")
         lualine_require.require = require
 
-        local icons = icons
+        -- local icons = requ
         -- local icons = LazyVim.config.icons
 
         vim.o.laststatus = vim.g.lualine_laststatus

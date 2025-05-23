@@ -14,7 +14,7 @@ local lsp_callback = function(event)
     map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
     map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
     map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-    -- map("K", vim.lsp.buf.hover({ border = "rounded" }), "Hover Documentation")
+    map("K", vim.lsp.buf.hover, "Hover Documentation")
     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
     -- The following two autocommands are used to highlight references of the
@@ -164,7 +164,7 @@ local servers = {
     },
     dockerls = {},
     gopls = {},
-    jedi_language_server = {},
+    -- jedi_language_server = {},
     jsonls = {},
     jinja_lsp = {
         filetypes = { "jinja" },
@@ -175,13 +175,13 @@ local servers = {
     },
     -- pylsp = {},
     -- pyright = {},
-    basedpyright = {
-        settings = {
-            basedpyright = {
-                typeCheckingMode = "standard",
-            },
-        },
-    },
+    -- basedpyright = {
+    --     settings = {
+    --         basedpyright = {
+    --             typeCheckingMode = "standard",
+    --         },
+    --     },
+    -- },
     -- ruff = {},
     --[[ sqlls = {
         filetypes = { "sql" },
@@ -217,6 +217,7 @@ local servers = {
     --         },
     --     },
     -- },
+    cssls = {},
     taplo = {},
 }
 return {

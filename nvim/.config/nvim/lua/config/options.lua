@@ -115,20 +115,7 @@ vim.o.colorcolumn = "80"
 
 -- vim.g.python3_host_prog = '/home/linuxbrew/.linuxbrew/bin/python3'
 
-vim.filetype.add({
-    extension = {
-        yml = "yaml.ansible",
-    },
-})
-
 vim.diagnostic.config({ virtual_text = true })
-
-vim.filetype.add({
-    extension = {
-        pattern = { "docker-compose.yml" },
-        yml = "yaml.docker-compose",
-    },
-})
 
 vim.o.fileformat = "unix"
 vim.o.fileformats = "unix"

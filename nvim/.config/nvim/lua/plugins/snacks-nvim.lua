@@ -136,29 +136,32 @@ return {
             desc = "[T]oggle [D]im",
         },
         -- [ Picker keys ]
-        { "<leader><leader>", function() Snacks.picker.buffers() end, desc = "[ ] Find existing buffers" },
-        { "<leader>f.", function() Snacks.picker.recent() end, desc = '[F]ind Recent Files ("." for repeat)' },
-        { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
-        { "<leader>fa", function() Snacks.picker.autocmds() end, desc = '[F]ind [A]uto commands' },
-        { "<leader>fc", function() Snacks.picker.commands() end, desc = '[F]ind [C]ommands' },
         { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "[F]ind [D]iagnostics" },
-        { "<leader>fe", function() Snacks.picker.explorer() end, desc = "[F]ind [E]xplorer" },
-        { "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, desc = "[F]ind [F]iles" },
-        { "<leader>fg", function() Snacks.picker.grep() end, desc = "[F]ind by [G]rep" },
         { "<leader>fh", function() Snacks.picker.help() end, desc = "[F]ind [H]elp" },
         { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "[F]ind [K]eymaps" },
         { "<leader>fl", function() Snacks.picker.lazy() end, desc = "[F]ind [L]azy" },
-        { "<leader>fn", function() Snacks.picker.notifications() end, desc = "[F]ind [P]ickers" },
+        { "<leader>fn", function() Snacks.picker.notifications() end, desc = "[F]ind [N]otifications" },
         { "<leader>fp", function() Snacks.picker.pickers() end, desc = "[F]ind [P]ickers" },
-        { "<leader>fq", function() Snacks.picker.gflist() end, desc = "[F]ind [Q]uick Fix List" },
+        { "<leader>fq", function() Snacks.picker.qflist() end, desc = "[F]ind [Q]uick Fix List" },
         { "<leader>fr", function() Snacks.picker.resume() end, desc = "[F]ind [R]esume" },
-        { "<leader>fs", function() Snacks.picker.spelling() end, desc = "[F]ind [S]pelling" },
-        { "<leader>fS", function() Snacks.picker.smart() end, desc = "[F]ind [S]mart" },
+        { "<leader>fS", function() Snacks.picker.spelling() end, desc = "[F]ind [S]pelling" },
         { "<leader>ft", function() Snacks.picker.todo_comments() end, desc = "[F]ind [T]odo" },
         { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "[F]ind current [W]ord" },
-        -- TODO: 
-        -- { "<leader>fo", function() Snacks.picker.vim_options() end, desc = "[F]ind [O]ptions" },
-        -- { "<leader>fF", "<cmd>Telescope flutter commands<CR>", desc = "[F]ind [F]lutter commands" },
+
+        -- Commands
+        { "<leader>:", function() Snacks.picker.command_history() end, desc = "[:] Command History" },
+        { "<leader>fa", function() Snacks.picker.autocmds() end, desc = '[F]ind [A]uto commands' },
+        { "<leader>fc", function() Snacks.picker.commands() end, desc = '[F]ind [C]ommands' },
+
+        -- Files
+        { "<leader>fe", function() Snacks.picker.explorer() end, desc = "[F]ind [E]xplorer" },
+        { "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, desc = "[F]ind [F]iles" },
+        { "<leader><leader>", function() Snacks.picker.buffers() end, desc = "[ ] Find existing buffers" },
+        { "<leader>fs", function() Snacks.picker.smart() end, desc = "[F]ind [S]mart" },
+        { "<leader>f.", function() Snacks.picker.recent() end, desc = '[F]ind Recent Files ("." for repeat)' },
+
+        -- Grep
+        { "<leader>fg", function() Snacks.picker.grep() end, desc = "[F]ind by [G]rep" },
 
         -- Git Pickers
         { "<leader>gS", function() Snacks.picker.git_status() end, desc = "[G]it [S]tatus" },
@@ -181,9 +184,14 @@ return {
 
         -- picker unique
         { "<leader>sc", function() Snacks.picker.colorschemes() end, desc = "[S]earch [C]olorscheme" },
-        { "<leader>sh", function() Snacks.picker.cliphist() end, desc = "[S]earch [H]istory}" },
+        { "<leader>sh", function() Snacks.picker.cliphist() end, desc = "[S]earch clipboard [H]istory}" },
         { "<leader>si", function() Snacks.picker.icons() end, desc = "[S]earch [I]con" },
         { "<leader>su", function() Snacks.picker.undo() end, desc = "[S]earch [U]dotree" },
+        { "<leader>fO", "<cmd>ObsidianQuickSwitch<CR>", desc = "[F]ind [O]sidian switch" },
+
+        -- TODO: 
+        -- { "<leader>fo", function() Snacks.picker.vim_options() end, desc = "[F]ind [O]ptions" },
+        -- { "<leader>fF", "<cmd>Telescope flutter commands<CR>", desc = "[F]ind [F]lutter commands" },
     },
     init = function()
         vim.api.nvim_create_autocmd("User", {

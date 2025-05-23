@@ -241,3 +241,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
         })
     end,
 })
+
+local set_ft = function(pattern, filetype)
+    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        pattern = pattern,
+        callback = function()
+            vim.bo.filetype = filetype
+        end,
+    })
+end
+
+set_ft("*.gitlab-ci*.{yml,yaml}", "yaml.gitlab")
+set_ft("*docker-compose*.{yml,yaml}", "yaml.docker-compose")
