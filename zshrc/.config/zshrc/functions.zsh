@@ -16,3 +16,14 @@ function randomfiglet()
     font="$(basename -s .flf "$(ls /usr/share/figlet/fonts/*.flf | shuf -n 1)")"
     figlet -cWp -f "$font" "$@"
 }
+
+function ssh_df()
+{
+    grep -rPh "^Host ([^*]+)$" $HOME/.ssh 2> /dev/null  \
+    | sed "s/Host //"  \
+    | cut -d " " -f 2  \
+    | sort  \
+    | uniq  \
+    | fzf  \
+    | xargs -I % ssh % 'df -h'
+}

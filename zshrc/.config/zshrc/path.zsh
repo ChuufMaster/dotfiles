@@ -2,7 +2,7 @@ typeset -gxU path PATH
 
 export ANDROID_HOME=$HOME/android-sdk
 export GEM_HOME="$(gem env user_gemhome)"
-export GEM_PATH="$(gem env gemdir)"
+export GEM_PATH="$(gem env gemdir/)"/bin
 # export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
 path+=(

@@ -19,6 +19,7 @@ plugins=(
     zoxide
     git
     ssh
+    starship
     zsh-completions
     zsh-autosuggestions
     zsh-syntax-highlighting
