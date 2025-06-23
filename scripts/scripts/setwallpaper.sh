@@ -10,7 +10,12 @@ CHOSEN="$1"
 executeCommand() {
 
     if command -v swww &>/dev/null; then
+        swww query
+        if [ $? -eq 1 ] ; then
+            swww-daemon
+        fi
         swww img "$1" ${SWWW_PARAMS}
+        notify-send "Wallpaper set to $1"
 
     elif command -v swaybg &>/dev/null; then
         swaybg -i "$1" &
@@ -79,7 +84,7 @@ reload_kitty
 set_spicetify
 # ~/scripts/reload-waybar.sh
 
-swww query
-if [ $? -eq 1 ]; then
-    ~/scripts/wallpaper.sh
-fi
+# swww query
+# if [ $? -eq 1 ]; then
+#     ~/scripts/wallpaper.sh
+# fi

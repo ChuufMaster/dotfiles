@@ -2,6 +2,6 @@
 
 swww query
 if [ $? -eq 1 ] ; then
-    swww init
+    swww-daemon
 fi
-swww img ~/.current_wallpaper
+swww img ~/.current_wallpaper --resize fit
