@@ -84,6 +84,11 @@ return {
                     template = "![$FILE_NAME]($FILE_PATH)",
                 },
             },
+            dirs = {
+                ["/home/chuufmaster/Modules/Brain"] = {
+                    dir_path = "attachments",
+                },
+            },
         },
         keys = {
             -- suggested keymap

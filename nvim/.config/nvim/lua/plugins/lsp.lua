@@ -197,17 +197,17 @@ local servers = {
             auxDirectory = "./build",
         },
     },
-    ltex = {
-        settings = {
-            ltex = {
-                dictionary = {
-                    ["en"] = words,
-                    ["en-US"] = words,
-                    ["en-GB"] = words,
-                },
-            },
-        },
-    },
+    -- ltex = {
+    --     settings = {
+    --         ltex = {
+    --             dictionary = {
+    --                 ["en"] = words,
+    --                 ["en-US"] = words,
+    --                 ["en-GB"] = words,
+    --             },
+    --         },
+    --     },
+    -- },
     -- lua_ls = {
     --     settings = {
     --         Lua = {
@@ -218,7 +218,7 @@ local servers = {
     --     },
     -- },
     cssls = {},
-    taplo = {},
+    -- taplo = {},
 }
 return {
     "neovim/nvim-lspconfig",

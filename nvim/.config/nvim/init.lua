@@ -1,5 +1,11 @@
 require("config.lazy")
 
+vim.o.background = "dark"
+vim.cmd([[colorscheme gruvbox]])
+
+-- vim.cmd.colorscheme("tokyonight")
+-- vim.cmd("hi ColorColumn ctermbg=white guibg=darkcyan")
+
 vim.lsp.config("ts_ls", {
     init_options = {
         plugins = {
@@ -17,6 +23,8 @@ vim.lsp.config("ts_ls", {
     },
 })
 
+vim.lsp.config("taplo", { root_markers = { ".taplo.toml", "taplo.toml", ".git", "starship.toml" } })
+
 -- You must make sure volar is setup
 -- e.g. vim.lsp.config('volar')
 -- See volar's section for more information
@@ -30,9 +38,10 @@ vim.lsp.enable({
     "markdown_oxide",
     -- "ruff",
     "pylsp",
-    "volar",
+    "vue_ls",
     "tailwindcss",
     "ts_ls",
+    "taplo",
 })
 
 vim.filetype.add({
@@ -44,3 +53,5 @@ vim.filetype.add({
         ["${HOME}/.ssh/*"] = "sshconfig",
     },
 })
+
+vim.env.OBSIDIAN_REST_API_KEY = "7aa92ea9789c4abe6957e687185631f7f51278b1ea781704ae8c15cc45e2d633"

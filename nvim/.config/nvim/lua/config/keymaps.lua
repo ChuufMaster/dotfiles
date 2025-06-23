@@ -24,10 +24,10 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+-- vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+-- vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+-- vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Vim remap overides
 -- vim.keymap.set("i", "<C-b>", "<Esc><S-I>", { desc = "Beginning of line" })
@@ -130,15 +130,3 @@ vim.keymap.set("n", "gK", function()
 end, { desc = "Toggle diagnostic virtual_lines" })
 
 vim.keymap.set("i", "<C-Z>", "<ESC>zzi", { desc = "Centre screen" })
-
--- movement
-vim.keymap.set({ "n", "v" }, "<Up>", "<cmd>Treewalker Up<cr>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<Down>", "<cmd>Treewalker Down<cr>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<Left>", "<cmd>Treewalker Left<cr>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<Right>", "<cmd>Treewalker Right<cr>", { silent = true })
-
--- swapping
-vim.keymap.set("n", "<M-Up>", "<cmd>Treewalker SwapUp<cr>", { silent = true })
-vim.keymap.set("n", "<M-Left>", "<cmd>Treewalker SwapLeft<cr>", { silent = true })
-vim.keymap.set("n", "<M-Down>", "<cmd>Treewalker SwapDown<cr>", { silent = true })
-vim.keymap.set("n", "<M-Right>", "<cmd>Treewalker SwapRight<cr>", { silent = true })

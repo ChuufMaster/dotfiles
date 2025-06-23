@@ -35,7 +35,9 @@ return { -- Autoformat
                 "json",
                 "toml",
                 "yaml.ansible",
+                "markdown",
                 "yaml",
+                "ruby",
             }
             if vim.tbl_contains(disable_filetypes, vim.bo[bufnr].filetype) then
                 return

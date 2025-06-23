@@ -9,12 +9,17 @@ return {
                 dependencies = {
                     { "rafamadriz/friendly-snippets" },
                 },
+                build = "make install_jsregexp",
                 config = function()
                     require("luasnip.loaders.from_vscode").lazy_load()
                     require("config.snippets")
                     vim.keymap.set("s", "<C-c>", function()
                         require("luasnip.extras.select_choice")()
                     end, {})
+                    require("luasnip").config.setup({
+                        region_check_events = "CursorHold,InsertLeave,InsertEnter",
+                        delete_check_events = "TextChanged,InsertEnter",
+                    })
                 end,
             },
             "ribru17/blink-cmp-spell",
@@ -90,24 +95,13 @@ return {
                 },
                 per_filetype = {
                     lua = { "lazydev", inherit_defaults = true },
-                    markdown = { inherit_defaults = true },
                     csharp = { "easy-dotnet", inherit_defaults = true },
                 },
             },
             fuzzy = { implementation = "prefer_rust_with_warning" },
             cmdline = {
                 enabled = true,
-                ---@type function|table
-                sources = function()
-                    local type = vim.fn.getcmdtype()
-                    if type == "/" or type == "?" then
-                        return { "buffer" }
-                    end
-                    if type == ":" or type == "@" then
-                        return { "cmdline" }
-                    end
-                    return {}
-                end,
+                sources = { "buffer", "cmdline" },
                 completion = {
                     trigger = {
                         show_on_blocked_trigger_characters = {},

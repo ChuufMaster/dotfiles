@@ -253,3 +253,30 @@ end
 
 set_ft("*.gitlab-ci*.{yml,yaml}", "yaml.gitlab")
 set_ft("*docker-compose*.{yml,yaml}", "yaml.docker-compose")
+
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        if require("nvim-treesitter.parsers").has_parser() then
+            -- movement
+            vim.keymap.set({ "n", "v" }, "<Up>", "<cmd>Treewalker Up<cr>", { silent = true, buffer = true })
+            vim.keymap.set({ "n", "v" }, "<Down>", "<cmd>Treewalker Down<cr>", { silent = true, buffer = true })
+            vim.keymap.set({ "n", "v" }, "<Left>", "<cmd>Treewalker Left<cr>", { silent = true, buffer = true })
+            vim.keymap.set({ "n", "v" }, "<Right>", "<cmd>Treewalker Right<cr>", { silent = true, buffer = true })
+
+            -- swapping
+            vim.keymap.set("n", "<M-Up>", "<cmd>Treewalker SwapUp<cr>", { silent = true, buffer = true })
+            vim.keymap.set("n", "<M-Left>", "<cmd>Treewalker SwapLeft<cr>", { silent = true, buffer = true })
+            vim.keymap.set("n", "<M-Down>", "<cmd>Treewalker SwapDown<cr>", { silent = true, buffer = true })
+            vim.keymap.set("n", "<M-Right>", "<cmd>Treewalker SwapRight<cr>", { silent = true, buffer = true })
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
+    group = vim.api.nvim_create_augroup("cmd-line-relnum-toggle", { clear = true }),
+    callback = function()
+        vim.wo.relativenumber = not vim.wo.relativenumber
+        vim.wo.cursorline = not vim.wo.cursorline
+        vim.cmd([[ redraw ]])
+    end,
+})

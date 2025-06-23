@@ -7,6 +7,12 @@ return {
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
+        styles = {
+            snacks_image = {
+                relative = "cursor",
+                col = 80,
+            },
+        },
         bigfile = { enabled = true },
         indent = {
             enabled = true,
@@ -102,6 +108,7 @@ return {
             sources = {
                 explorer = {
                     layout = {
+                        preview = true,
                         layout = { position = "right" },
                     },
                 },
@@ -169,6 +176,7 @@ return {
         { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "[G]it [D]iff" },
         { "<leader>gf", function() Snacks.picker.git_files() end, desc = "[G]it [F]iles" },
         { "<leader>gl", function() Snacks.picker.git_log() end, desc = "[G]it [L]og" },
+        { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "[G]it [L]og Line" },
         { "<leader>gs", function() Snacks.picker.git_stash() end, desc = "[G]it [S]tash" },
 
         --- Telescope lsp pickers

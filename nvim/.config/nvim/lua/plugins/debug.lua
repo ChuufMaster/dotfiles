@@ -56,18 +56,18 @@ return {
             dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
         end, { desc = "Debug: Set Breakpoint" })
 
-        local install_dir = require("mason-core.path").package_prefix("netcoredbg")
-        local netcoredbg_install_dir = install_dir .. "/netcoredbg"
-        dap.adapters.netcoredbg = {
-            type = "executable",
-            command = netcoredbg_install_dir,
-            args = { "--interpreter=vscode -- dotnet" },
-        }
-
-        dap.adapters.codelldb = {
-            type = "executable",
-            command = "codelldb",
-        }
+        -- local install_dir = require("mason-core.path").package_prefix("netcoredbg")
+        -- local netcoredbg_install_dir = install_dir .. "/netcoredbg"
+        -- dap.adapters.netcoredbg = {
+        --     type = "executable",
+        --     command = netcoredbg_install_dir,
+        --     args = { "--interpreter=vscode -- dotnet" },
+        -- }
+        --
+        -- dap.adapters.codelldb = {
+        --     type = "executable",
+        --     command = "codelldb",
+        -- }
 
         dap.configurations.cpp = {
             {

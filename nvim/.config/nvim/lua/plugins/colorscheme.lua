@@ -21,8 +21,8 @@ return { -- You can easily change to a different colorscheme.
                     -- colors.comment = "#ffffff"
                 end,
             })
-            vim.cmd.colorscheme("tokyonight")
-            vim.cmd("hi ColorColumn ctermbg=white guibg=darkcyan")
+            -- vim.cmd.colorscheme("tokyonight")
+            -- vim.cmd("hi ColorColumn ctermbg=white guibg=darkcyan")
         end,
     },
     {
@@ -30,6 +30,7 @@ return { -- You can easily change to a different colorscheme.
         name = "catppuccin",
         priority = 1001,
     },
+    { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
     {
         "uZer/pywal16.nvim",
         priority = 1000, -- Make sure to load this before all the other start plugins.
