@@ -181,6 +181,9 @@ return {
 
         --- Telescope lsp pickers
         { "<leader>lc", function() Snacks.picker.lsp_config() end, desc = "[L]sp [C]onfig" },
+        { "<leader>lC", function() Snacks.picker.lsp_config({configured = true}) end, desc = "[L]sp [C]onfig" },
+        { "<leader>lI", function() Snacks.picker.lsp_config({installed = true}) end, desc = "[L]sp [C]onfig" },
+        { "<leader>lA", function() Snacks.picker.lsp_config({attached = true}) end, desc = "[L]sp [C]onfig" },
         { "<leader>lD", function() Snacks.picker.lsp_declarations() end, desc = "[L]sp [D]eclarations" },
         { "<leader>ld", function() Snacks.picker.lsp_definitions() end, desc = "[L]sp [D]efinitions" },
         { "<leader>li", function() Snacks.picker.lsp_implementations() end, desc = "[L]sp [I]mplementations" },

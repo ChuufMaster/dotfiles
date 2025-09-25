@@ -1,18 +1,18 @@
 return {
     {
         "obsidian-nvim/obsidian.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        -- lazy = true,
+        version = "*",
+        lazy = true,
         -- ft = { "markdown" },
         event = {
             "BufReadPre " .. vim.fn.expand("~/Modules/Brain") .. "/*.md",
             "BufNewFile " .. vim.fn.expand("~/Modules/Brain") .. "/*.md",
         },
+
         ---@module "obsidian"
-        ---@class obsidian.config.ClientOpts
+        ---@class obsidian.config
         opts = {
+            legacy_commands = false,
             workspaces = {
                 {
                     name = "Brain",
@@ -56,6 +56,7 @@ return {
             { "<leader>oP", "<cmd>Obsidian yesterday<cr>", "[O]bsidian [P]revious day" },
             { "<leader>oN", "<cmd>Obsidian tomorrow<cr>", "[O]bsidian [N]ext day" },
             { "<leader>od", "<cmd>Obsidian dailies<cr>", "[O]bsidian [D]ailies" },
+            { "<leader>oT", "<cmd>Obsidian tags<cr>", "[O]bsidian [T]ags" },
             {
                 "<leader>on",
                 function()

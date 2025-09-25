@@ -2,6 +2,10 @@
 vim.g.maplocalleader = " " ]]
 vim.g.maplocalleader = ","
 
+-- local termfeatures = vim.g.termfeatures or {}
+-- termfeatures.osc52 = false
+-- vim.g.termfeatures = termfeatures
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -119,3 +123,16 @@ vim.diagnostic.config({ virtual_text = true })
 
 vim.o.fileformat = "unix"
 vim.o.fileformats = "unix"
+
+-- vim.g.clipboard = "osc52"
+-- vim.g.clipboard = {
+--     name = "OSC 52",
+--     copy = {
+--         ["+"] = require("vim.clipboard.osc52").copy,
+--         ["*"] = require("vim.clipboard.osc52").copy,
+--     },
+--     paste = {
+--         ["+"] = require("vim.clipboard.osc52").paste,
+--         ["*"] = require("vim.clipboard.osc52").paste,
+--     },
+-- }

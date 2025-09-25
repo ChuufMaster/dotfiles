@@ -66,105 +66,16 @@ for word in io.open(path, "r"):lines() do
     table.insert(words, word)
 end
 
-local for_future = {
-    textlsp = {
-        settings = {
-            analysers = {
-                --[[ languagetool = {
-                    enabled = true,
-                    check_text = {
-                        on_open = true,
-                        on_save = true,
-                        on_change = false,
-                    },
-                }, ]]
-                --[[ ollama = {
-                    enabled = true,
-                    check_text = {
-                        on_open = false,
-                        on_save = true,
-                        on_change = false,
-                    },
-                    model = "phi3:3.8b-instruct", -- smaller but faster model
-                    -- model = "phi3:14b-instruct",  -- more accurate
-                    max_token = 50,
-                }, ]]
-                gramformer = {
-                    -- gramformer dependency needs to be installed manually
-                    enabled = false,
-                    gpu = false,
-                    check_text = {
-                        on_open = false,
-                        on_save = true,
-                        on_change = false,
-                    },
-                },
-                hf_checker = {
-                    enabled = false,
-                    gpu = false,
-                    quantize = 32,
-                    model = "pszemraj/flan-t5-large-grammar-synthesis",
-                    min_length = 40,
-                    check_text = {
-                        on_open = false,
-                        on_save = true,
-                        on_change = false,
-                    },
-                },
-                hf_instruction_checker = {
-                    enabled = false,
-                    gpu = false,
-                    quantize = 32,
-                    model = "grammarly/coedit-large",
-                    min_length = 40,
-                    check_text = {
-                        on_open = false,
-                        on_save = true,
-                        on_change = false,
-                    },
-                },
-                hf_completion = {
-                    enabled = false,
-                    gpu = false,
-                    quantize = 32,
-                    model = "bert-base-multilingual-cased",
-                    topk = 5,
-                },
-            },
-            documents = {
-                -- the language of the documents, could be set to `auto` of `auto:<fallback>`
-                -- to detect automatically, default: auto:en
-                language = "auto:en",
-                -- do not autodetect documents with fewer characters
-                min_length_language_detect = 20,
-                org = {
-                    org_todo_keywords = {
-                        "TODO",
-                        "IN_PROGRESS",
-                        "DONE",
-                    },
-                },
-                txt = {
-                    parse = true,
-                },
-            },
-        },
-    },
-}
-
 local servers = {
     actionlint = {},
-    -- ansiblels = {},
     bashls = {},
     clangd = {},
-    -- cssls = {},
     docker_compose_language_service = {
         cmd = { "docker-compose-langserver", "--stdio" },
         filetypes = { "yaml.docker-compose" },
     },
     dockerls = {},
     gopls = {},
-    -- jedi_language_server = {},
     jsonls = {},
     jinja_lsp = {
         filetypes = { "jinja" },
@@ -173,19 +84,6 @@ local servers = {
     marksman = {
         settings = { filetypes = { "markdown" } },
     },
-    -- pylsp = {},
-    -- pyright = {},
-    -- basedpyright = {
-    --     settings = {
-    --         basedpyright = {
-    --             typeCheckingMode = "standard",
-    --         },
-    --     },
-    -- },
-    -- ruff = {},
-    --[[ sqlls = {
-        filetypes = { "sql" },
-    }, ]]
     yamlls = {},
     texlab = {
         build = {
@@ -197,28 +95,9 @@ local servers = {
             auxDirectory = "./build",
         },
     },
-    -- ltex = {
-    --     settings = {
-    --         ltex = {
-    --             dictionary = {
-    --                 ["en"] = words,
-    --                 ["en-US"] = words,
-    --                 ["en-GB"] = words,
-    --             },
-    --         },
-    --     },
-    -- },
-    -- lua_ls = {
-    --     settings = {
-    --         Lua = {
-    --             completion = {
-    --                 callSnippet = "Replace",
-    --             },
-    --         },
-    --     },
-    -- },
+    harper_ls = {},
+    gh_actions_ls = {},
     cssls = {},
-    -- taplo = {},
 }
 return {
     "neovim/nvim-lspconfig",
@@ -271,22 +150,12 @@ return {
                     local server = servers[server_name] or {}
                     server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                     require("lspconfig")[server_name].setup(server)
-                    -- require("lspconfig")[server_name].setup({
-                    --     capabilities = capabilities,
-                    --     on_attach = on_attach,
-                    --     settings = servers[server_name],
-                    --     filetypes = (servers[server_name] or {}).filetypes,
-                    -- })
                 end,
             },
             ensure_installed = {},
             automatic_installation = false,
         })
 
-        -- require("lspconfig").jdtls.setup({})
-        -- require("lspconfig").racket_langserver.setup({})
-        -- require("lspconfig").ruby_lsp.setup({})
-        -- require("lspconfig").solargraph.setup({})
         require("lspconfig").prolog_ls.setup({
             cmd = {
                 "swipl",

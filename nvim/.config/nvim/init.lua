@@ -1,7 +1,9 @@
 require("config.lazy")
 
 vim.o.background = "dark"
+-- vim.o.background = "light"
 vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd([[colorscheme desert]])
 
 -- vim.cmd.colorscheme("tokyonight")
 -- vim.cmd("hi ColorColumn ctermbg=white guibg=darkcyan")
@@ -39,7 +41,7 @@ vim.lsp.enable({
     -- "ruff",
     "pylsp",
     "vue_ls",
-    "tailwindcss",
+    -- "tailwindcss",
     "ts_ls",
     "taplo",
 })
