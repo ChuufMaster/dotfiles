@@ -12,3 +12,7 @@ source $CONFIG_ZSH/plugins.zsh
 source $CONFIG_ZSH/completions.zsh
 source $CONFIG_ZSH/after.zsh
 # ~/projects/color_output/test.py
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select

@@ -34,7 +34,7 @@ alias act="act --secret-file .env --artifact-server-path /tmp/artifacts"
 alias dot="cd ~/dotfiles"
 alias config="cd ~/.config"
 alias peek="cd ~/BeakPeek"
-alias proj="cd ~/projects"
+# alias proj="cd ~/projects"
 alias zhypr="cd $DOTFILES/hypr/.config/hypr"
 alias zkanata="cd $CONFIG/kanata"
 alias zkitty="cd $CONFIG/kitty"
@@ -75,3 +75,9 @@ alias sshv='f(){ ssh "$@" -t bash -o vi }; f'
 
 alias bak='f(){mv "$1" "$1.bak"}; f'
 alias unbak='f(){mv "$1" "$(echo "$1" | sed -e 's/\.bak//g')"}; f'
+
+alias uvansible='uv tool run --from ansible-core ansible'
+alias uvansible-playbook='uv tool run --from ansible-core ansible-playbook -e "ansible_ssh_user=ivan"'
+alias uvansible-galaxy='uv tool run --from ansible-core ansible-galaxy'
+
+alias less='bat --plain --paging=always'
