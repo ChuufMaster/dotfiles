@@ -61,28 +61,6 @@
         "separate-outputs": true
     },
     // Rofi Application Launcher
-    "custom/appmenu": {
-        "format": "Apps",
-        "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings",
-        "on-click": "rofi -show drun -replace",
-        "on-click-right": "~/.config/ml4w/scripts/keybindings.sh",
-        "tooltip": false
-    },
-    // Power Menu
-    "custom/exit": {
-        "format": "",
-        "tooltip-format": "Powermenu",
-        "on-click": "wlogout -b 4",
-        "menu": "on-click-right",
-        "tooltip": false,
-        "menu-file": "~/.config/waybar/power_menu.xml",
-        "menu-actions": {
-            "shutdown": "shutdown",
-            "reboot": "reboot",
-            "suspend": "systemctl suspend",
-            "hibernate": "systemctl hibernate",
-        }
-    },
     // Keyboard State
     "keyboard-state": {
         "numlock": true,
@@ -104,11 +82,6 @@
         "interval": 1,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
-    },
-    // System
-    "custom/system": {
-        "format": "",
-        "tooltip": false
     },
     // CPU
     "cpu": {
@@ -157,19 +130,18 @@
             "memory",
         ]
     },
-    // Network
-    "network": {
-        "format": "{ifname}",
-        "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "  {ipaddr}",
-        "format-disconnected": "Not connected", //An empty format will hide the module.
-        "tooltip-format": " {ifname} via {gwaddri}",
-        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": " {ifname} ({ipaddr}/{cidr})",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50,
-        "on-click": "nm-connection-editor"
-    },
+    // "network": {
+    //     "format": "{ifname} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    //     "format-wifi": "  {signalStrength}%",
+    //     "format-ethernet": "  {ipaddr}",
+    //     "format-disconnected": "Not connected", //An empty format will hide the module.
+    //     "tooltip-format": " {ifname} via {gwaddri}",
+    //     "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+    //     "tooltip-format-ethernet": " {ifname} ({ipaddr}/{cidr})",
+    //     "tooltip-format-disconnected": "Disconnected",
+    //     "max-length": 50,
+    //     "on-click": "nm-connection-editor"
+    // },
     // Battery
     "battery": {
         "states": {
@@ -223,12 +195,6 @@
         "scroll-step": 1,
         "on-click": "pavucontrol"
     },
-    "custom/headset_battery": {
-        "tooltip": false,
-        "format": "󰋋 {} ",
-        "interval": 30,
-        "exec": "headsetcontrol -b | grep -o 'Level.*' | sed 's/Level: //'"
-    },
     "group/headset": {
         "orientation": "inherit",
         "drawer": {
@@ -265,37 +231,6 @@
             "deactivated": ""
         },
         "on-click-right": "hyprlock"
-    },
-    "custom/notify": {
-        "format": "󰂚",
-        "on-click": "~/scripts/dunsthistory.sh",
-        "tooltip": false
-    },
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span>",
-            "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-none": "",
-            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "inhibited-none": "",
-            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-inhibited-none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
-    "custom/mouse_battery": {
-        "tooltip": false,
-        "format": " {} ",
-        "interval": 1,
-        "exec": "polychromatic-cli -k | grep 'Battery' | sed 's/Battery//'"
     },
     "cava": {
         // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
@@ -378,10 +313,6 @@
             "Firefox Web Browser": "Firefox",
             "Foot Server": "Terminal"
         }
-    },
-    "custom/taskbar": {
-        "format": "",
-        "tooltip": false
     },
     "group/apps": {
         "orientation": "inherit",

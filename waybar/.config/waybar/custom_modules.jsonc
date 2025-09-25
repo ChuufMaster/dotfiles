@@ -1,0 +1,76 @@
+{
+    "custom/appmenu": {
+        "format": "Apps",
+        "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings",
+        "on-click": "rofi -show drun -replace",
+        "on-click-right": "~/.config/ml4w/scripts/keybindings.sh",
+        "tooltip": false
+    },
+    // Power Menu
+    "custom/exit": {
+        "format": "",
+        "tooltip-format": "Powermenu",
+        "on-click": "wlogout -b 4",
+        "menu": "on-click-right",
+        "tooltip": false,
+        "menu-file": "~/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "shutdown",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate",
+        }
+    },
+    // System
+    "custom/system": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/headset_battery": {
+        "tooltip": false,
+        "format": "󰋋 {} ",
+        "interval": 30,
+        "exec": "headsetcontrol -b | grep -o 'Level.*' | sed 's/Level: //'"
+    },
+    "custom/notify": {
+        "format": "󰂚",
+        "on-click": "~/scripts/dunsthistory.sh",
+        "tooltip": false
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/mouse_battery": {
+        "tooltip": false,
+        "format": " {} ",
+        "interval": 1,
+        "exec": "polychromatic-cli -k | grep 'Battery' | sed 's/Battery//'"
+    },
+    "custom/taskbar": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/ram": {
+        "exec": "~/.config/waybar/scripts/ram.sh",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "btop"
+    },
+}

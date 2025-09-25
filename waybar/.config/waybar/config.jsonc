@@ -4,14 +4,16 @@
         "output": "DP-1",
         // "layer": "top", // Waybar at top layer
         // "position": "bottom", // Waybar position (top|bottom|left|right)
-        "height": 50, // Waybar height (to be removed for auto height)
+        // "height": 40, // Waybar height (to be removed for auto height)
         "reload_style_on_change": true,
         // "width": 1280, // Waybar width
-        "spacing": 4, // Gaps between modules (4px)
+        "spacing": 2, // Gaps between modules (4px)
         // Choose the order of the modules
         // Load Modules
         "include": [
             "~/.config/waybar/quicklinks.jsonc",
+            "~/.config/waybar/custom_modules.jsonc",
+            "~/.config/waybar/pewds_cutom.jsonc",
             "~/.config/waybar/modules.jsonc"
         ],
         "modules-left": [
@@ -21,27 +23,35 @@
             "gamemode",
             "mpris",
             "group/apps",
-            "custom/notification",
         ],
         "modules-center": [
             "hyprland/workspaces",
+            "custom/notification",
         ],
         "modules-right": [
-            "group/headset",
+            // "group/headset",
+            "custom/ram",
+            "custom/volume",
+            "custom/microphone",
+            "custom/battery",
+            "custom/brightness",
             "network",
             "group/hardware",
             "bluetooth",
             "battery",
             "clock",
             "tray",
-            "custom/exit"
+            "custom/exit",
         ]
     },
     {
         "output": "DP-2",
         "position": "bottom",
+        "height": 50, // Waybar height (to be removed for auto height)
         "include": [
             "~/.config/waybar/quicklinks.jsonc",
+            "~/.config/waybar/custom_modules.jsonc",
+            "~/.config/waybar/pewds_cutom.jsonc",
             "~/.config/waybar/modules.jsonc"
         ],
         "modules-left": [
@@ -53,8 +63,9 @@
             "hyprland/workspaces",
         ],
         "modules-right": [
-            "tray",
+            "custom/ram",
             "clock",
+            "tray",
         ]
     },
     {
@@ -62,6 +73,8 @@
         "position": "top",
         "include": [
             "~/.config/waybar/quicklinks.jsonc",
+            "~/.config/waybar/custom_modules.jsonc",
+            "~/.config/waybar/pewds_cutom.jsonc",
             "~/.config/waybar/modules.jsonc"
         ],
         "modules-left": [
@@ -73,8 +86,9 @@
             "hyprland/workspaces",
         ],
         "modules-right": [
-            "tray",
+            "custom/ram",
             "clock",
+            "tray",
         ]
     }
 ]
