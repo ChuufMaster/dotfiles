@@ -16,3 +16,7 @@ source $CONFIG_ZSH/after.zsh
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 zstyle ':completion:*' menu select
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

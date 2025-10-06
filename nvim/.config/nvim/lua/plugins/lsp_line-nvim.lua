@@ -1,6 +1,7 @@
 return {
     "maan2003/lsp_lines.nvim",
     -- lazy = false,
+    enabled = false,
     opts = {},
     -- init = function()
     --     vim.diagnostic.config({

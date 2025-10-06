@@ -149,29 +149,31 @@ return {
                 function(server_name)
                     local server = servers[server_name] or {}
                     server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-                    require("lspconfig")[server_name].setup(server)
+                    -- require("lspconfig")[server_name].setup(server)
+                    -- require("lspconfig")[server_name].setup(server)
+                    vim.lsp.config(server_name, server)
                 end,
             },
             ensure_installed = {},
             automatic_installation = false,
         })
 
-        require("lspconfig").prolog_ls.setup({
-            cmd = {
-                "swipl",
-                "-g",
-                "use_module(library(lsp_server)).",
-                "-g",
-                "lsp_server:main",
-                "-t",
-                "halt",
-                "--",
-                "stdio",
-            },
-            -- the filetypes to attach the server to
-            filetypes = { "prolog" },
-            -- root directory detection for detecting the project root
-            root_dir = require("lspconfig.util").root_pattern("pack.pl"),
-        })
+        -- require("lspconfig").prolog_ls.setup({
+        --     cmd = {
+        --         "swipl",
+        --         "-g",
+        --         "use_module(library(lsp_server)).",
+        --         "-g",
+        --         "lsp_server:main",
+        --         "-t",
+        --         "halt",
+        --         "--",
+        --         "stdio",
+        --     },
+        --     -- the filetypes to attach the server to
+        --     filetypes = { "prolog" },
+        --     -- root directory detection for detecting the project root
+        --     root_dir = require("lspconfig.util").root_pattern("pack.pl"),
+        -- })
     end,
 }

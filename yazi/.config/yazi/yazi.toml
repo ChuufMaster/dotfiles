@@ -2,7 +2,7 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
-[manager]
+[mgr]
 ratio = [1, 4, 3]
 sort_by = "alphabetical"
 sort_sensitive = false
@@ -42,7 +42,7 @@ open = [
     { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
 ]
 
-open_ophan = [
+open_orphan = [
     # { run = 'xdg-open "$1"; ya emit quit', orphan = true, desc = "Open", for = "linux" },
     { run = 'ya emit quit; xdg-open "$1"', orphan = true, desc = "Open", for = "linux" },
     { run = 'open "$@"', block = true, desc = "Open", for = "macos" },
@@ -86,7 +86,7 @@ rules = [
     ] },
     # PDF
     { name = "*.pdf", use = [
-        "open_ophan",
+        "open_orphan",
     ] },
     # Media
     { mime = "{audio,video}/*", use = [
@@ -118,7 +118,7 @@ rules = [
     ] },
     # Fallback
     { name = "*", use = [
-        "open",
+        "open_orphan",
         "reveal",
     ] },
 ]
