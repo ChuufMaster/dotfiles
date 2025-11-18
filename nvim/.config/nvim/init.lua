@@ -22,6 +22,8 @@ vim.lsp.config("ts_ls", {
         "javascript",
         "typescript",
         "vue",
+        "typescriptreact",
+        "javacriptreact",
     },
 })
 

@@ -96,6 +96,7 @@ local servers = {
         },
     },
     harper_ls = {},
+    ts_ls = {},
     gh_actions_ls = {},
     cssls = {},
 }
