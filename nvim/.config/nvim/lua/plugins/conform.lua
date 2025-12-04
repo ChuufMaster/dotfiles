@@ -35,6 +35,7 @@ return { -- Autoformat
                 "json",
                 "toml",
                 "yaml.ansible",
+                "yaml.docker-compose",
                 "markdown",
                 "yaml",
                 "ruby",

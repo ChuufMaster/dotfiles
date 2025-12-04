@@ -41,6 +41,14 @@ local keymap_overrides = {
     M_BRC = "m/]",
     V_CBR = "v/{",
     B_CBR = "b/}",
+    ["&hm LGUI A"] = "A",
+    ["&hm LALT S"] = "S",
+    ["&hm LCTRL D"] = "D",
+    ["&hm LSHIFT F"] = "F",
+    ["&hm RSHFT J"] = "J",
+    ["&hm RCTRL K"] = "K",
+    ["&hm RALT L"] = "L",
+    ["&hm RGUI SEMICOLON"] = "SEMICOLON",
 }
 
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -80,6 +88,28 @@ vim.api.nvim_create_autocmd("BufEnter", {
                 "x x x x x x x _ x x x x x x x",
                 "_ _ x x x x x _ x x x x x _ _",
             },
+            comment_preview = {
+                keymap_overrides = keymap_overrides,
+            },
+        })
+    end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    desc = "Format overlap keymap",
+    group = group,
+    pattern = "*zmk-config/config/*.keymap",
+    callback = function()
+        require("qmk").setup({
+            name = "LAYOUT",
+            auto_format_pattern = "*zmk-config/config/*.keymap",
+            layout = {
+                "_ x x x x x _ _ _ x x x x x _",
+                "_ x x x x x _ _ _ x x x x x _",
+                "x x x x x x _ _ _ x x x x x x",
+                "_ _ _ _ x x x _ x x x _ _ _ _",
+            },
+            variant = "zmk",
             comment_preview = {
                 keymap_overrides = keymap_overrides,
             },
