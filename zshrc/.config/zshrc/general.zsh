@@ -10,6 +10,7 @@ export CHROME_EXECUTABLE=/usr/bin/firefox
 export ANSIBLE_NOCOWS=1
 export ANSIBLE_VAULT_PASSWORD_FILE=./.vault_pass
 export ANSIBLE_SSH_TRANSFER_METHOD=scp
+export ANSIBLE_REMOTE_USER=ivan
 # set -o vi
 
 # set editing-mode vi

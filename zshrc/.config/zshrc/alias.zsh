@@ -79,5 +79,11 @@ alias unbak='f(){mv "$1" "$(echo "$1" | sed -e 's/\.bak//g')"}; f'
 alias uvansible='uv tool run --from ansible-core ansible'
 alias uvansible-playbook='uv tool run --from ansible-core ansible-playbook -e "ansible_ssh_user=ivan"'
 alias uvansible-galaxy='uv tool run --from ansible-core ansible-galaxy'
+alias ap='ansible-playbook -e "ansible_ssh_user=ivan"'
+alias ag='ansible-galaxy'
+alias av='ansible-vault'
 
 alias less='bat --plain --paging=always'
+alias get_free_sans='~/Modules/COS721/exam/scripts/get_free_sans'
+alias get_diff_free_sans='~/Modules/COS721/exam/scripts/get_diff_free_sans'
+
