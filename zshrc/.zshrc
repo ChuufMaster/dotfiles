@@ -19,4 +19,4 @@ zstyle ':completion:*' menu select
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)

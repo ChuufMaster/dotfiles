@@ -13,6 +13,7 @@ alias gla="la | grep"
 alias gll="ll | grep"
 alias kanata_reload="systemctl --user restart kanata.service && systemctl --user status kanata.service"
 alias lg="lazygit"
+alias lzd="lazydocker"
 alias lm="exa --long --icons --git --group-directories-first --header --octal-permissions"
 alias "nvim ."=nvim
 alias sync_tuks="rclone copy --drive-shared-with-me --stats-one-line -v ~/TUKS TUKS:TUKS"
