@@ -4,24 +4,24 @@ FPS=60
 TYPE="any"
 DURATION=3
 BEZIER="0.4,0.2,0.4,1.0"
-SWWW_PARAMS="--transition-fps ${FPS} --transition-type ${TYPE} --transition-duration ${DURATION} --transition-bezier ${BEZIER}"
+awww_PARAMS="--transition-fps ${FPS} --transition-type ${TYPE} --transition-duration ${DURATION} --transition-bezier ${BEZIER}"
 CHOSEN="$1"
 
 executeCommand() {
 
-    if command -v swww &>/dev/null; then
-        swww query
+    if command -v awww &>/dev/null; then
+        awww query
         if [ $? -eq 1 ] ; then
-            swww-daemon
+            awww-daemon
         fi
-        swww img "$1" ${SWWW_PARAMS}
+        awww img "$1" ${SWWW_PARAMS}
         notify-send "Wallpaper set to $1"
 
     elif command -v swaybg &>/dev/null; then
         swaybg -i "$1" &
 
     else
-        echo "Neither swww nor swaybg are installed."
+        echo "Neither awww nor swaybg are installed."
         exit 1
     fi
 
@@ -84,7 +84,7 @@ reload_kitty
 set_spicetify
 # ~/scripts/reload-waybar.sh
 
-# swww query
+# awww query
 # if [ $? -eq 1 ]; then
 #     ~/scripts/wallpaper.sh
 # fi

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-swww query
+awww query
 if [ $? -eq 1 ] ; then
-    swww-daemon
+    awww-daemon
 fi
-swww img ~/.current_wallpaper --resize fit
+awww img ~/.current_wallpaper --resize fit
