@@ -27,8 +27,40 @@ switch-and-command()
         tmux switch-client -t $SESSION:$CHOICE
     else
         tmux switch-client -t $SESSION
-        tmux new-window -S -a -t $SESSION:1 -n $CHOICE "$COMMAND"
+        if [[ -z $COMMAND ]]; then
+            tmux new-window -S -a -t $SESSION:1 -n $CHOICE
+        else
+            tmux new-window -S -a -t $SESSION:1 -n $CHOICE "$COMMAND"
+        fi
     fi
+}
+
+switch-and-dir()
+{
+    CHOICE="$1"
+    SESSION="$2"
+    DIR="$3"
+
+    if [[ -z "$CHOICE" ]]; then
+        exit 1
+    fi
+
+    EXISTS=$(tmux list-windows -t $SESSION | grep $CHOICE | wc -l)
+    if [ $EXISTS -eq 1 ]; then
+        tmux switch-client -t $SESSION:$CHOICE
+    else
+        tmux switch-client -t $SESSION
+        tmux new-window -S -a -t $SESSION:1 -n $CHOICE -c $DIR
+    fi
+}
+
+find_git_root() {
+  local dir="$1"
+  while [[ "$dir" != "/" ]]; do
+    [[ -d "$dir/.git" ]] && echo "$dir" && return
+    dir="$(dirname "$dir")"
+  done
+  echo "$dir"
 }
 
 ssh-session() {
@@ -126,4 +158,26 @@ open-role() {
 open-repo() {
     REPO=$(ls-fzf ~/SCS/repos)
     switch-and-command $REPO "SCS" "cd ~/SCS/repos/$REPO && nvim"
+}
+
+open-claude() {
+    START_PATH="$1"
+
+    PROJECT_ROOT=$(find_git_root "$START_PATH")
+    PROJECT_NAME=$(basename "$PROJECT_ROOT")
+    WINDOW_TITLE="claude"
+
+    # Check if a kitty window with this title already exists
+    EXISTING_ADDRESS=$(hyprctl clients -j | jq -r ".[] | select(.title == \"$WINDOW_TITLE\") | .address")
+
+    if [[ -n "$EXISTING_ADDRESS" ]]; then
+        # Focus the existing window using new Lua dispatch syntax
+        hyprctl eval "hl.dispatch(hl.dsp.focus({ window = \"address:$EXISTING_ADDRESS\" }))" > /dev/null
+        switch-and-dir $PROJECT_NAME claude $PROJECT_ROOT
+    else
+        tmux new-window -S -a -t claude:1 -c "$PROJECT_ROOT" -n "$PROJECT_NAME" 2>/dev/null || true
+
+        kitty --detach --title "$WINDOW_TITLE" sh -c \
+            "tmux attach-session -t claude; sleep 0.2; tmux select-window -t 'claude:$PROJECT_NAME'"
+    fi
 }
