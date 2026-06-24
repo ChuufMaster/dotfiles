@@ -8,30 +8,17 @@ vim.cmd([[colorscheme gruvbox]])
 -- vim.cmd.colorscheme("tokyonight")
 -- vim.cmd("hi ColorColumn ctermbg=white guibg=darkcyan")
 
-vim.lsp.config("ts_ls", {
-    init_options = {
-        plugins = {
-            {
-                name = "@vue/typescript-plugin",
-                location = "/usr/lib/node_modules/@vue/typescript-plugin",
-                languages = { "javascript", "typescript", "vue" },
+vim.lsp.config("taplo", { root_markers = { ".taplo.toml", "taplo.toml", ".git", "starship.toml" } })
+
+vim.lsp.config("harper_ls", {
+    settings = {
+        ["harper-ls"] = {
+            linters = {
+                LongSentences = false,
             },
         },
     },
-    filetypes = {
-        "javascript",
-        "typescript",
-        "vue",
-        "typescriptreact",
-        "javacriptreact",
-    },
 })
-
-vim.lsp.config("taplo", { root_markers = { ".taplo.toml", "taplo.toml", ".git", "starship.toml" } })
-
--- You must make sure volar is setup
--- e.g. vim.lsp.config('volar')
--- See volar's section for more information
 
 vim.lsp.enable({
     "hyprls",
@@ -40,8 +27,9 @@ vim.lsp.enable({
     "lua_ls",
     "ansiblels",
     "markdown_oxide",
-    -- "ruff",
-    "pylsp",
+    "ruff",
+    -- "pylsp",
+    "ty",
     "vue_ls",
     -- "tailwindcss",
     "ts_ls",
