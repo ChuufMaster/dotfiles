@@ -1,17 +1,17 @@
 [[plugin.deps]]
 use = "GrzegorzKozub/mdcat"
-rev = "1706af4"
-hash = "eb2d998e2e16ea5345f60af2b36e9409"
+rev = "7b7380a"
+hash = "40c20e6c1085d1f45309b9f148bf4f6e"
 
 [[plugin.deps]]
 use = "Rolv-Apneseth/bypass"
-rev = "db4c2a7"
-hash = "571931871e1935c1975b61fe28831977"
+rev = "4a0c70e"
+hash = "3c66d95bf63fa16178e98967fbae9429"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "9a09505"
-hash = "7918aab6a71caf31b58411f789195677"
+rev = "598cdb6"
+hash = "187cc58ba7ac3befd49c342129e6f1b6"
 
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"
