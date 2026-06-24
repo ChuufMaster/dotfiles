@@ -30,7 +30,7 @@ return { -- Autoformat
             local disable_filetypes = {
                 "c",
                 "cpp",
-                -- "python",
+                "python",
                 "css",
                 "json",
                 "toml",
@@ -60,7 +60,7 @@ return { -- Autoformat
         formatters_by_ft = {
             lua = { "stylua" },
             markdown = { "prettier", "markdownlint-cli2" },
-            tex = { "latexindent" },
+            tex = { "latexindent", "tex-fmt" },
             -- json = { "clang-format" },
             -- ["*"] = { "codespell" },
             -- yaml = { 'prettier'}
@@ -80,7 +80,8 @@ return { -- Autoformat
             html = { "prettier" },
             json = { "prettier" },
             graphql = { "prettier" },
-            python = { "isort", "black" },
+            -- python = { "ruff", "isort", "black" },
+            python = { "ruff" },
         },
         default_format_opts = {
             lsp_format = "fallback",

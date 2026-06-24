@@ -1,5 +1,73 @@
 vim.o.shortmess = vim.o.shortmess .. "S"
 
+local icons = {
+    misc = {
+        dots = "󰇘",
+    },
+    ft = {
+        octo = "",
+    },
+    dap = {
+        Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
+        Breakpoint = " ",
+        BreakpointCondition = " ",
+        BreakpointRejected = { " ", "DiagnosticError" },
+        LogPoint = ".>",
+    },
+    diagnostics = {
+        Error = " ",
+        Warn = " ",
+        Hint = " ",
+        Info = " ",
+    },
+    git = {
+        added = " ",
+        modified = " ",
+        removed = " ",
+    },
+    kinds = {
+        Array = " ",
+        Boolean = "󰨙 ",
+        Class = " ",
+        Codeium = "󰘦 ",
+        Color = " ",
+        Control = " ",
+        Collapsed = " ",
+        Constant = "󰏿 ",
+        Constructor = " ",
+        Copilot = " ",
+        Enum = " ",
+        EnumMember = " ",
+        Event = " ",
+        Field = " ",
+        File = " ",
+        Folder = " ",
+        Function = "󰊕 ",
+        Interface = " ",
+        Key = " ",
+        Keyword = " ",
+        Method = "󰊕 ",
+        Module = " ",
+        Namespace = "󰦮 ",
+        Null = " ",
+        Number = "󰎠 ",
+        Object = " ",
+        Operator = " ",
+        Package = " ",
+        Property = " ",
+        Reference = " ",
+        Snippet = " ",
+        String = " ",
+        Struct = "󰆼 ",
+        TabNine = "󰏚 ",
+        Text = " ",
+        TypeParameter = " ",
+        Unit = " ",
+        Value = " ",
+        Variable = "󰀫 ",
+    },
+}
+
 local function search_count()
     if vim.api.nvim_get_vvar("hlsearch") == 1 then
         local res = vim.fn.searchcount({ maxcount = 999, timeout = 500 })
@@ -33,7 +101,7 @@ return {
         local lualine_require = require("lualine_require")
         lualine_require.require = require
 
-        -- local icons = requ
+        -- local icons = _G.icons
         -- local icons = LazyVim.config.icons
 
         vim.o.laststatus = vim.g.lualine_laststatus
@@ -42,7 +110,9 @@ return {
             options = {
                 theme = "auto",
                 globalstatus = vim.o.laststatus == 3,
-                disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
+                disabled_filetypes = {
+                    statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard", "snacks_picker_input" },
+                },
             },
             sections = {
                 lualine_a = { "mode" },

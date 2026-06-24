@@ -6,6 +6,102 @@
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
+local dap = require("dap")
+
+function pick_executable(under_git_root, subdir)
+    return coroutine.create(function(dap_run_co)
+        local root = "."
+        if under_git_root then
+            root = Snacks.git.get_root()
+        end
+        if subdir ~= nil then
+            root = root .. "/" .. subdir
+        end
+        Snacks.picker.files({
+            hidden = true,
+            ignored = true,
+            dirs = { root },
+            cmd = "fd",
+            type = { "x" },
+            confirm = function(picker, item)
+                picker:norm(function()
+                    picker:close()
+                    coroutine.resume(dap_run_co, item.text)
+                end)
+            end,
+        })
+    end)
+end
+
+function cpp_setup()
+    local mason_dap = require("mason-nvim-dap")
+    local dap = require("dap")
+    local ui = require("dapui")
+    local dap_virtual_text = require("nvim-dap-virtual-text")
+
+    -- Dap Virtual Text
+    dap_virtual_text.setup()
+
+    mason_dap.setup({
+        ensure_installed = { "cppdbg" },
+        automatic_installation = true,
+        handlers = {
+            function(config)
+                require("mason-nvim-dap").default_setup(config)
+            end,
+        },
+    })
+
+    -- Configurations
+    dap.configurations = {
+        cpp = {
+            {
+                name = "Launch file",
+                type = "codelldb",
+                request = "launch",
+                program = function()
+                    return pick_executable(true, "")
+                end,
+                cwd = "${workspaceFolder}",
+                stopAtEntry = false,
+                stopOnEntry = false,
+                -- MIMode = "lldb",
+            },
+            {
+                name = "Attach to lldbserver :1234",
+                type = "cppdbg",
+                request = "launch",
+                MIMode = "lldb",
+                miDebuggerServerAddress = "localhost:1234",
+                miDebuggerPath = "/usr/bin/lldb",
+                cwd = "${workspaceFolder}",
+                program = function()
+                    return pick_executable(true, "")
+                end,
+            },
+        },
+    }
+
+    -- Dap UI
+
+    ui.setup()
+
+    vim.fn.sign_define("DapBreakpoint", { text = "🐞" })
+
+    dap.listeners.before.attach.dapui_config = function()
+        ui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+        ui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+        ui.close()
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+        ui.close()
+    end
+end
+
 return {
     -- NOTE: Yes, you can install new plugins here!
     "mfussenegger/nvim-dap",
@@ -23,6 +119,16 @@ return {
 
         -- Add your own debuggers here
         "leoluz/nvim-dap-go",
+        "theHamsta/nvim-dap-virtual-text",
+    },
+    -- stylua: ignore
+    keys = {
+        { "<leader>ds", function() dap.continue() end, desc = "[D]ap [S]tart/Continue" },
+        { "<leader>di", function() dap.step_into() end, desc = "[D]ap step [I]nto" },
+        { "<leader>do", function() dap.step_over() end, desc = "[D]ap step [O]ver" },
+        { "<leader>dO", function() dap.step_out() end, desc = "[D]ap step [O]ut" },
+        { "<leader>db", function() dap.toggle_breakpoint() end, desc = "[D]ap toggle [B]reakpoint" },
+        -- { "<leader>ds", function() dap.continue() end, desc = "[D]ap [S]tart/Continue" },
     },
     config = function()
         local dap = require("dap")
@@ -46,45 +152,25 @@ return {
             },
         })
 
-        -- Basic debugging keymaps, feel free to change to your liking!
-        vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
-        vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
-        vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
-        vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
-        vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
-        vim.keymap.set("n", "<leader>B", function()
-            dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-        end, { desc = "Debug: Set Breakpoint" })
-
-        -- local install_dir = require("mason-core.path").package_prefix("netcoredbg")
-        -- local netcoredbg_install_dir = install_dir .. "/netcoredbg"
-        -- dap.adapters.netcoredbg = {
-        --     type = "executable",
-        --     command = netcoredbg_install_dir,
-        --     args = { "--interpreter=vscode -- dotnet" },
+        -- dap.configurations.cpp = {
+        --     {
+        --         name = "Launch file",
+        --         type = "codelldb",
+        --         request = "launch",
+        --         program = function()
+        --             return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        --         end,
+        --         cwd = "${workspaceFolder}",
+        --         stopOnEntry = false,
+        --     },
         -- }
-        --
-        -- dap.adapters.codelldb = {
-        --     type = "executable",
-        --     command = "codelldb",
-        -- }
+        -- dap.configurations.rust = dap.configurations.cpp
 
-        dap.configurations.cpp = {
-            {
-                name = "Launch file",
-                type = "codelldb",
-                request = "launch",
-                program = function()
-                    return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-                end,
-                cwd = "${workspaceFolder}",
-                stopOnEntry = false,
-            },
-        }
-        dap.configurations.rust = dap.configurations.cpp
+        cpp_setup()
 
         -- Dap UI setup
         -- For more information, see |:help nvim-dap-ui|
+        ---@diagnostic disable: missing-fields
         dapui.setup({
             -- Set icons to characters that are more likely to work in every terminal.
             --    Feel free to remove or use ones that you like more! :)

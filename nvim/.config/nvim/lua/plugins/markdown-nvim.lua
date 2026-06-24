@@ -26,10 +26,10 @@ local markdown_plugins = {
     },
     {
         "OXY2DEV/markview.nvim",
-        branch = "dev",
+        -- branch = "dev",
         enabled = true,
         ft = { "markdown" },
-        -- lazy = false,
+        lazy = false,
         ---@module "markview"
         ---@type mkv.config
         opts = {

@@ -3,7 +3,11 @@ return {
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
+    opts = {
+        keywords = {
+            CRIT = { icon = "⚠️", color = "warning" },
+        },
+    },
     keys = {
         {
             "]t",

@@ -2,14 +2,14 @@ return {
     "seblj/roslyn.nvim",
     ft = { "cs", "razor" },
     dependencies = {
-        {
-            "tris203/rzls.nvim",
-            config = function()
-                require("rzls").setup({
-                    capabilities = require("blink.cmp").get_lsp_capabilities(capabilities),
-                })
-            end,
-        },
+        -- {
+        --     "tris203/rzls.nvim",
+        --     config = function()
+        --         require("rzls").setup({
+        --             capabilities = require("blink.cmp").get_lsp_capabilities(capabilities),
+        --         })
+        --     end,
+        -- },
     },
     config = function()
         require("roslyn").setup({

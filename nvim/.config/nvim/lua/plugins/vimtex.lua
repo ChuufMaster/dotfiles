@@ -8,6 +8,7 @@ return {
         vim.g.vimtex_view_method = "zathura"
         -- vim.g.vimtex_compiler_latexmk_engines = { ["_"] = "-lualatex" }
         vim.g.vimtex_format_enabled = true
+        vim.g.vimtex_indent_enable = false
         vim.g.vimtex_compiler_latexmk = {
             callback = 1,
             continuous = 1,
