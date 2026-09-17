@@ -43,24 +43,13 @@ Item {
             shape.shape = Qt.binding(() => isOccupied ? MaterialShape.Square : MaterialShape.Circle);
     }
 
-    anchors.horizontalCenter: parent?.horizontalCenter
-    LazyListView.preferredHeight: LazyListView.removing ? 0 : layout.implicitHeight + (hasWindows ? Tokens.padding.extraSmall : 0)
-    LazyListView.visibleHeight: LazyListView.preferredHeight
+    implicitWidth: layout.implicitWidth
+    implicitHeight: layout.implicitHeight + (hasWindows ? Tokens.padding.extraSmall : 0)
 
-    opacity: LazyListView.removing || LazyListView.adding ? 0 : 1
+    opacity: 1
 
     onFocusedChanged: updateShape()
     Component.onCompleted: updateShape()
-
-    Behavior on LazyListView.visibleHeight {
-        Anim {}
-    }
-
-    Behavior on y {
-        enabled: root.LazyListView.ready
-
-        Anim {}
-    }
 
     Behavior on opacity {
         Anim {
@@ -159,7 +148,7 @@ Item {
     ColumnLayout {
         id: layout
 
-        anchors.fill: parent
+        anchors.centerIn: parent
         spacing: 0
 
         Loader {

@@ -19,14 +19,24 @@ StyledClippingRect {
     readonly property HyprlandMonitor monitor: Hypr.monitorFor(screen)
     readonly property bool onSpecial: monitor?.lastIpcObject.specialWorkspace?.name !== ""
     readonly property int activeWsId: monitor.activeWorkspace?.id ?? 1
-    readonly property int activeWsIdx: workspaceIndex(activeWsId)
     readonly property int shown: Math.max(1, Config.bar.workspaces.shown)
 
+    // Per-monitor workspace ranges, matching the static assignment in
+    // hypr/conf/workspace.lua and waybar's persistent-workspaces config
+    readonly property var monitorWsRanges: ({
+            "DP-1": [1, 5],
+            "DP-2": [6, 8],
+            "DP-3": [9, 11]
+        })
+    readonly property var ownWsRange: monitorWsRanges[monitor.name] ?? [1, shown]
+
     readonly property var wsIds: {
-        if (Config.bar.workspaces.showUnoccupied)
+        if (Config.bar.workspaces.showUnoccupied) {
+            const [start, end] = ownWsRange;
             return Array.from({
-                length: shown
-            }, (_, i) => i + 1);
+                length: end - start + 1
+            }, (_, i) => start + i);
+        }
 
         const ignoredTags = GlobalConfig.bar.workspaces.ignoredTags;
         const workspaces = Hypr.workspaces.values.filter(w => w.id > 0 && w.monitor === root.monitor && (w.id === activeWsId || w.toplevels.values.some(t => !Hypr.isToplevelIgnored(t, ignoredTags))));
@@ -40,32 +50,10 @@ StyledClippingRect {
         return workspaces.slice(start, end).map(w => w.id);
     }
 
-    readonly property var workspaces: {
-        workspaces.itemsDirty;
-        return wsIds.map(id => workspaces.itemAtIndex(workspaceIndex(id)));
-    }
-
-    // Only relevant for when showUnoccupied is true
-    readonly property int groupOffset: {
-        if (!Config.bar.workspaces.showUnoccupied)
-            return 0;
-        return Math.floor((activeWsId - 1) / shown) * shown;
-    }
-
     property real blur: onSpecial ? 1 : 0
 
-    function workspaceIndex(id: int): int {
-        if (!Config.bar.workspaces.showUnoccupied)
-            return wsIds.indexOf(id);
-
-        let index = id - 1;
-        while (index < 0)
-            index += shown;
-        return index % shown;
-    }
-
-    implicitWidth: Tokens.sizes.bar.innerWidth
-    implicitHeight: workspaces.layoutHeight + workspaces.anchors.margins * 2
+    implicitHeight: Tokens.sizes.bar.innerWidth
+    implicitWidth: workspaces.implicitWidth + workspaces.anchors.margins * 2
 
     color: Colours.tPalette.m3surfaceContainer
     radius: Tokens.rounding.full
@@ -83,94 +71,47 @@ StyledClippingRect {
             blurMax: 32
         }
 
-        Loader {
-            asynchronous: true
-            opacity: Config.bar.workspaces.occupiedBg ? 1 : 0
-            active: opacity > 0
-
-            anchors.fill: parent
-            anchors.margins: Tokens.padding.extraSmall
-
-            sourceComponent: OccupiedBg {
-                workspaces: root.workspaces
-                wsSpacing: workspaces.spacing
-            }
-
-            Behavior on opacity {
-                Anim {
-                    type: Anim.DefaultEffects
-                }
-            }
-        }
-
-        LazyListView {
+        Row {
             id: workspaces
 
-            anchors.left: parent.left
-            anchors.right: parent.right
             anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
             anchors.margins: Tokens.padding.extraSmall
-            implicitHeight: contentHeight
 
             spacing: Tokens.spacing.extraSmall
-            removeDuration: Tokens.anim.durations.expressiveDefaultEffects
 
-            model: ScriptModel {
-                values: root.wsIds
-            }
-
-            delegate: Workspace {
-                activeWsId: root.activeWsId
-                ws: Config.bar.workspaces.showUnoccupied ? root.groupOffset + index + 1 : modelData
-
-                displayType: Config.bar.workspaces.displayType
-                showWindows: Config.bar.workspaces.showWindows
-                iconRules: GlobalConfig.bar.workspaces.workspaceIcons
-                activeLabel: Config.bar.workspaces.activeLabel
-                occupiedLabel: Config.bar.workspaces.occupiedLabel
-                label: Config.bar.workspaces.label
-            }
-        }
-
-        Loader {
-            asynchronous: true
-            opacity: Config.bar.workspaces.showUnoccupied ? 0 : 1
-            active: opacity > 0
-
-            anchors.fill: parent
-            anchors.margins: Tokens.padding.extraSmall
-
-            sourceComponent: GapMarkers {
-                workspaces: root.workspaces
-                wsSpacing: workspaces.spacing
-            }
-
-            Behavior on opacity {
+            add: Transition {
                 Anim {
-                    type: Anim.DefaultEffects
+                    property: "opacity"
+                    from: 0
+                    to: 1
                 }
             }
-        }
 
-        Loader {
-            asynchronous: true
-            anchors.left: workspaces.left
-            anchors.right: workspaces.right
-            active: Config.bar.workspaces.activeIndicator
-
-            sourceComponent: ActiveIndicator {
-                activeWs: {
-                    workspaces.itemsDirty;
-                    return workspaces.itemAtIndex(root.activeWsIdx) as Workspace;
+            Repeater {
+                model: ScriptModel {
+                    values: root.wsIds
                 }
-                mask: workspaces
+
+                delegate: Workspace {
+                    activeWsId: root.activeWsId
+                    ws: modelData
+
+                    displayType: Config.bar.workspaces.displayType
+                    showWindows: Config.bar.workspaces.showWindows
+                    iconRules: GlobalConfig.bar.workspaces.workspaceIcons
+                    activeLabel: Config.bar.workspaces.activeLabel
+                    occupiedLabel: Config.bar.workspaces.occupiedLabel
+                    label: Config.bar.workspaces.label
+                }
             }
         }
 
         MouseArea {
             anchors.fill: workspaces
             onClicked: event => {
-                const ws = (workspaces.itemAt(event.x, event.y) as Workspace)?.ws;
+                const ws = (workspaces.childAt(event.x, event.y) as Workspace)?.ws;
                 if (!ws)
                     return;
                 if (Hypr.activeWsId !== ws)
