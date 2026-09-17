@@ -2,8 +2,12 @@ for i = 1, 5 do
     hl.workspace_rule({ workspace = "" .. i, monitor = "DP-1" })
 end
 
-for i = 6, 7 do
+for i = 6, 8 do
     hl.workspace_rule({ workspace = "" .. i, monitor = "DP-2" })
+end
+
+for i = 9, 11 do
+    hl.workspace_rule({ workspace = "" .. i, monitor = "DP-3" })
 end
 
 hl.workspace_rule({ workspace = "2", layout = "scrolling" })

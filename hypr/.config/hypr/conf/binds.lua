@@ -34,6 +34,7 @@ hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(scripts .. "/vpn_picker.sh"))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(scripts .. "/reload-swaync.sh"))
 hl.bind(mainMod .. " + SHIFT + semicolon", hl.dsp.exec_cmd("rofi -show window"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("~/.config/ml4w/settings/browser.sh"))
+hl.bind(mainMod .. " + C", hl.dsp.focus({ window = "title:claude" }))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("~/.config/ml4w/settings/filemanager.sh"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
@@ -110,10 +111,10 @@ hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "d" }))
 hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "u" }))
 hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "r" }))
 
-hl.bind(mainMod .. "+ ALT + H", hl.dsp.focus({ monitor = "l" }))
-hl.bind(mainMod .. "+ ALT + L", hl.dsp.focus({ monitor = "r" }))
-hl.bind(mainMod .. "+ ALT + K", hl.dsp.focus({ monitor = "u" }))
-hl.bind(mainMod .. "+ ALT + J", hl.dsp.focus({ monitor = "d" }))
+hl.bind(mainMod .. " + ALT + H", hl.dsp.focus({ monitor = "l" }))
+hl.bind(mainMod .. " + ALT + L", hl.dsp.focus({ monitor = "r" }))
+hl.bind(mainMod .. " + ALT + K", hl.dsp.focus({ monitor = "u" }))
+hl.bind(mainMod .. " + ALT + J", hl.dsp.focus({ monitor = "d" }))
 
 -- ─────────────────────────────────────────────
 -- MONITOR / WORKSPACE CYCLING
@@ -173,6 +174,9 @@ for i, ws in ipairs(altMap) do
     local key = i == 10 and "0" or tostring(i)
     hl.bind(mainMod .. " + ALT + " .. key, hl.dsp.focus({ workspace = ws }))
 end
+
+hl.bind(mainMod .. " + braceleft", hl.dsp.focus({ workspace = 1 }))
+hl.bind(mainMod .. " + braceright", hl.dsp.focus({ workspace = 11 }))
 
 -- ─────────────────────────────────────────────
 -- MOVE WINDOW TO WORKSPACE (mainMod + SHIFT/CTRL + 0-9)

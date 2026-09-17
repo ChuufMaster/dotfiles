@@ -1,12 +1,17 @@
 hl.monitor({
     output = "DP-1",
-    mode = "3440x1440@143.97",
+    mode = "3440x1440@179.99Hz",
     position = "0x0",
     scale = "1",
     cm = "auto",
-    -- cm = "hdr",
-    -- bitdepth = 10,
-    -- sdr_min_luminance = 10,
+})
+
+hl.monitor({
+    output = "DP-3",
+    mode = "3440x1440@143.99Hz",
+    position = "0x-1440",
+    scale = "1",
+    cm = "auto",
 })
 
 hl.monitor({

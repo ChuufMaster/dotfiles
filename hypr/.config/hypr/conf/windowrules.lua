@@ -72,7 +72,7 @@ hl.window_rule({
     name = "rofi",
     opacity = "0.9 0.6",
     match = {
-        class = "^[Rr]ofi)$",
+        class = "^([Rr]ofi)$",
     },
 })
 
