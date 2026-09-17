@@ -25,6 +25,8 @@ executeCommand() {
         exit 1
     fi
 
+
+    caelestia wallpaper -f "$1"
     ln -sf "$1" "$HOME/.current_wallpaper"
     ln -sf "$1" "$HOME/.current_wallpaper.jpg"
     cp "$1" "$HOME/.mozilla/firefox/1opdykuv.default-release-1729612380706/chrome/current_wallpaper.jpg"

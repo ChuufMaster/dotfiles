@@ -64,7 +64,7 @@ find_git_root() {
 }
 
 ssh-session() {
-    SSH_SERVER=$(grep -rPh "^Host ([^*]+)$" $HOME/.ssh 2> /dev/null \
+    SSH_SERVER=$(grep -rPh "^Host ([^*]+)$" $HOME/.ssh/config* 2> /dev/null \
     | sed "s/Host //" \
     | cut -d " " -f 2 \
     | sort \
