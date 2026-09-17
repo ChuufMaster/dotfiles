@@ -6,6 +6,15 @@ local function set_file_type(_pattern, _filetype)
     })
 end
 
+vim.filetype.add({
+    pattern = {
+        [".*%.j2"] = function(path)
+            local stripped = path:gsub("%.j2$", "")
+            return vim.filetype.match({ filename = stripped }) or "jinja"
+        end,
+    },
+})
+
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     pattern = "**/kanata/**.kbd",
     callback = function()
