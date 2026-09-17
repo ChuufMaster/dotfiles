@@ -130,3 +130,7 @@ vim.keymap.set("n", "gK", function()
 end, { desc = "Toggle diagnostic virtual_lines" })
 
 vim.keymap.set("i", "<C-Z>", "<ESC>zzi", { desc = "Centre screen" })
+
+vim.keymap.set("n", "<leader>tD", function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "[T]oggle [D]iagnostic" })

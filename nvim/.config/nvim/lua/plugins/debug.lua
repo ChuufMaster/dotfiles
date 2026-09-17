@@ -6,8 +6,6 @@
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
-local dap = require("dap")
-
 function pick_executable(under_git_root, subdir)
     return coroutine.create(function(dap_run_co)
         local root = "."
@@ -123,12 +121,12 @@ return {
     },
     -- stylua: ignore
     keys = {
-        { "<leader>ds", function() dap.continue() end, desc = "[D]ap [S]tart/Continue" },
-        { "<leader>di", function() dap.step_into() end, desc = "[D]ap step [I]nto" },
-        { "<leader>do", function() dap.step_over() end, desc = "[D]ap step [O]ver" },
-        { "<leader>dO", function() dap.step_out() end, desc = "[D]ap step [O]ut" },
-        { "<leader>db", function() dap.toggle_breakpoint() end, desc = "[D]ap toggle [B]reakpoint" },
-        -- { "<leader>ds", function() dap.continue() end, desc = "[D]ap [S]tart/Continue" },
+        { "<leader>ds", function() require("dap").continue() end, desc = "[D]ap [S]tart/Continue" },
+        { "<leader>di", function() require("dap").step_into() end, desc = "[D]ap step [I]nto" },
+        { "<leader>do", function() require("dap").step_over() end, desc = "[D]ap step [O]ver" },
+        { "<leader>dO", function() require("dap").step_out() end, desc = "[D]ap step [O]ut" },
+        { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "[D]ap toggle [B]reakpoint" },
+        -- { "<leader>ds", function() require("dap").continue() end, desc = "[D]ap [S]tart/Continue" },
     },
     config = function()
         local dap = require("dap")
