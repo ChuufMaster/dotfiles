@@ -23,7 +23,7 @@ Region {
 
     R {
         panel: root.panels.dashboard
-        y: 0
+        y: root.win.height - height
         height: panel.height * (1 - root.panels.dashboard.offsetScale) + root.borderThickness
     }
 
@@ -69,7 +69,7 @@ Region {
 
     R {
         panel: root.panels.popoutsWrapper
-        width: panel.width * (1 - root.panels.popoutsWrapper.offsetScale)
+        height: panel.height * (1 - root.panels.popoutsWrapper.offsetScale)
     }
 
     component R: Region {

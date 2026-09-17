@@ -47,7 +47,7 @@ Item {
     }
 
     readonly property real nonAnimWidth: view.implicitWidth + viewWrapper.anchors.margins * 2
-    readonly property real nonAnimHeight: tabs.implicitHeight + tabs.anchors.topMargin + view.implicitHeight + viewWrapper.anchors.margins * 2
+    readonly property real nonAnimHeight: tabs.implicitHeight + tabs.anchors.bottomMargin + view.implicitHeight + viewWrapper.anchors.margins * 2
 
     implicitWidth: nonAnimWidth
     implicitHeight: nonAnimHeight
@@ -55,10 +55,10 @@ Item {
     Tabs {
         id: tabs
 
-        anchors.top: parent.top
+        anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.topMargin: CUtils.clamp(anchors.margins - Config.border.thickness, 0, anchors.margins)
+        anchors.bottomMargin: CUtils.clamp(anchors.margins - Config.border.thickness, 0, anchors.margins)
         anchors.margins: Tokens.padding.large
 
         nonAnimWidth: root.nonAnimWidth - anchors.margins * 2
@@ -69,10 +69,10 @@ Item {
     ClippingRectangle {
         id: viewWrapper
 
-        anchors.top: tabs.bottom
+        anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.bottom: tabs.top
         anchors.margins: Tokens.padding.large
 
         radius: Tokens.rounding.large

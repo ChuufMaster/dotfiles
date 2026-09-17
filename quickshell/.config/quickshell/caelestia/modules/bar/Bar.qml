@@ -17,7 +17,7 @@ RowLayout {
     required property ScreenState screenState
     required property BarPopouts.Wrapper popouts
     required property bool fullscreen
-    readonly property int hPadding: Tokens.padding.large
+    readonly property int hPadding: Tokens.padding.small
 
     function closeTray(): void {
         if (!Config.bar.tray.compact)
@@ -101,7 +101,7 @@ RowLayout {
         }
     }
 
-    spacing: Tokens.spacing.medium
+    spacing: Tokens.spacing.small
 
     Repeater {
         id: repeater
@@ -116,7 +116,7 @@ RowLayout {
             DelegateChoice {
                 roleValue: "spacer"
                 delegate: EntryWrapper {
-                    Layout.fillHeight: true
+                    Layout.fillWidth: true
                 }
             }
             DelegateChoice {

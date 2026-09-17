@@ -26,34 +26,32 @@ hl.bind(mainMod .. " + CTRL + Return", hl.dsp.exec_cmd("kitty --class floating")
 hl.bind(mainMod .. " + CTRL + W", hl.dsp.exec_cmd("blueman-manager"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(scripts .. "/reload-waybar.sh"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("rofi -show calc"))
-hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(scripts .. "/emoji.sh"))
+hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("caelestia emoji -p"))
 hl.bind(mainMod .. " + SHIFT + Home", hl.dsp.exec_cmd(scripts .. "/keybindings.sh"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("PREVIEW=true " .. scripts .. "/wallpaperSelect.sh"))
-hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd("rofi -show drun"))
+hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.global("caelestia:launcher"))
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(scripts .. "/vpn_picker.sh"))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(scripts .. "/reload-swaync.sh"))
 hl.bind(mainMod .. " + SHIFT + semicolon", hl.dsp.exec_cmd("rofi -show window"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("~/.config/ml4w/settings/browser.sh"))
 hl.bind(mainMod .. " + C", hl.dsp.focus({ window = "title:claude" }))
+hl.bind(mainMod .. " + D", hl.dsp.global("caelestia:dashboard"))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.global("caelestia:showall"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("~/.config/ml4w/settings/filemanager.sh"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + I", hl.dsp.global("caelestia:sidebar"))
 hl.bind(mainMod .. " + M", hl.dsp.exit())
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
+hl.bind(mainMod .. " + O", hl.dsp.global("caelestia:utilities"))
 hl.bind(mainMod .. " + P", hl.dsp.layout("pseudo"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.global("caelestia:nexus"))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd('rofi -ssh-command "{terminal} -e {ssh-client} {host} -t bash -o vi" -show ssh'))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(
-    mainMod .. " + V",
-    hl.dsp.exec_cmd(
-        "rofi -modi clipboard:/home/chuufmaster/scripts/cliphist-rofi-img.sh"
-            .. " -show clipboard -show-icons"
-            .. " -theme $HOME/.config/rofi/themes/clipboard.rasi"
-    )
-)
-hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("wlogout -b 4"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("caelestia clipboard"))
+hl.bind(mainMod .. " + X", hl.dsp.global("caelestia:session"))
 hl.bind(mainMod .. " + Y", hl.dsp.layout("togglesplit"))
 
 -- ─────────────────────────────────────────────
@@ -64,11 +62,11 @@ hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd("qs ipc -c overview call overview t
 -- ─────────────────────────────────────────────
 -- SCREENSHOTS
 -- ─────────────────────────────────────────────
-hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))
-hl.bind(mainMod .. " + CTRL + S", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))
-hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
-hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("qs -c caelestia ipc call picker openFreezeClip"))
+hl.bind(mainMod .. " + CTRL + S", hl.dsp.exec_cmd("qs -c caelestia ipc call picker openFreezeClip"))
+hl.bind("Print", hl.dsp.exec_cmd("caelestia screenshot"))
+hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("qs -c caelestia ipc call picker openClip"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("qs -c caelestia ipc call picker openClip"))
 
 -- ─────────────────────────────────────────────
 -- FOCUS SWITCHING
