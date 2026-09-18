@@ -170,7 +170,7 @@ StyledWindow {
             radius: root.borderRounding
             borderLeft: root.borderThickness - anchors.margins - root.sdfBorderOffset
             borderRight: root.borderThickness - anchors.margins - root.sdfBorderOffset
-            borderTop: bar.implicitHeight - anchors.margins - root.sdfBorderOffset
+            borderTop: root.borderThickness - anchors.margins - root.sdfBorderOffset
             borderBottom: root.borderThickness - anchors.margins - root.sdfBorderOffset
         }
 
@@ -307,6 +307,7 @@ StyledWindow {
             popouts: panels.popouts
 
             fullscreen: root.hasFullscreen
+            blobGroup: blobGroup
         }
     }
 

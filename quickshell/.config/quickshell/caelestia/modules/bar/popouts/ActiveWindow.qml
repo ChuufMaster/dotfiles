@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
+import Quickshell.Hyprland
 import Quickshell.Wayland
 import Quickshell.Widgets
 import Caelestia.Config
@@ -11,8 +12,9 @@ Item {
     id: root
 
     required property PopoutState popouts
+    property HyprlandToplevel client: Hypr.activeToplevel
 
-    implicitWidth: Hypr.activeToplevel ? child.implicitWidth : -Tokens.padding.extraLargeIncreased
+    implicitWidth: root.client ? child.implicitWidth : -Tokens.padding.extraLargeIncreased
     implicitHeight: child.implicitHeight
 
     Column {
@@ -34,7 +36,7 @@ Item {
                 asynchronous: true
                 Layout.alignment: Qt.AlignVCenter
                 implicitSize: details.implicitHeight
-                source: Icons.getAppIcon(Hypr.activeToplevel?.lastIpcObject.class ?? "", "image-missing")
+                source: Icons.getAppIcon(root.client?.lastIpcObject.class ?? "", "image-missing")
             }
 
             ColumnLayout {
@@ -45,21 +47,22 @@ Item {
 
                 StyledText {
                     Layout.fillWidth: true
-                    text: Hypr.activeToplevel?.title ?? ""
+                    text: root.client?.title ?? ""
                     font: Tokens.font.body.medium
                     elide: Text.ElideRight
                 }
 
                 StyledText {
                     Layout.fillWidth: true
-                    text: Hypr.activeToplevel?.lastIpcObject.class ?? ""
+                    text: root.client?.lastIpcObject.class ?? ""
                     color: Colours.palette.m3onSurfaceVariant
                     elide: Text.ElideRight
                 }
             }
 
             Item {
-                implicitWidth: expandIcon.implicitHeight + Tokens.padding.small
+                visible: root.client === Hypr.activeToplevel
+                implicitWidth: visible ? expandIcon.implicitHeight + Tokens.padding.small : 0
                 implicitHeight: expandIcon.implicitHeight + Tokens.padding.small
 
                 Layout.alignment: Qt.AlignVCenter
@@ -89,7 +92,7 @@ Item {
             ScreencopyView {
                 id: preview
 
-                captureSource: Hypr.activeToplevel?.wayland ?? null // qmllint disable unresolved-type
+                captureSource: root.client?.wayland ?? null // qmllint disable unresolved-type
                 live: visible
 
                 constraintSize.width: Tokens.sizes.bar.windowPreviewSize

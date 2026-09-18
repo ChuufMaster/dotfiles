@@ -1,5 +1,6 @@
 pragma ComponentBehavior: Bound
 
+import "../../popouts" as BarPopouts
 import QtQuick
 import QtQuick.Effects
 import Quickshell
@@ -15,6 +16,8 @@ StyledClippingRect {
 
     required property ShellScreen screen
     required property bool fullscreen
+    required property BarPopouts.Wrapper popouts
+    required property Item barRoot
 
     readonly property HyprlandMonitor monitor: Hypr.monitorFor(screen)
     readonly property bool onSpecial: monitor?.lastIpcObject.specialWorkspace?.name !== ""
@@ -98,6 +101,8 @@ StyledClippingRect {
                     activeWsId: root.activeWsId
                     ws: modelData
 
+                    popouts: root.popouts
+                    barRoot: root.barRoot
                     displayType: Config.bar.workspaces.displayType
                     showWindows: Config.bar.workspaces.showWindows
                     iconRules: GlobalConfig.bar.workspaces.workspaceIcons

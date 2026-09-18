@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import Quickshell
+import Caelestia.Blobs
 import Caelestia.Config
 import qs.components
 import qs.utils
@@ -14,6 +15,7 @@ Item {
     required property ScreenState screenState
     required property BarPopouts.Wrapper popouts
     required property bool fullscreen
+    required property BlobGroup blobGroup
 
     readonly property bool disabled: Strings.testRegexList(Config.bar.excludedScreens, screen.name)
 
@@ -86,6 +88,7 @@ Item {
             screenState: root.screenState
             popouts: root.popouts // qmllint disable incompatible-type
             fullscreen: root.fullscreen
+            blobGroup: root.blobGroup
         }
     }
 }

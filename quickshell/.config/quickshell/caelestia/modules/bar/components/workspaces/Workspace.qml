@@ -1,9 +1,11 @@
 pragma ComponentBehavior: Bound
 
+import "../../popouts" as BarPopouts
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
+import Quickshell.Widgets
 import M3Shapes
 import Caelestia.Components
 import Caelestia.Config
@@ -18,6 +20,9 @@ Item {
     required property int index
     required property int activeWsId
     required property int ws
+
+    required property BarPopouts.Wrapper popouts
+    required property Item barRoot
 
     required property int displayType
     required property bool showWindows
@@ -145,7 +150,7 @@ Item {
         }
     }
 
-    ColumnLayout {
+    RowLayout {
         id: layout
 
         anchors.centerIn: parent
@@ -154,7 +159,7 @@ Item {
         Loader {
             id: indicator
 
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.alignment: Qt.AlignVCenter
             Layout.preferredHeight: Tokens.sizes.bar.innerWidth - Tokens.padding.small
             sourceComponent: {
                 if (root.displayType === BarWorkspaceDisplay.Icons)
@@ -170,50 +175,46 @@ Item {
         Loader {
             id: windows
 
-            asynchronous: true
-
-            Layout.fillWidth: true
-            Layout.topMargin: -Tokens.spacing.extraSmall / 2
-            Layout.preferredHeight: root.hasWindows && item ? (item as LazyListView).layoutHeight : 0
+            Layout.alignment: Qt.AlignVCenter
+            Layout.leftMargin: Tokens.spacing.extraSmall
+            Layout.preferredHeight: root.hasWindows && item ? item.implicitHeight : 0
 
             visible: active
             active: root.showWindows && Config.bar.workspaces.maxWindowIcons > 0
 
-            sourceComponent: LazyListView {
-                spacing: 0
-                implicitHeight: contentHeight
-                cullDelegates: false
-                removeDuration: Tokens.anim.durations.expressiveDefaultEffects
+            sourceComponent: Row {
+                spacing: Tokens.spacing.extraSmall
 
-                model: ScriptModel {
-                    values: {
-                        const windows = root.toplevels;
-                        const maxIcons = root.Config.bar.workspaces.maxWindowIcons;
-                        return maxIcons > 0 ? windows.slice(0, maxIcons) : windows;
-                    }
-                }
-
-                delegate: MaterialIcon {
-                    id: win
-
-                    required property var modelData
-                    required property int index // Needed, LazyListView will fail to set it if it doesn't exist
-
-                    grade: 0
-                    horizontalAlignment: Text.AlignHCenter
-                    text: Icons.getAppCategoryIcon(modelData.lastIpcObject.class, "terminal")
-                    color: Colours.palette.m3onSurfaceVariant
-
-                    opacity: LazyListView.adding || LazyListView.removing ? 0 : 1
-
-                    Behavior on opacity {
-                        Anim {
-                            type: Anim.DefaultEffects
+                Repeater {
+                    model: ScriptModel {
+                        values: {
+                            const windows = root.toplevels;
+                            const maxIcons = root.Config.bar.workspaces.maxWindowIcons;
+                            return maxIcons > 0 ? windows.slice(0, maxIcons) : windows;
                         }
                     }
 
-                    Behavior on y {
-                        Anim {}
+                    delegate: IconImage {
+                        id: win
+
+                        required property var modelData
+
+                        asynchronous: true
+                        implicitSize: 18
+                        source: Icons.getAppIcon(modelData.lastIpcObject.class, "image-missing")
+
+                        HoverHandler {
+                            onHoveredChanged: {
+                                if (hovered) {
+                                    root.popouts.currentData = win.modelData;
+                                    root.popouts.currentCenter = win.mapToItem(root.barRoot, win.implicitWidth / 2, 0).x;
+                                    root.popouts.currentName = "wsWindow";
+                                    root.popouts.hasCurrent = true;
+                                } else if (root.popouts.currentName === "wsWindow" && root.popouts.currentData === win.modelData) {
+                                    root.popouts.hasCurrent = false;
+                                }
+                            }
+                        }
                     }
                 }
             }

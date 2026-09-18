@@ -37,6 +37,14 @@ Item {
         }
 
         Popout {
+            name: "wsWindow"
+            sourceComponent: ActiveWindow {
+                popouts: root.popouts
+                client: root.popouts.currentData
+            }
+        }
+
+        Popout {
             id: networkPopout
 
             name: "network"

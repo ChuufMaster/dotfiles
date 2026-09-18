@@ -35,9 +35,11 @@ Item {
     }
     property Title current: text1
 
+    readonly property int textWidth: Math.min(220, Math.max(0, root.maxWidth - icon.implicitWidth - Tokens.spacing.small))
+
     clip: true
     implicitHeight: Math.max(icon.implicitHeight, current.implicitHeight)
-    implicitWidth: icon.implicitWidth + current.implicitWidth + current.anchors.leftMargin
+    implicitWidth: icon.implicitWidth + root.textWidth + Tokens.spacing.small
 
     Loader {
         asynchronous: true
@@ -89,7 +91,7 @@ Item {
         text: root.windowTitle
         font: root.Tokens.font.body.builders.small.letterSpacing(1.4).build()
         elide: Qt.ElideRight
-        elideWidth: root.maxWidth - icon.width
+        elideWidth: root.textWidth
 
         onTextChanged: {
             const next = root.current === text1 ? text2 : text1;

@@ -229,17 +229,14 @@ hl.bind("CTRL + SHIFT + M", hl.dsp.send_shortcut({ mods = "CTRL SHIFT", key = "M
 hl.bind(mainMod .. " + SHIFT + U", hl.dsp.send_shortcut({ mods = "CTRL SHIFT", key = "M", window = "title:^(.*[Dd]iscord.*)$" }))
 
 hl.bind("SUPER + SHIFT + I", function()
-    -- Check actual process state instead of relying on the variable
-    local handle = io.popen("pidof hypridle")
+    local handle = io.popen("qs -c caelestia ipc call idleInhibitor toggle && qs -c caelestia ipc call idleInhibitor isEnabled")
     local result = handle:read("*a")
     handle:close()
-    local is_running = result ~= nil and result ~= ""
+    local enabled = result:match("true") ~= nil
 
-    if is_running then
-        hl.dispatch(hl.dsp.exec_cmd("pkill hypridle"))
-        hl.dispatch(hl.dsp.exec_cmd("notify-send -u normal -i dialog-warning 'Idle Inhibited' 'Screen will not sleep'"))
+    if enabled then
+        hl.dispatch(hl.dsp.exec_cmd("notify-send -u normal -i dialog-warning 'Idle Inhibited' 'Screen will not lock or sleep'"))
     else
-        hl.dispatch(hl.dsp.exec_cmd("hypridle"))
-        hl.dispatch(hl.dsp.exec_cmd("notify-send -u low -i dialog-information 'Idle Enabled' 'Screen will sleep normally'"))
+        hl.dispatch(hl.dsp.exec_cmd("notify-send -u low -i dialog-information 'Idle Enabled' 'Screen will lock/sleep normally'"))
     end
 end, { description = "Toggle idle inhibit" })
