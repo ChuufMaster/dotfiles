@@ -14,7 +14,7 @@ executeCommand() {
         if [ $? -eq 1 ] ; then
             awww-daemon
         fi
-        awww img "$1" ${SWWW_PARAMS}
+        awww img "$1" ${SWWW_PARAMS} --transition-step 120 --transition-type right
         notify-send "Wallpaper set to $1"
 
     elif command -v swaybg &>/dev/null; then

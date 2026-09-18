@@ -118,6 +118,15 @@ Item {
             icon: "skip_next"
             disabled: !Players.active?.canGoNext
             onClicked: Players.active?.next()
+        }
+
+        IconButton {
+            isRound: true
+            font: Tokens.font.icon.small
+            padding: Tokens.padding.extraSmall
+            icon: "wallpaper"
+            checked: AlbumWallpaper.enabled
+            onClicked: AlbumWallpaper.enabled = !AlbumWallpaper.enabled
             Layout.rightMargin: Tokens.padding.small
         }
     }
