@@ -1,4 +1,56 @@
 {
+    "appearance": {
+        "transparency": {
+            "enabled": false
+        }
+    },
+    "bar": {
+        "entries": [
+            {
+                "enabled": true,
+                "id": "logo"
+            },
+            {
+                "enabled": true,
+                "id": "workspaces"
+            },
+            {
+                "enabled": true,
+                "id": "activeWindow"
+            },
+            {
+                "enabled": true,
+                "id": "spacer"
+            },
+            {
+                "enabled": true,
+                "id": "media"
+            },
+            {
+                "enabled": true,
+                "id": "spacer"
+            },
+            {
+                "enabled": true,
+                "id": "tray"
+            },
+            {
+                "enabled": true,
+                "id": "clock"
+            },
+            {
+                "enabled": true,
+                "id": "statusIcons"
+            },
+            {
+                "enabled": true,
+                "id": "power"
+            }
+        ]
+    },
+    "border": {
+        "thickness": 3
+    },
     "dashboard": {
         "showClockSeconds": true
     },
@@ -11,21 +63,26 @@
         "idle": {
             "timeouts": [
                 {
-                    "timeout": 180,
-                    "idleAction": "lock"
+                    "enabled": true,
+                    "idleAction": "lock",
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
+                    "timeout": 180
                 },
                 {
-                    "timeout": 300,
+                    "enabled": true,
                     "idleAction": "dpms off",
-                    "returnAction": "dpms on"
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
+                    "returnAction": "dpms on",
+                    "timeout": 300
                 }
             ]
         }
     },
     "paths": {
         "wallpaperDir": "~/wallpapers"
-    },
-    "border": {
-        "thickness": 3
     }
 }

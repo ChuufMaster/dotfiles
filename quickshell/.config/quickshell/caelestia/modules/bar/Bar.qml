@@ -220,6 +220,14 @@ Item {
                     }
                 }
                 DelegateChoice {
+                    roleValue: "media"
+                    delegate: EntryWrapper {
+                        NowPlaying {
+                            objectName: "taskbarNowPlaying"
+                        }
+                    }
+                }
+                DelegateChoice {
                     roleValue: "tray"
                     delegate: EntryWrapper {
                         Tray {

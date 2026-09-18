@@ -35,7 +35,7 @@ Item {
     }
     property Title current: text1
 
-    readonly property int textWidth: Math.min(220, Math.max(0, root.maxWidth - icon.implicitWidth - Tokens.spacing.small))
+    readonly property int textWidth: Math.min(90, Math.max(0, root.maxWidth - icon.implicitWidth - Tokens.spacing.small))
 
     clip: true
     implicitHeight: Math.max(icon.implicitHeight, current.implicitHeight)
