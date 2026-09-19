@@ -1,6 +1,6 @@
 hl.config({
     decoration = {
-        rounding = 0,
+        rounding = 10,
         blur = {
             enabled = false,
             size = 3,

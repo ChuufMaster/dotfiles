@@ -1,5 +1,6 @@
 hl.on("hyprland.start", function()
-    hl.exec_cmd("waybar")
+    -- hl.exec_cmd("waybar")
+    hl.exec_cmd("caelestia shell -d")
     hl.exec_cmd("~/scripts/wallpaper.sh &")
     hl.exec_cmd("swaync")
     hl.exec_cmd("avizo-service")

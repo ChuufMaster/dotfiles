@@ -10,7 +10,8 @@ hl.animation({
 
 hl.curve("some_bezier", {
     type = "bezier",
-    points = { { 1, 0 }, { 0, 1 } },
+    -- points = { { 1, 0 }, { 0, 1 } },
+    points = { { 0.33, 1 }, { 0.68, 1 } },
 })
 
 hl.animation({
