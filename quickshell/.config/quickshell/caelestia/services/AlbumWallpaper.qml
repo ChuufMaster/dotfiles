@@ -19,15 +19,34 @@ Singleton {
         Quickshell.execDetached(["bash", "-lc", `~/scripts/setwallpaper.sh '${path}'`]);
     }
 
+    function downloadArt(url: string): void {
+        downloadProc.command = ["curl", "-sL", url, "-o", tmpPath];
+        downloadProc.running = true;
+    }
+
     function onArtChanged(): void {
         if (!enabled || !artUrl)
             return;
 
+        // iTunes has much higher-res art than most players' own MPRIS thumbs
+        // (Spotify's is often 300-640px). Try it first, fall back to trackArtUrl.
+        const player = Players.active;
+        const artist = player?.trackArtist ?? "";
+        const title = player?.trackTitle ?? "";
+        if (artist && title) {
+            const term = encodeURIComponent(`${artist} ${title}`);
+            lookupProc.command = ["curl", "-sL", `https://itunes.apple.com/search?term=${term}&media=music&limit=1`];
+            lookupProc.running = true;
+        } else {
+            applyArtUrl();
+        }
+    }
+
+    function applyArtUrl(): void {
         if (artUrl.startsWith("file://")) {
             applyWallpaper(artUrl.slice("file://".length));
         } else if (artUrl.startsWith("http://") || artUrl.startsWith("https://")) {
-            downloadProc.command = ["curl", "-sL", artUrl, "-o", tmpPath];
-            downloadProc.running = true;
+            downloadArt(artUrl);
         }
     }
 
@@ -59,6 +78,32 @@ Singleton {
         onExited: code => {
             if (code === 0)
                 root.applyWallpaper(root.tmpPath);
+        }
+    }
+
+    Process {
+        id: lookupProc
+
+        stdout: StdioCollector {
+            id: lookupStdout
+        }
+
+        onExited: code => {
+            let hiRes = "";
+            if (code === 0) {
+                try {
+                    const result = JSON.parse(lookupStdout.text).results?.[0];
+                    if (result?.artworkUrl100)
+                        hiRes = result.artworkUrl100.replace("100x100bb", "3000x3000bb");
+                } catch (e) {
+                    // fall through to trackArtUrl below
+                }
+            }
+
+            if (hiRes)
+                root.downloadArt(hiRes);
+            else
+                root.applyArtUrl();
         }
     }
 
