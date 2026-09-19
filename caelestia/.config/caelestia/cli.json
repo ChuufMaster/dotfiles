@@ -1,6 +1,7 @@
 {
     "theme": {
         "enableTerm": false,
-        "enableChromium": false
+        "enableChromium": false,
+        "enableGtk": false
     }
 }
