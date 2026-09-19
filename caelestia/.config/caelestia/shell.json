@@ -84,5 +84,8 @@
     },
     "paths": {
         "wallpaperDir": "~/wallpapers"
+    },
+    "services": {
+        "brightnessIncrement": 0.2
     }
 }
