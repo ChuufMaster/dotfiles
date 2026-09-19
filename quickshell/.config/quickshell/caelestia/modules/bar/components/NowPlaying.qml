@@ -5,6 +5,7 @@ import QtQuick.Effects
 import QtQuick.Layouts
 import Quickshell.Widgets
 import Caelestia.Config
+import Caelestia.Services
 import qs.components
 import qs.components.controls
 import qs.services
@@ -20,6 +21,14 @@ Item {
 
     Behavior on implicitWidth {
         Anim {}
+    }
+
+    Timer {
+        running: Players.active?.isPlaying ?? false
+        interval: GlobalConfig.dashboard.mediaUpdateInterval
+        triggeredOnStart: true
+        repeat: true
+        onTriggered: Players.active?.positionChanged()
     }
 
     StyledClippingRect {
@@ -99,11 +108,29 @@ Item {
         StyledSlider {
             id: seek
 
+            readonly property real cavaLevel: {
+                const values = Audio.cava.values;
+                if (!values || values.length === 0)
+                    return 0.5;
+                return values.reduce((a, b) => a + b, 0) / values.length;
+            }
+
             Layout.preferredWidth: 140
             Layout.alignment: Qt.AlignVCenter
             value: root.hasMedia ? Players.active.position / (Players.active.length || 1) : 0
             enabled: Players.active?.canSeek ?? false
             interactionOnMove: false
+            wavy: true
+            animateWave: Players.active?.isPlaying ?? false
+            waveAmplitude: 0.2 + Math.min(cavaLevel, 1) * 1.3
+
+            ServiceRef {
+                service: Audio.cava
+            }
+
+            Behavior on waveAmplitude {
+                Anim {}
+            }
             onInteraction: value => {
                 const active = Players.active;
                 if (active?.canSeek && active?.positionSupported)

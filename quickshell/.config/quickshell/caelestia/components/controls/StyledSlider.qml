@@ -13,6 +13,7 @@ Slider {
 
     property bool wavy
     property bool animateWave
+    property real waveAmplitude: 0.5
     property real waveFrequency: 6
     property int waveDuration: 1000
     property int radius: Tokens.rounding.medium
@@ -118,6 +119,7 @@ Slider {
 
             WavyLine {
                 lineWidth: root.height * 0.7
+                amplitudeMultiplier: root.waveAmplitude
                 frequency: root.waveFrequency
                 startX: x
                 fullLength: root.width - handle.implicitWidth - handle.anchors.leftMargin
