@@ -32,6 +32,8 @@ ShellRoot {
         id: lock
     }
 
+    NowPlayingOverlay {}
+
     Shortcuts {}
     BatteryMonitor {}
     IdleMonitors {
