@@ -1,7 +1,10 @@
 // vim: filetype=jsonc
 [
     {
-        "output": "DP-1",
+        "output": [
+            "DP-1",
+            "DP-3"
+        ],
         // "layer": "top", // Waybar at top layer
         // "position": "bottom", // Waybar position (top|bottom|left|right)
         // "height": 40, // Waybar height (to be removed for auto height)
