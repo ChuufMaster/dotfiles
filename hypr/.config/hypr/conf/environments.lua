@@ -36,6 +36,11 @@ hl.env("__GL_VRR_ALLOWED", "1")
 hl.env("WLR_DRM_NO_ATOMIC", "1")
 hl.env("AQ_DRM_DEVICES", "/dev/dri/card1")
 
+-- glibc can hold onto freed heap memory in per-thread arenas; capping arena
+-- count trims idle RSS for GUI apps like quickshell. Must be set before the
+-- process starts, so this has to live here rather than as a shell.qml pragma.
+hl.env("MALLOC_ARENA_MAX", "2")
+
 hl.env("USER_NAME", "CHUUF MASTER")
 
 hl.env("TERMINAL", "kitty")

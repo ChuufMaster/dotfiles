@@ -4,6 +4,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Widgets
+import Caelestia.Components
 import Caelestia.Config
 import Caelestia.I18n
 import qs.components
@@ -17,24 +18,33 @@ PageBase {
     title: Tr.tr("All apps")
     isSubPage: true
 
-    ColumnLayout {
+    LazyListView {
+        id: list
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         width: root.cappedWidth
+        implicitHeight: contentHeight
+
         spacing: Tokens.spacing.extraSmall / 2
+        asynchronous: true
+        cacheBuffer: 400
 
-        Repeater {
-            id: list
+        useCustomViewport: true
+        viewport: Qt.rect(0, root.flickable.contentY, width, root.flickable.height)
 
-            model: [...DesktopEntries.applications.values].sort((a, b) => a.name.localeCompare(b.name))
+        model: ScriptModel {
+            values: [...DesktopEntries.applications.values].sort((a, b) => a.name.localeCompare(b.name))
+        }
 
+        delegate: Component {
             ConnectedRect {
                 id: appItem
 
                 required property DesktopEntry modelData
                 required property int index
 
-                Layout.fillWidth: true
+                width: list.width
                 first: index === 0
                 last: index === list.count - 1
                 implicitHeight: appRow.implicitHeight + appRow.anchors.margins * 2

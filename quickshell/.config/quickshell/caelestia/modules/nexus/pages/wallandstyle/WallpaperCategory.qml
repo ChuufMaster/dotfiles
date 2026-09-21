@@ -1,7 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import QtQuick.Layouts
+import Quickshell
 import Caelestia.Config
 import Caelestia.Models
 import qs.services
@@ -16,38 +16,53 @@ PageBase {
     }
     isSubPage: true
 
-    GridLayout {
+    GridView {
+        id: grid
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         width: root.cappedWidth
+        height: root.flickable.height
+        clip: true
+        cacheBuffer: height
 
-        columns: Config.nexus.wallpapersPerRow
-        rowSpacing: Tokens.spacing.medium
-        columnSpacing: Tokens.spacing.large
+        readonly property int columns: Config.nexus.wallpapersPerRow
+        readonly property real columnSpacing: Tokens.spacing.large
+        readonly property real rowSpacing: Tokens.spacing.medium
 
-        Repeater {
-            model: {
-                const walls = Wallpapers.list.filter(w => Wallpapers.getCategoryFor(w) === root.nState.selectedWallpaperCategory).sort((a, b) => a.name.localeCompare(b.name));
-                while (walls.length < Config.nexus.wallpapersPerRow)
-                    walls.push(null);
-                return walls;
-            }
+        cellWidth: (width + columnSpacing) / columns
+        cellHeight: metrics.implicitHeight + rowSpacing
+
+        model: ScriptModel {
+            values: Wallpapers.list.filter(w => Wallpapers.getCategoryFor(w) === root.nState.selectedWallpaperCategory).sort((a, b) => a.name.localeCompare(b.name))
+        }
+
+        delegate: Item {
+            id: cell
+
+            required property FileSystemEntry modelData
+
+            width: grid.cellWidth - grid.columnSpacing
+            height: grid.cellHeight - grid.rowSpacing
 
             WallItem {
-                required property FileSystemEntry modelData
-
-                // Empty placeholders for sizing
-                opacity: modelData ? 1 : 0
-                enabled: modelData
-
-                source: String(modelData?.path ?? "")
-                text: modelData?.name ?? ""
+                anchors.fill: parent
+                source: String(cell.modelData?.path ?? "")
+                text: cell.modelData?.name ?? ""
                 onClicked: {
-                    Wallpapers.setWallpaper(modelData.path);
+                    Wallpapers.setWallpaper(cell.modelData.path);
                     root.nState.closeSubPage();
                     root.nState.closeSubPage();
                 }
             }
+        }
+
+        WallItem {
+            id: metrics
+
+            visible: false
+            width: grid.cellWidth - grid.columnSpacing
+            text: "Ag"
         }
     }
 }

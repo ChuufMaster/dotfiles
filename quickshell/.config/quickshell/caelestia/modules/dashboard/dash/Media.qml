@@ -27,7 +27,7 @@ Item {
 
     Behavior on playerProgress {
         Anim {
-            type: Anim.StandardLarge
+            type: Anim.Standard
         }
     }
 

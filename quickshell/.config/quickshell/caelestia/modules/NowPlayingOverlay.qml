@@ -27,13 +27,12 @@ Variants {
         WlrLayershell.layer: WlrLayer.Bottom
         color: "transparent"
 
-        anchors.top: true
-        anchors.bottom: true
-        anchors.left: true
-        anchors.right: true
+        implicitWidth: layout.implicitWidth
+        implicitHeight: layout.implicitHeight
 
         RowLayout {
-            anchors.centerIn: parent
+            id: layout
+
             spacing: Tokens.spacing.extraLargeIncreased
             visible: win.workspaceEmpty && Players.active !== null
 

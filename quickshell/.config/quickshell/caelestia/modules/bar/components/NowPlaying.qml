@@ -125,7 +125,7 @@ Item {
             waveAmplitude: 0.2 + Math.min(cavaLevel, 1) * 1.3
 
             ServiceRef {
-                service: Audio.cava
+                service: (Players.active?.isPlaying ?? false) ? Audio.cava : null
             }
 
             Behavior on waveAmplitude {

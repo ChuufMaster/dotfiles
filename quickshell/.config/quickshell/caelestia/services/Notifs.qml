@@ -22,6 +22,23 @@ Singleton {
 
     property bool loaded
 
+    // ponytail: hardcoded cap, not exposed as config; revisit if someone asks to tune it
+    readonly property int maxHistory: 200
+
+    function trimHistory(): void {
+        if (root.list.length <= root.maxHistory)
+            return;
+
+        const keep = root.list.slice(0, root.maxHistory);
+        for (const n of root.list.slice(root.maxHistory)) {
+            if (n.closed)
+                n.destroy();
+            else
+                keep.push(n);
+        }
+        root.list = keep;
+    }
+
     function hasFullscreen(): bool {
         for (const monitor of Hypr.monitors.values) {
             if (monitor?.activeWorkspace?.toplevels.values.some(t => t.lastIpcObject.fullscreen > 1))
@@ -100,6 +117,7 @@ Singleton {
                 notification: notif
             });
             root.list = [comp, ...root.list];
+            root.trimHistory();
         }
     }
 
@@ -121,6 +139,7 @@ Singleton {
                 root.list.push(notifComp.createObject(root, properties));
             }
             root.list.sort((a, b) => b.time - a.time);
+            root.trimHistory();
             root.loaded = true;
         }
         onLoadFailed: err => {

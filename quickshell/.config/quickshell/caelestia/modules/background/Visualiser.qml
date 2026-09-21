@@ -40,7 +40,7 @@ Item {
         id: wrapper
 
         anchors.fill: parent
-        layer.enabled: true
+        layer.enabled: Config.background.visualiser.enabled
 
         Loader {
             asynchronous: true
